@@ -5,25 +5,25 @@ A glossary of common terms used throughout the knowledgebase.
 ```{glossary}
 
 Absorbing boundary condition
-    Definition
+    Definition to come
 
 Boundary element method
-    Definition
+    Definition to come
 
 Courant number
-    Definition
+    Definition to come
 
 Courant–Friedrichs–Lewy (CFL) condition
-    Definition
+    Definition to come
 
 Explicit scheme
     An explicit time-stepping scheme is one where the solution at time step n+1 is calculated based on existing (known) values from time step n.
 	
 Finite difference time domain (FDTD) method
-    Definition
+    Definition to come
 	
 Finite element method (FEM)
-    Definition
+    Definition to come
 
 Homogeneous domain
     A homogeneous domain has the same material properties (e.g. density, speed of sound...) throughout the domain.
@@ -38,11 +38,11 @@ Jupyter Book
     [Jupyter Book](https://jupyterbook.org/intro.html) is an open source project for building beautiful, publication-quality books and documents (like this one!) from computational material. 
 
 Ordinary differential equation (ODE)
-    Definition
+    Definition to come
 
 Partial differential equation (PDE)
-    Definition
+    Definition to come
 
 Perfectly matched layer (PML)
-    Definition
+    Definition to come
 ```
