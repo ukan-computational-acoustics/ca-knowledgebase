@@ -1,0 +1,50 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+- caption: 
+  chapters:
+  - file: about/get-started
+  - file: about/code-of-conduct
+  - file: about/aims
+  - file: about/contribution-guide
+    sections:
+    - file: about/contribute-suggest
+    - file: about/contribute-contribute
+    - file: about/code-template
+    - file: about/contribute-user-code
+    - file: about/contribute-maintain
+  - file: about/who-we-are
+  
+- caption: Core Concepts
+  chapters:
+  - file: core-concepts/core-concepts-main
+  
+- caption: Tutorials
+  chapters:
+  - file: tutorials/tutorials-main
+  - file: tutorials/bem-tutorial-1
+
+- caption: Software Guides
+  chapters: 
+  - file: software/software-main
+  
+- caption: User Code
+  chapters:
+  - file: user/user
+  
+- caption: Data
+  chapters:
+  - file: data/data
+  
+- caption: Community
+  chapters:
+  - file: community/community 
+  
+- caption: Reference
+  chapters:
+  - file: reference/glossary
+  - file: reference/coding
+  - file: reference/resources
