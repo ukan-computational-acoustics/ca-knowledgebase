@@ -1,7 +1,7 @@
 # User code contributions
 
-```{warning}
-This page is currently under development. Content may not be complete, links may be broken, etc.
+```{admonition}
+This part of the site is currently under development. Its content is incomplete.
 ```
 
 This page contains a directory of all the computational acoustics code our users have agreed to share with the community. They are each hosted as individual GitHub projects.
@@ -17,6 +17,8 @@ If you would like to contribute your code, please see the [instructions for subm
 
 | Project | Tags | Authors | Language |
 | ------- | ---- | ------- | -------- |
-| Example scattering off an obstacle | BEM, 2D, scattering | A. N. Example | Julia |
-| Example sound propagation in vocal tract | FDTD, 3D | A. N. Author | MATLAB |
-| Example PML boundary formulation | FEM, 3D | A. Different Author | Python |
+| _Example:_ scattering off an obstacle | BEM, 2D, scattering | A. N. Example | Julia |
+| _Example:_ sound propagation in vocal tract | FDTD, 3D | A. N. Author | MATLAB |
+| _Example:_ PML boundary formulation | FEM, 3D | A. Different Author | Python |
+
+If you would like to submit code but it is not hosted on GitHub, please [contact us](mailto:ukan.ca.knowledgebase@gmail.com).
