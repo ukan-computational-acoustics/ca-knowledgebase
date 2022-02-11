@@ -1,7 +1,7 @@
 # Core Concepts
 
-```{warning}
-This part of the site is currently under development. Content may not be complete, links may be broken, etc.
+```{admonition}
+This part of the site is currently under development. Its content is incomplete.
 ```
 
 This is where you will find information about the core concepts underlying computational acoustics methods, including concepts such as:
