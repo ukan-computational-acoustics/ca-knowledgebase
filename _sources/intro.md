@@ -18,7 +18,7 @@ How to use this site:
 
 ```{admonition} More content to follow!
 :class: tip
-This is a pre-alpha version of the knowledgebase. Once up and running, it will also include:
+This site is currently under development. Once complete, it will also include:
 
 * Guides to using common commercial and open-source CA software
 * Example data for testing algorithms
@@ -32,7 +32,7 @@ This is a pre-alpha version of the knowledgebase. Once up and running, it will a
 
 We gratefully acknowledge the support of the UK Acoustics Network (UKAN). Make sure you [visit their site](https://acoustics.ac.uk/) and join the computational acoustics special interest group.
 
-Help us show our current and future funders that this resource is useful by clicking the applause button below (and on every page!)
+Help us show our current and future funders that this resource is useful by clicking the applause button below:
 
 <div>
 <link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css" />
