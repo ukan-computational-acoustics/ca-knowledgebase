@@ -13,7 +13,7 @@ How to use this site:
 - Use the **software guides** for help with common computational acoustics software packages, both commercial and open source.
 - Browse the **user-submitted code** section to explore computational acoustics code submitted by our users.
 - You can download book pages and code by clicking the download logo ( <i class="fas fa-download"></i> ) at the top of the page.
-- Wherever you see the rocket logo ( <i class="fas fa-rocket"></i> ) at the top of the page, you can run that code directly in your browser by clicking on the button and selecting "Binder".
+- Wherever you see the rocket logo ( <i class="fas fa-rocket"></i> ) at the top of the page, you can run that code directly in your browser by clicking on the logo and selecting "Binder".
 - Want to suggest changes or contribute to the knowledgebase? Read our [guide for contributors](about/contribution-guide).
 
 ```{admonition} More content to follow!
