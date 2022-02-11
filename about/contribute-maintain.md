@@ -35,4 +35,3 @@ Now create a pull request from your repo to the main repo.
 
 Any time an update is pushed to the main branch of the master repo, GitHub Actions will automatically update the `gh-pages` branch and publish the build files to [knowledgebase.acoustics.ac.uk](https://knowledgebase.acoustics.ac.uk/intro.html) as detailed in the [JupyterBook documentation](https://jupyterbook.org/publish/gh-pages.html#automatically-host-your-book-with-github-actions).
 
-```
