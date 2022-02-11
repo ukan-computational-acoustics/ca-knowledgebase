@@ -1,6 +1,6 @@
 # Tutorials
 
-```{admonition} More content to follow!
+```{warning}
 This part of the site is currently under development. Its content is incomplete.
 ```
 
