@@ -8,7 +8,7 @@ First ensure you have Jupyter Books installed:
 pip install -U jupyter-book
 ```
 
-In order to build the book, create your own fork of the agully1.github.io repository. Then clone this repository to a local repository on your machine (N.B. if you are new to git on the command line, consider completing the [Software Carpentry lesson on version control with git](https://swcarpentry.github.io/git-novice/)):
+In order to build the book, create your own fork of the [knowledgebase repository](https://github.com/agully1/agully1.github.io). Then clone this repository to a local repository on your machine (N.B. if you are new to git on the command line, consider completing the [Software Carpentry lesson on version control with git](https://swcarpentry.github.io/git-novice/)):
 
 ```
 cd myreponame
