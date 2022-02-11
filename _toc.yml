@@ -8,7 +8,6 @@ parts:
   chapters:
   - file: about/get-started
   - file: about/code-of-conduct
-  - file: about/aims
   - file: about/contribution-guide
     sections:
     - file: about/contribute-suggest
