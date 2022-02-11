@@ -1,6 +1,6 @@
 # Computational acoustics software
 
-```{admonition}
+```{admonition} More content to follow!
 This part of the site is currently under development. Its content is incomplete.
 ```
 
