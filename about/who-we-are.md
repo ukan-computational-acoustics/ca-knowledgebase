@@ -6,7 +6,7 @@ You can contact us via [ukan.ca.knowledgebase@gmail.com](mailto:ukan.ca.knowledg
 
 The site is maintained by:
 
-Amelia Gully ([@agully1](https://github.com/agully1))
-Andrew Gibbs ([@AndrewGibbs](https://github.com/AndrewGibbs))
-Jonathan Hargreaves ([@jahargreaves](https://github.com/jahargreaves))
-...
+* Amelia Gully ([@agully1](https://github.com/agully1))
+* Andrew Gibbs ([@AndrewGibbs](https://github.com/AndrewGibbs))
+* Jonathan Hargreaves ([@jahargreaves](https://github.com/jahargreaves))
+* ...
