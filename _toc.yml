@@ -25,6 +25,7 @@ parts:
   chapters:
   - file: tutorials/tutorials-main
   - file: tutorials/bem-tutorial-1
+  - file: tutorials/fenics-helmholtz-tutorial-1
 
 - caption: Software Guides
   chapters: 
