@@ -362,19 +362,17 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
 <p>A glossary of common terms used throughout the knowledgebase.</p>
 <dl class="glossary simple">
-<dt id="term-Absorbing-boundary-condition">Absorbing boundary condition<a class="headerlink" href="#term-Absorbing-boundary-condition" title="Permalink to this term">¶</a></dt><dd><p>Definition to come</p>
+<dt id="term-Absorbing-boundary-condition-ABC">Absorbing boundary condition (ABC)<a class="headerlink" href="#term-Absorbing-boundary-condition-ABC" title="Permalink to this term">¶</a></dt><dd><p>Condition applied at the edges of a computational domain to eliminate (or minimise) reflections.</p>
 </dd>
-<dt id="term-Boundary-element-method">Boundary element method<a class="headerlink" href="#term-Boundary-element-method" title="Permalink to this term">¶</a></dt><dd><p>Definition to come</p>
+<dt id="term-Boundary-element-method-BEM">Boundary element method (BEM)<a class="headerlink" href="#term-Boundary-element-method-BEM" title="Permalink to this term">¶</a></dt><dd><p>A computational method for solving linear PDEs for which Green’s functions can be calculated. BEM calculates a solution at the boundary of a domain, reducing the dimensionality of the problem.</p>
 </dd>
-<dt id="term-Courant-number">Courant number<a class="headerlink" href="#term-Courant-number" title="Permalink to this term">¶</a></dt><dd><p>Definition to come</p>
-</dd>
-<dt id="term-CourantFriedrichsLewy-CFL-condition">Courant–Friedrichs–Lewy (CFL) condition<a class="headerlink" href="#term-CourantFriedrichsLewy-CFL-condition" title="Permalink to this term">¶</a></dt><dd><p>Definition to come</p>
+<dt id="term-CourantFriedrichsLewy-CFL-condition">Courant–Friedrichs–Lewy (CFL) condition<a class="headerlink" href="#term-CourantFriedrichsLewy-CFL-condition" title="Permalink to this term">¶</a></dt><dd><p>A necessary condition for convergence in analysing explicit time integration schemes. See <span class="xref myst">Core Concepts: CFL Condition</span> for more details.</p>
 </dd>
 <dt id="term-Explicit-scheme">Explicit scheme<a class="headerlink" href="#term-Explicit-scheme" title="Permalink to this term">¶</a></dt><dd><p>An explicit time-stepping scheme is one where the solution at time step n+1 is calculated based on existing (known) values from time step n.</p>
 </dd>
-<dt id="term-Finite-difference-time-domain-FDTD-method">Finite difference time domain (FDTD) method<a class="headerlink" href="#term-Finite-difference-time-domain-FDTD-method" title="Permalink to this term">¶</a></dt><dd><p>Definition to come</p>
+<dt id="term-Finite-difference-time-domain-FDTD-method">Finite difference time domain (FDTD) method<a class="headerlink" href="#term-Finite-difference-time-domain-FDTD-method" title="Permalink to this term">¶</a></dt><dd><p>A computational method for solving time-dependent PDEs which uses a regular grid to discretise a domain. As a time-domain method, FDTD simulations cover a wide frequency range in a single simulation run.</p>
 </dd>
-<dt id="term-Finite-element-method-FEM">Finite element method (FEM)<a class="headerlink" href="#term-Finite-element-method-FEM" title="Permalink to this term">¶</a></dt><dd><p>Definition to come</p>
+<dt id="term-Finite-element-method-FEM">Finite element method (FEM)<a class="headerlink" href="#term-Finite-element-method-FEM" title="Permalink to this term">¶</a></dt><dd><p>A computational method for solving PDEs by discretising a domain into smaller elements governed by simpler relationships, and combining the contribution of these elements to approximate the function across the whole domain.</p>
 </dd>
 <dt id="term-Homogeneous-domain">Homogeneous domain<a class="headerlink" href="#term-Homogeneous-domain" title="Permalink to this term">¶</a></dt><dd><p>A homogeneous domain has the same material properties (e.g. density, speed of sound…) throughout the domain.</p>
 </dd>
@@ -384,11 +382,11 @@ const thebe_selector_output = ".output, .cell_output"
 </dd>
 <dt id="term-Jupyter-Book">Jupyter Book<a class="headerlink" href="#term-Jupyter-Book" title="Permalink to this term">¶</a></dt><dd><p><a class="reference external" href="https://jupyterbook.org/intro.html">Jupyter Book</a> is an open source project for building beautiful, publication-quality books and documents (like this one!) from computational material.</p>
 </dd>
-<dt id="term-Ordinary-differential-equation-ODE">Ordinary differential equation (ODE)<a class="headerlink" href="#term-Ordinary-differential-equation-ODE" title="Permalink to this term">¶</a></dt><dd><p>Definition to come</p>
+<dt id="term-Ordinary-differential-equation-ODE">Ordinary differential equation (ODE)<a class="headerlink" href="#term-Ordinary-differential-equation-ODE" title="Permalink to this term">¶</a></dt><dd><p>An equation involving derivatives in a single variable (e.g. how an acoustic field varies with time).</p>
 </dd>
-<dt id="term-Partial-differential-equation-PDE">Partial differential equation (PDE)<a class="headerlink" href="#term-Partial-differential-equation-PDE" title="Permalink to this term">¶</a></dt><dd><p>Definition to come</p>
+<dt id="term-Partial-differential-equation-PDE">Partial differential equation (PDE)<a class="headerlink" href="#term-Partial-differential-equation-PDE" title="Permalink to this term">¶</a></dt><dd><p>An equation involving partial derivatives in multiple variables (e.g. how an acoustic field varies with time and multiple spatial dimensions). Most of the equations of interest in computational acoustics are PDEs.</p>
 </dd>
-<dt id="term-Perfectly-matched-layer-PML">Perfectly matched layer (PML)<a class="headerlink" href="#term-Perfectly-matched-layer-PML" title="Permalink to this term">¶</a></dt><dd><p>Definition to come</p>
+<dt id="term-Perfectly-matched-layer-PML">Perfectly matched layer (PML)<a class="headerlink" href="#term-Perfectly-matched-layer-PML" title="Permalink to this term">¶</a></dt><dd><p>An artificial ABC with non-physical properties which vary gradually throughout the layer in order to ensure that no energy is reflected into the interior of the domain.</p>
 </dd>
 </dl>
 </div>
