@@ -19,7 +19,9 @@ parts:
   
 - caption: Core Concepts
   chapters:
-  - file: core-concepts/core-concepts-main
+  - file: core-concepts/problem-types
+  - file: core-concepts/element-types
+  - file: core-concepts/meshes
   
 - caption: Tutorials
   chapters:
