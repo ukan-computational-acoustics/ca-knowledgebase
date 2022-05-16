@@ -17,7 +17,6 @@ If you would like to contribute your code, please see the [instructions for subm
 
 | Project | Tags | Authors | Language |
 | ------- | ---- | ------- | -------- |
-| [IFSintegrals](https://github.com/AndrewGibbs/IFSintegrals): A toolbox for solving problems defined on attractors of iterated function systems (IFSs) | BEM | [Andrew Gibbs](https://github.com/AndrewGibbs) | Julia |
 | [HNABEMLAB](https://github.com/AndrewGibbs/HNABEMLAB): fast solver for high frequency scattering by 2D polygons | BEM | [Andrew Gibbs](https://github.com/AndrewGibbs) | MATLAB |
 | [Bempp tutorials](https://github.com/mscroggs/bempp-acoustic-tutorials): tutorials and exercises designed to show you how to use Bempp to solve problems in acoustics | BEM | [Matthew Scroggs](https://github.com/mscroggs) and [Jonathan Hargreaves](https://github.com/jahargreaves) | Python |
 | [Thin Plate FDTD](https://gist.github.com/mhamilt/11d2edd89e10c7bb8f0e4938882a571e): A 2D FDTD implementation in Python | FDTD | [Matt Hamilton](https://gist.github.com/mhamilt) | Python |
