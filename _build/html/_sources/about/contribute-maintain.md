@@ -12,20 +12,20 @@ In order to build the book, create your own fork of the [knowledgebase repositor
 
 ```
 cd myreponame
-git clone https://github.com/<your-username>/agully1.github.io
+git clone https://github.com/<your-username>/ca-knowledgebase.github.io
 ```
 
 Then build the Jupyter Book (if you make multiple builds, it is recommended to clean up before each new build):
 
 ```
-jupyter-book clean agully1.github.io/
-jupyter-book build agully1.github.io/
+jupyter-book clean ca-knowledgebase.github.io/
+jupyter-book build ca-knowledgebase.github.io/
 ```
 
-You can inspect the created book by opening the local HTML files in `agully1.github.io/_build`. Once you're happy with them, push the new source files to the online repository:
+You can inspect the created book by opening the local HTML files in `ca-knowledgebase.github.io/_build`. Once you're happy with them, push the new source files to the online repository:
 
 ```
-cd agully1.github.io
+cd ca-knowledgebase.github.io
 git add ./*
 git commit -m "add your message here"
 git push
