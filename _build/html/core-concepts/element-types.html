@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data</title>
+    <title>Types of element</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Community" href="../community/community.html" />
-    <link rel="prev" title="User code contributions" href="../user/user.html" />
+    <link rel="next" title="Meshes" href="meshes.html" />
+    <link rel="prev" title="Types of problem" href="problem-types.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -141,19 +141,19 @@
   Core Concepts
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../core-concepts/problem-types.html">
+  <a class="reference internal" href="problem-types.html">
    Types of problem
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../core-concepts/element-types.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Types of element
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../core-concepts/meshes.html">
+  <a class="reference internal" href="meshes.html">
    Meshes
   </a>
  </li>
@@ -209,9 +209,9 @@
   Data
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data/data.html">
    Data
   </a>
  </li>
@@ -290,7 +290,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/data/data.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/core-concepts/element-types.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -310,7 +310,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/agully1/ca-knowledgebase/issues/new?title=Issue%20on%20page%20%2Fdata/data.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/agully1/ca-knowledgebase/issues/new?title=Issue%20on%20page%20%2Fcore-concepts/element-types.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -339,10 +339,25 @@
         
               <div>
                 
-  <div class="section" id="data">
-<h1>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h1>
-<p>This section will contain some standard datasets you can download to run the tutorials and/or test your algorithms.</p>
-<p>What types of data would you like to see? <a class="reference external" href="mailto:ukan&#46;ca&#46;knowledgebase&#37;&#52;&#48;gmail&#46;com">Contact us</a> and let us know!</p>
+  <div class="section" id="types-of-element">
+<h1>Types of element<a class="headerlink" href="#types-of-element" title="Permalink to this headline">¶</a></h1>
+<div class="tip admonition">
+<p class="admonition-title">Alpha mode!</p>
+<p>This page is in alpha mode. That means its content has not yet been thoroughly reviewed.</p>
+<p>If you would like to contribute suggestions or corrections, please do so following the <a class="reference internal" href="../about/contribute-contribute.html"><span class="doc std std-doc">guide for contributors</span></a>.</p>
+</div>
+<p>Most computational acoustics methods approximate a solution to some differential equation by breaking a domain down into small, simple units which are usually called <em>elements</em>.</p>
+<p>There are two main categories of elements:</p>
+<ul class="simple">
+<li><p><em>Structured</em> elements are all the same shape and size within a domain. As a result, the same relationships hold across every element and solutions can usually be calculated relatively efficiently. Typically, elements will form a Cartesian grid, although this is not a requirement. It may be difficult to accurately represent curved surfaces with structured elements.</p></li>
+<li><p><em>Unstructured</em> elements will have the same topology throughout a domain (e.g. all elements will be triangular or quadrilateral) but elements can vary in shape and size throughout the domain depending on the requirements of the problem. For example, many smaller elements can be included where more detail is required. As there is not a single description of element behaviour, calculations necessarily become more resource-intensive.</p></li>
+</ul>
+<p>The data used for simulation is also likely to be in one of the two formats. Image and volume data can be considered <em>structured</em> formats (where pixels and voxels comprise the elements), and mesh data (probably the most common format for computational acoustics problems) is <em>unstructured</em>. We discuss meshes in more detail in the next section.</p>
+<p>Different computational acoustics methods use different element types. FEM and BEM typically use unstructured elements, while FDTD uses structured elements, as illustrated in the figure below.</p>
+<div class="figure align-default" id="element-types">
+<img alt="../_images/elements_JH.JPG" src="../_images/elements_JH.JPG" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Types of element in computational acoustics. Image produced by: <a class="reference external" href="https://www.salford.ac.uk/our-staff/jonathan-hargreaves">Jonathan Hargreaves</a>.</span><a class="headerlink" href="#element-types" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -358,7 +373,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./data"
+            path: "./core-concepts"
         },
         predefinedOutput: true
     }
@@ -375,19 +390,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../user/user.html" title="previous page">
+        <a class="left-prev" href="problem-types.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">User code contributions</p>
+                <p class="prevnext-title">Types of problem</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="../community/community.html" title="next page">
+        <a class="right-next" href="meshes.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Community</p>
+                <p class="prevnext-title">Meshes</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
