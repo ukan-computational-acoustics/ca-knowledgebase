@@ -39,7 +39,7 @@ jobs:
     - name: set Docker tag
       run: |
         if ${{ steps.diff.outputs.changed }}="yes"; then
-            echo ::set-output name=tag::"${GITHUB_REF#refs/heads/}"
+            echo ::set-output name=tag::"${GITHUB_HEAD_REF#refs/heads/}"
         else
             echo ::set-output name=tag::latest
         fi
@@ -68,7 +68,7 @@ jobs:
 
   deploy-book:
     runs-on: ubuntu-latest
-    container: caknowledgebase/caknowledgebase:${GITHUB_REF#refs/heads/}
+    container: caknowledgebase/caknowledgebase:${{ needs.build-docker.steps.dockertag.outputs.tag }}
     needs:
     - build-docker
     
