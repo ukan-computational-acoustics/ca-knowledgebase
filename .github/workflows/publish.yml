@@ -67,7 +67,7 @@ jobs:
 
   deploy-book:
     runs-on: ubuntu-latest
-    container: dokken92/dolfinx_custom:v0.4.1
+    container: caknowledgebase/caknowledgebase:0.1.0
     needs:
     - build-docker
     
@@ -80,9 +80,6 @@ jobs:
       with:
         python-version: 3.7
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
     # Build the book
     - name: Build the book
       run: |
