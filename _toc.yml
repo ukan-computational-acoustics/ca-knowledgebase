@@ -31,6 +31,8 @@ parts:
   - file: tutorials/fem/fem-tutorials-main
     sections:
     - file: tutorials/fem/fenics-helmholtz-tutorial-1
+    - file: tutorials/fem/fenicsx-helmholtz-tutorial
+  
   - file: tutorials/fdtd/fdtd-tutorials-main
     #sections:
     #- file: tutorials/fdtd/fdtd-tutorial-1
