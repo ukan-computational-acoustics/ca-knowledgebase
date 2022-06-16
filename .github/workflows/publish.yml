@@ -16,7 +16,7 @@ jobs:
   build-docker:
     runs-on: ubuntu-latest
     steps:
-    # Build docker file
+    - uses: actions/checkout@v2
     - name: Make cache folder
       run: mkdir ~/cache
     - name: Cache Dockerfile
