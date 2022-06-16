@@ -14,7 +14,7 @@
 # ---
 
 # # The Helmholtz Equation with FEniCSx
-# Authors:
+# Authors: Stefano Tronci and Jørgen S. Dokken
 #
 # :::{note}
 # You can run this code directly in your browser by clicking on the rocket logo ( <i class="fas fa-rocket"></i> ) at the top of the page, and clicking 'Binder'. This will open a Jupyter Notebook in a [Binder](https://mybinder.org/) environment which is set up to contain everything you need to run the code. **Don't forget to save a local copy if you make any changes!**
