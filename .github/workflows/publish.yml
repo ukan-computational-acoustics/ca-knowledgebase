@@ -45,7 +45,7 @@ jobs:
       with:
         push: false
         tags: ca-knowledgebase/ca-knowledgebase
-        target: test_env
+        target: ca-knowledgebase
         file: docker/Dockerfile
       # if: steps.diff.outputs.changed == 'yes'
 
