@@ -61,7 +61,7 @@ jobs:
         tags: caknowledgebase/caknowledgebase:0.1.0
         target: ca-knowledgebase
         file: docker/Dockerfile
-      if: github.ref == 'refs/heads/main'
+      # if: github.ref == 'refs/heads/main'
       # if: ${{ github.ref == 'refs/heads/main' && steps.diff.outputs.changed == 'yes' }}
       # if: steps.diff.outputs.changed == 'yes'
 
