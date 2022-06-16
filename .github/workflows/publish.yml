@@ -24,7 +24,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/cache/Dockerfile
-        key: ${{ runner.os }}-Dockerfile-${{ needs.get-branch.outputs.tag }}-${{ hashFiles('docker/Dockerfile') }}
+        key: Dockerfile-${{ hashFiles('docker/Dockerfile') }}
     - name: touch ~/cache/Dockerfile
       run: touch ~/cache/Dockerfile
     - name: compare Dockerfile with cache
@@ -35,6 +35,20 @@ jobs:
           else
               echo ::set-output name=changed::yes
           fi
+
+    # Set docker tag to use
+    #- run: echo ::set-output name=dockertag::latest
+    #  if: steps.diff.outputs.changed == 'yes'
+    #- run: echo ::set-output name=dockertag::latest
+    #  if: ${{ steps.diff.outputs.changed == 'no' && github.ref == 'refs/heads/main' }}
+    #- run: echo ::set-output name=dockertag::${GITHUB_REF#refs/heads/}
+    #  if: ${{ steps.diff.outputs.changed == 'no' && github.ref != 'refs/heads/main' }}
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+      # if: steps.diff.outputs.changed == 'yes'
     - name: Copy Dockerfile to ~/cache/Dockerfile
       run: cp docker/Dockerfile ~/cache/Dockerfile
     - name: Set up Docker Buildx
@@ -43,10 +57,13 @@ jobs:
     - name: Build Docker images
       uses: docker/build-push-action@v3
       with:
-        push: false
-        tags: ca-knowledgebase/ca-knowledgebase
+        push: true
+        tags: ca-knowledgebase/ca-knowledgebase:latest
         target: ca-knowledgebase
         file: docker/Dockerfile
+      if: github.ref == 'refs/heads/main'
+      if: ${{ github.ref == 'refs/heads/main' && 
+      # if: steps.diff.outputs.changed == 'yes'
       # if: steps.diff.outputs.changed == 'yes'
 
   deploy-book:
