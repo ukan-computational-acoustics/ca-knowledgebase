@@ -1,0 +1,5 @@
+.*.swp
+*.pyc
+
+.pynb_checkpoints
+_build
