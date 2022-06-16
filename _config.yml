@@ -33,6 +33,7 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  use_edit_page_button: true
   extra_footer: |
     <p>
     This site and its contents are licensed under the <a href="https://opensource.org/licenses/BSD-3-Clause" alt="link to license text">3-Clause BSD License</a>.
