@@ -5,7 +5,7 @@
 The UKAN Computational Acoustics Knowledgebase is...
 It can be viewed online at [knowledgebase.acoustics.ac.uk](https://knowledgebase.acoustics.ac.uk)
 
-status: [![publish-book](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/actions/workf>
+status: [![publish-book](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/actions/workflows/publish.yml/badge.svg)](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/actions/workflows/publish.yml)
 
 # License
 
