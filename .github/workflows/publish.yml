@@ -36,13 +36,14 @@ jobs:
               echo ::set-output name=changed::yes
           fi
 
-    # Set docker tag to use
-    #- run: echo ::set-output name=dockertag::latest
-    #  if: steps.diff.outputs.changed == 'yes'
-    #- run: echo ::set-output name=dockertag::latest
-    #  if: ${{ steps.diff.outputs.changed == 'no' && github.ref == 'refs/heads/main' }}
-    #- run: echo ::set-output name=dockertag::${GITHUB_REF#refs/heads/}
-    #  if: ${{ steps.diff.outputs.changed == 'no' && github.ref != 'refs/heads/main' }}
+    - name: set Docker tag
+      run: |
+        if ${ steps.diff.outputs.changed == 'yes' }; then
+            echo ::set-output name=tag::${GITHUB_REF#refs/heads/}
+        else
+            echo ::set-output name=tag::latest
+        fi
+      id: dockertag
     - name: Login to DockerHub
       uses: docker/login-action@v1
       with:
@@ -58,7 +59,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: caknowledgebase/caknowledgebase:0.1.0
+        tags: caknowledgebase/caknowledgebase:${GITHUB_REF#refs/heads/}
         target: ca-knowledgebase
         file: docker/Dockerfile
       # if: github.ref == 'refs/heads/main'
@@ -67,12 +68,14 @@ jobs:
 
   deploy-book:
     runs-on: ubuntu-latest
-    container: dokken92/dolfinx_custom:v0.4.1
+    container: caknowledgebase/caknowledgebase:${GITHUB_REF#refs/heads/}
     needs:
     - build-docker
     
     steps:
     - uses: actions/checkout@v2
+
+    - run: echo ${{ needs.build-docker.steps.dockertag.tag }}
 
     # Install dependencies
     - name: Set up Python 3.7
