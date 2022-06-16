@@ -37,6 +37,9 @@ jobs:
           else
               echo ::set-output name=changed::yes
           fi
+    - name: Copy Dockerfile to ~/cache/Dockerfile
+      run: cp docker/Dockerfile ~/cache/Dockerfile
+      if: github.ref == 'refs/heads/main'
 
     - name: set Docker tag
       run: |
@@ -52,12 +55,10 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-      # if: steps.diff.outputs.changed == 'yes'
-    - name: Copy Dockerfile to ~/cache/Dockerfile
-      run: cp docker/Dockerfile ~/cache/Dockerfile
+      if: steps.diff.outputs.changed == 'yes'
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
-      # if: steps.diff.outputs.changed == 'yes'
+      if: steps.diff.outputs.changed == 'yes'
     - name: Build Docker images
       uses: docker/build-push-action@v3
       with:
@@ -65,9 +66,7 @@ jobs:
         tags: caknowledgebase/caknowledgebase:${{ steps.dockertag.outputs.tag }}
         target: ca-knowledgebase
         file: docker/Dockerfile
-      # if: github.ref == 'refs/heads/main'
-      # if: ${{ github.ref == 'refs/heads/main' && steps.diff.outputs.changed == 'yes' }}
-      # if: steps.diff.outputs.changed == 'yes'
+      if: steps.diff.outputs.changed == 'yes'
 
   deploy-book:
     runs-on: ubuntu-latest
