@@ -1,9 +1,13 @@
-# Computational Acoustics Knowledgebase
+![UKAN Computational Acoustics Knowledgebase](logo.png)
+
 [![CC BY 4.0][cc-by-shield]][cc-by]
 
-This is the repo for knowledgebase.acoustics.ac.uk
+The UKAN Computational Acoustics Knowledgebase is...
+It can be viewed online at [knowledgebase.acoustics.ac.uk](https://knowledgebase.acoustics.ac.uk)
 
-## License
+status: [![publish-book](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/actions/workf>
+
+# License
 
 This work is licensed under a
 [Creative Commons Attribution 4.0 International License][cc-by].
