@@ -44,7 +44,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: false
-        tags: NONE
+        tags: ca-knowledgebase/ca-knowledgebase
         target: test_env
         file: docker/Dockerfile
       # if: steps.diff.outputs.changed == 'yes'
