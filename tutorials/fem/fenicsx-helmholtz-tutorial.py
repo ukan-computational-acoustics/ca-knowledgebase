@@ -378,21 +378,42 @@ problem.solve()
 #
 # `u` contains the real and imaginary parts of the field. We visualize each of them separatly.
 
-pyvista.set_jupyter_backend("ipygany")
+pyvista.set_jupyter_backend("pythreejs")
+p_mesh = pyvista.UnstructuredGrid(*dolfinx.plot.create_vtk_mesh(mesh, mesh.topology.dim))
 pyvista_cells, cell_types, geometry = dolfinx.plot.create_vtk_mesh(V)
 grid = pyvista.UnstructuredGrid(pyvista_cells, cell_types, geometry)
 grid.point_data["u_real"] = uh.x.array.real
 grid.point_data["u_imag"] = uh.x.array.imag
 grid.set_active_scalars("u_real")
 
-plotter = pyvista.Plotter()
-plotter.add_text("uh real", position="upper_edge", font_size=14, color="black")
-plotter.add_mesh(grid, show_edges=True, style="points")
-plotter.view_xy()
+# +
+p_real = pyvista.Plotter()
+p_real.add_text("uh real", position="upper_edge", font_size=14, color="black")
+p_real.add_mesh(grid, show_edges=True, style="points", point_size=25)
+p_real.add_mesh(p_mesh, show_edges=True, style="wireframe")
 if not pyvista.OFF_SCREEN:
-    plotter.show()
-with dolfinx.io.XDMFFile(mesh.comm, "test.xdmf", "w") as xdmf:
-    xdmf.write_mesh(mesh)
-    xdmf.write_functioN(uh)
+    p_real.show()
+
+with dolfinx.io.VTXWriter(mesh.comm, "output.bp", [uh]) as vtx:
+    vtx.write(0.0)
+
+# +
+p_imag = pyvista.Plotter()
+
+grid.set_active_scalars("u_imag")
+p_imag.add_mesh(p_mesh, show_edges=True, style="wireframe")
+p_imag.add_text("uh imag", position="upper_edge", font_size=14, color="black")
+p_imag.add_mesh(grid, show_edges=True, style="points", point_size=25)
+if not pyvista.OFF_SCREEN:
+    p_imag.show()
+
+# -
+
+# ### A Comment About the Solution
+#
+# You have probably noticed that the real part of the solution is pretty much 0 everywhere. This is to be expected because:
+#
+# * The material is lossless;
+# * The flux is purely imaginary;
 
 
