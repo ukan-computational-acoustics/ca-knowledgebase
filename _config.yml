@@ -39,6 +39,7 @@ html:
     This site and its contents are licensed under the <a href="https://creativecommons.org/licenses/by/4.0/legalcode" alt="link to license text">Creative Commons Attribution 4.0 International Public License</a>.
     </p>
   google_analytics_id: UA-207874104-1
+  favicon: "favicon.ico"
     
 sphinx:
   config:
