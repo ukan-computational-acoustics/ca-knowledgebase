@@ -35,10 +35,12 @@ jobs:
         PYVISTA_JUPYTER_BACKEND=static PYVISTA_OFF_SCREEN=false jupyter-book build .
 
     # Build docker file
-    - name: Build Dockerfile
-      run: |
-        cd docker && \
-        docker build -t test_env .
+    - name: Build Docker images
+      uses: docker/build-push-action@v2
+        with:
+          push: false
+          tags: NONE
+          target: test_env
 
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
