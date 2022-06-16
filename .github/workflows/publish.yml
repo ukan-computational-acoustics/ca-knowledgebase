@@ -52,7 +52,8 @@ jobs:
   deploy-book:
     runs-on: ubuntu-latest
     container: dokken92/dolfinx_custom:v0.4.1
-    requires: build-docker
+    needs:
+    - build-docker
     
     steps:
     - uses: actions/checkout@v2
