@@ -58,12 +58,11 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ca-knowledgebase/ca-knowledgebase:latest
+        tags: caknowledgebase/caknowledgebase:0.1.0
         target: ca-knowledgebase
         file: docker/Dockerfile
       if: github.ref == 'refs/heads/main'
-      if: ${{ github.ref == 'refs/heads/main' && 
-      # if: steps.diff.outputs.changed == 'yes'
+      # if: ${{ github.ref == 'refs/heads/main' && steps.diff.outputs.changed == 'yes' }}
       # if: steps.diff.outputs.changed == 'yes'
 
   deploy-book:
