@@ -2,7 +2,8 @@
 
 [![CC BY 4.0][cc-by-shield]][cc-by]
 
-The UKAN Computational Acoustics Knowledgebase is...
+The UKAN Computational Acoustics Knowledgebase is a website full of information
+about solving acoustics problems computationally.
 It can be viewed online at [knowledgebase.acoustics.ac.uk](https://knowledgebase.acoustics.ac.uk)
 
 status: [![publish-book](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/actions/workflows/publish.yml/badge.svg)](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/actions/workflows/publish.yml)
