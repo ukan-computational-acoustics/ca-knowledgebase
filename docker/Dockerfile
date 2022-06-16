@@ -22,6 +22,8 @@ ARG MPICH_VERSION=4.0.2
 ARG OPENMPI_SERIES=4.1
 ARG OPENMPI_PATCH=4
 ARG DOLFINX_VERSION=v0.4.1
+ARG FFCX_VERSION=v0.4.2
+ARG BASIX_VERSION=v0.4.2
 ARG UFL_VERSION=2022.1.0
 ARG PYTHON_VERSION=3.10
 
@@ -46,6 +48,8 @@ ARG MPICH_VERSION
 ARG OPENMPI_SERIES
 ARG OPENMPI_PATCH
 ARG DOLFINX_VERSION
+ARG FFCX_VERSION
+ARG BASIX_VERSION
 ARG UFL_VERSION
 
 # Compiler optimisation flags for SLEPc and PETSc, all languages.
@@ -250,8 +254,8 @@ ARG DOLFINX_CMAKE_CXX_FLAGS
 # The dolfinx-onbuild container expects to have folders basix/ ufl/
 # ffcx/ and dolfinx/ mounted/shared at /src.
 RUN git clone -b ${UFL_VERSION} --single-branch --depth 1 https://github.com/fenics/ufl.git && \
-    git clone -b ${DOLFINX_VERSION} --single-branch --depth 1 https://github.com/fenics/basix.git && \
-    git clone -b ${DOLFINX_VERSION} --single-branch --depth 1 https://github.com/fenics/ffcx.git && \
+    git clone -b ${BASIX_VERSION} --single-branch --depth 1 https://github.com/fenics/basix.git && \
+    git clone -b ${FFCX_VERSION} --single-branch --depth 1 https://github.com/fenics/ffcx.git && \
     cd basix && cmake -G Ninja -DCMAKE_BUILD_TYPE=${DOLFINX_CMAKE_BUILD_TYPE} -DCMAKE_CXX_FLAGS=${DOLFINX_CMAKE_CXX_FLAGS} -B build-dir -S ./cpp && \
     cmake --build build-dir && \
     cmake --install build-dir && \
