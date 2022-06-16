@@ -41,6 +41,7 @@ jobs:
         push: false
         tags: NONE
         target: test_env
+        file: docker/Dockerfile
 
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
