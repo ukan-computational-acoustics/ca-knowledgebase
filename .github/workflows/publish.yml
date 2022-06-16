@@ -16,11 +16,7 @@ jobs:
   deploy-book:
     runs-on: ubuntu-latest
     container: dokken92/dolfinx_custom:v0.4.1
-
-    env:
-      DISPLAY: ":99.0"
-      PYVISTA_OFF_SCREEN: true
-
+    
     steps:
     - uses: actions/checkout@v2
 
@@ -36,7 +32,7 @@ jobs:
     # Build the book
     - name: Build the book
       run: |
-        jupyter-book build .
+        PYVISTA_JUPYTER_BACKEND=static PYVISTA_OFF_SCREEN=false jupyter-book build .
         
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
