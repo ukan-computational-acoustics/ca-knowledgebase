@@ -283,7 +283,7 @@ ENV PKG_CONFIG_PATH=/usr/local/dolfinx-complex/lib/pkgconfig:$PKG_CONFIG_PATH \
 ########################################
 
 # Install jupyter
-RUN pip3 install --upgrade --no-cache-dir jupyter jupyterlab jupytext jupyterbook
+RUN pip3 install --upgrade --no-cache-dir jupyter jupyterlab jupytext jupyter-book
 
 # pyvista dependencies from apt
 RUN apt-get -qq update && \
