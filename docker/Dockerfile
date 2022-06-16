@@ -251,6 +251,7 @@ ARG DOLFINX_CMAKE_CXX_FLAGS
 # ffcx/ and dolfinx/ mounted/shared at /src.
 RUN git clone -b ${UFL_VERSION} --single-branch --depth 1 https://github.com/fenics/ufl.git && \
     git clone -b ${DOLFINX_VERSION} --single-branch --depth 1 https://github.com/fenics/basix.git && \
+    git clone -b ${DOLFINX_VERSION} --single-branch --depth 1 https://github.com/fenics/ffcx.git && \
     cd basix && cmake -G Ninja -DCMAKE_BUILD_TYPE=${DOLFINX_CMAKE_BUILD_TYPE} -DCMAKE_CXX_FLAGS=${DOLFINX_CMAKE_CXX_FLAGS} -B build-dir -S ./cpp && \
     cmake --build build-dir && \
     cmake --install build-dir && \
@@ -259,7 +260,7 @@ RUN git clone -b ${UFL_VERSION} --single-branch --depth 1 https://github.com/fen
     cd ../ffcx && pip3 install --no-cache-dir . && \
     cd ../ && pip3 install --no-cache-dir ipython
 
-RUN RUN git clone -b ${DOLFINX_VERSION} --single-branch --depth 1 https://github.com/fenics/dolfinx.git && \
+RUN git clone -b ${DOLFINX_VERSION} --single-branch --depth 1 https://github.com/fenics/dolfinx.git && \
     cd dolfinx && \
     mkdir -p build-complex && \
     cd build-complex && \
