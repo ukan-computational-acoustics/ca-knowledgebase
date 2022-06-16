@@ -1,6 +1,6 @@
 # Monopoles and free space Green's Functions
 ## Nick Ovenden (UCL)  
-In a quiescent medium of constant sound speed $c$, any spherically symmetric time-harmonic source centred at a point **x_s** of angular frequency $\omega$ produces an externally outgoing 
+In a quiescent medium of constant sound speed $c$, any spherically symmetric time-harmonic source centred at a point $\mathbf{x_s}$ of angular frequency $\omega$ produces an externally outgoing 
 acoustic field  of the form 
 
 $$ p(\mathbf{x})=\mbox{Re} \left( \mathcal{S} \frac{e^{i\omega |\mathbf{x} - \mathbf{x_s}|/c}}{|\mathbf{x} - \mathbf{x_s}|} \right), $$
