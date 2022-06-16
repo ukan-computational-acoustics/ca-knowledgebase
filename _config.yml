@@ -24,7 +24,7 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/agully1/ca-knowledgebase  # Online location of your book
+  url: https://github.com/ca-knowledgebase/ca-knowledgebase.github.io  # Online location of your book
   #path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
