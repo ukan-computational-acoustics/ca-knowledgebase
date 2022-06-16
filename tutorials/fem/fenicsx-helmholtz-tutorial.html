@@ -1,0 +1,1379 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>The Helmholtz Equation with FEniCSx</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="FDTD Tutorials" href="../fdtd/fdtd-tutorials-main.html" />
+    <link rel="prev" title="The Helmholtz Equation with FEniCS" href="fenics-helmholtz-tutorial-1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-207874104-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../about/code-of-conduct.html">
+   Code of Conduct
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../about/contribution-guide.html">
+   Guide for Contributors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../about/contribute-suggest.html">
+     Making suggestions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../about/contribute-contribute.html">
+     Contributing material to the site
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../about/code-template.html">
+     Tutorial template
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../about/contribute-user-code.html">
+     Contribute your own computational acoustics code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../about/contribute-maintain.html">
+     For maintainers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../about/who-we-are.html">
+   Who We Are
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Core Concepts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../core-concepts/problem-types.html">
+   Types of problem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../core-concepts/element-types.html">
+   Types of element
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../core-concepts/meshes.html">
+   Meshes
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../bem/bem-tutorials-main.html">
+   BEM Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../bem/bem-tutorial-1.html">
+     The Boundary Element Method (BEM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="fem-tutorials-main.html">
+   FEM Tutorials
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="fenics-helmholtz-tutorial-1.html">
+     The Helmholtz Equation with FEniCS
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     The Helmholtz Equation with FEniCSx
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fdtd/fdtd-tutorials-main.html">
+   FDTD Tutorials
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Software Guides
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../software/software-main.html">
+   Computational acoustics software
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Code
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../user/user.html">
+   User code contributions
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data/data.html">
+   Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Community
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../community/community.html">
+   Community
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/coding.html">
+   Help with coding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/resources.html">
+   Resources
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/ca-knowledgebase/ca-knowledgebase.github.io/main?urlpath=tree/tutorials/fem/fenicsx-helmholtz-tutorial.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues/new?title=Issue%20on%20page%20%2Ftutorials/fem/fenicsx-helmholtz-tutorial.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/tutorials/fem/fenicsx-helmholtz-tutorial.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-governing-pde">
+     The Governing PDE
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#definitions">
+       Definitions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-helmholtz-equation">
+       The Helmholtz Equation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#boundary-conditions">
+       Boundary Conditions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-weak-form">
+     The Weak Form
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-details">
+     More Details
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#domain">
+     Domain
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#medium-properties">
+     Medium Properties
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boundaries">
+     Boundaries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-code">
+     The Code
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#importing-the-needed-packages">
+       Importing the Needed Packages
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simulation-parameters">
+       Simulation Parameters
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#domain-definition-and-meshing">
+       Domain Definition and Meshing
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#function-space">
+       Function Space
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bilinear-form">
+       Bilinear Form
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Boundary Conditions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#linear-form">
+       Linear Form
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution">
+       Solution
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#visualizing-results">
+       Visualizing Results
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-comment-about-the-solution">
+     A Comment About the Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The Helmholtz Equation with FEniCSx</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-governing-pde">
+     The Governing PDE
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#definitions">
+       Definitions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-helmholtz-equation">
+       The Helmholtz Equation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#boundary-conditions">
+       Boundary Conditions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-weak-form">
+     The Weak Form
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-details">
+     More Details
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#domain">
+     Domain
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#medium-properties">
+     Medium Properties
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boundaries">
+     Boundaries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-code">
+     The Code
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#importing-the-needed-packages">
+       Importing the Needed Packages
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simulation-parameters">
+       Simulation Parameters
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#domain-definition-and-meshing">
+       Domain Definition and Meshing
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#function-space">
+       Function Space
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bilinear-form">
+       Bilinear Form
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Boundary Conditions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#linear-form">
+       Linear Form
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution">
+       Solution
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#visualizing-results">
+       Visualizing Results
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-comment-about-the-solution">
+     A Comment About the Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="the-helmholtz-equation-with-fenicsx">
+<h1>The Helmholtz Equation with FEniCSx<a class="headerlink" href="#the-helmholtz-equation-with-fenicsx" title="Permalink to this headline">#</a></h1>
+<p>Authors:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can run this code directly in your browser by clicking on the rocket logo ( <i class="fas fa-rocket"></i> ) at the top of the page, and clicking ‘Binder’. This will open a Jupyter Notebook in a <a class="reference external" href="https://mybinder.org/">Binder</a> environment which is set up to contain everything you need to run the code. <strong>Don’t forget to save a local copy if you make any changes!</strong></p>
+<p>If you prefer, you can download the Jupyter Notebook file to run locally, by clicking the download logo ( <i class="fas fa-download"></i> ) at the top of the page and selecting ‘.ipynb’.</p>
+<p>If you are new to using Jupyter Notebooks, <a class="reference external" href="https://www.dataquest.io/blog/jupyter-notebook-tutorial/">this guide</a> will help you get started.</p>
+</div>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">#</a></h2>
+<p>In order to be able to run the code presented in this tutorial you will need:</p>
+<ul class="simple">
+<li><p>A working Python environment for your platform. For more information, refer to <a class="reference external" href="https://www.python.org/">the Python website</a>;</p></li>
+<li><p>A working FEniCS installation within your Python environment. For more information, refer to <a class="reference external" href="https://docs.fenicsproject.org/dolfinx/main/python/installation">the FEniCSx documentation</a>;</p></li>
+<li><p>The following Python packages installed in your environment:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyvista</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ipygany</span></code>;</p></li>
+</ul>
+</li>
+</ul>
+<p>A basic knowledge of Partial Differential Equations (PDEs) and FEM will be beneficial.</p>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>This tutorial cover the basics on how to solve the Helmholtz equation with Neumann boundary conditions by using FEniCS.</p>
+<section id="the-governing-pde">
+<h3>The Governing PDE<a class="headerlink" href="#the-governing-pde" title="Permalink to this headline">#</a></h3>
+<section id="definitions">
+<h4>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h4>
+<p>We use the following symbols:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Omega\)</span> denotes an open set of <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>. <span class="math notranslate nohighlight">\(\partial \Omega\)</span> denotes its boundary and <span class="math notranslate nohighlight">\(\overline{\Omega} \doteq \Omega \cup \partial \Omega\)</span> it’s closure. <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, a 3D vector, is the generic point in <span class="math notranslate nohighlight">\(\overline{\Omega}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span> denotes an open interval in <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> <span class="math notranslate nohighlight">\(t\)</span> is the generic point in <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
+<li><p>We denote the laplace operator with <span class="math notranslate nohighlight">\(\nabla^2\)</span>.</p></li>
+<li><p>We denote the Euclidean inner productwith <span class="math notranslate nohighlight">\(\cdot\)</span>.</p></li>
+</ul>
+<p>Note that we will index the components of vectors starting from <span class="math notranslate nohighlight">\(0\)</span>. This to be consistent with the Python programming language.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \mathbf{x} = \begin{bmatrix} x_{0} \\ x_{1} \\ x_{2} \end{bmatrix} \in \overline{\Omega}\end{split}\]</div>
+</section>
+<section id="the-helmholtz-equation">
+<h4>The Helmholtz Equation<a class="headerlink" href="#the-helmholtz-equation" title="Permalink to this headline">#</a></h4>
+<p>The lossless wave equation reads:</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla^2 p\left(\mathbf{x},t\right) = \frac{1}{c^2}\frac{\partial^2 p\left(\mathbf{x},t\right)}{\partial t^2}
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(p = p \left(\mathbf{x},t\right)\)</span> is the unknown pressure disturbance field, in Pascal. <span class="math notranslate nohighlight">\(p\)</span> is defined in <span class="math notranslate nohighlight">\(\overline{\Omega} \times T\)</span> and has complex values. <span class="math notranslate nohighlight">\(c\)</span> is the phase speed of sound in the medium, in meters per second.</p>
+<p>We impose that the pressure field is a steady state harmonic field:</p>
+<div class="math notranslate nohighlight">
+\[
+p\left(\mathbf{x},t\right) = u\left(\mathbf{x}\right) \exp\left(j\omega t\right)
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(u\)</span> is the unknown spatial part of the field. <span class="math notranslate nohighlight">\(u\)</span> is defined in <span class="math notranslate nohighlight">\(\overline{\Omega}\)</span> and has complex values. <span class="math notranslate nohighlight">\(j\)</span> is the imaginary unit and <span class="math notranslate nohighlight">\(\omega\)</span> is the angular frequncy of the field, in radians per second. If <span class="math notranslate nohighlight">\(\nu\)</span> denotes the frequency in Hertz we have:</p>
+<div class="math notranslate nohighlight">
+\[ \omega = 2\pi\nu = kc\]</div>
+<p>With <span class="math notranslate nohighlight">\(k\)</span> the wave number.</p>
+<p>By substituting into the wave equation we obtain the Helmholtz equation:</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla^2 u\left(\mathbf{x}\right) + k^2\left(\mathbf{x}\right) = 0
+\]</div>
+<p>This is our governing PDE.</p>
+</section>
+<section id="boundary-conditions">
+<h4>Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Permalink to this headline">#</a></h4>
+<p>The Helmholtz equation can be completed with Dirchlet, Neumann and Robin boundary conditions:</p>
+<ul class="simple">
+<li><p>Dirchlet conditions are impose a specific value of <span class="math notranslate nohighlight">\(u\)</span> on <span class="math notranslate nohighlight">\(\partial \Omega\)</span>.</p></li>
+<li><p>Neumann conditions specify a normal particle velocity <span class="math notranslate nohighlight">\(\partial \Omega\)</span>.</p></li>
+<li><p>Robin conditions specify an acoustic impedance on <span class="math notranslate nohighlight">\(\partial \Omega\)</span> as well as an optional particle velocity.</p></li>
+</ul>
+<p>Whilst the Dirchlet conditions are the simplest to deal with we will focus on Neumann conditions in this tutorial. This because prescription of particle velocity is the most common boundary condition for simple simulations.</p>
+<p>Let <span class="math notranslate nohighlight">\(\partial \Omega_l\)</span> denote a partition of <span class="math notranslate nohighlight">\(\partial \Omega\)</span>, with <span class="math notranslate nohighlight">\(l=0,1,2,\dots,L-1\)</span>, <span class="math notranslate nohighlight">\(L\)</span> being the number of partitions. Let the complex valued function <span class="math notranslate nohighlight">\(w_l\left(\mathbf{x}\right)\)</span> denote the prescribed normal component of the spatial part of the particle velocity field in <span class="math notranslate nohighlight">\(\partial \Omega _l\)</span>. Thanks to the Euler equation in frequency domain we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla u \left(\mathbf{x}\right) \cdot \hat{\mathbf{n}}\left(\mathbf{x}\right) = j\omega\rho w_l\left(\mathbf{x}\right) \text{ for } \mathbf{x} \in \partial \Omega_l, \space \forall \space l = 0, 1, 2, \dots, L - 1
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\rho\)</span> is the density of the medium and <span class="math notranslate nohighlight">\(\hat{\mathbf{n}}\left(\mathbf{x}\right)\)</span> is the normal unit vector to <span class="math notranslate nohighlight">\(\partial \Omega\)</span> in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
+<p>We are now able to prescribe normal particle velocity at each value of the boundary. To simplify notation, we define the acoustic bounday fluxes <span class="math notranslate nohighlight">\(g_l\left(\mathbf{x}\right)\)</span> as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+g_l\left(\mathbf{x}\right) \doteq j\omega\rho w_l\left(\mathbf{x}\right)
+\]</div>
+<p>Hence, the equation bove reads:</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla u \left(\mathbf{x}\right) \cdot \hat{\mathbf{n}}\left(\mathbf{x}\right) = g_l\left(\mathbf{x}\right) \text{ for } \mathbf{x} \in \partial \Omega_l, \space \forall \space l = 0, 1, 2, \dots, L - 1
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Technically there is no need to partition <span class="math notranslate nohighlight">\(\partial \Omega\)</span>. One could have simply defined <span class="math notranslate nohighlight">\(w\left(\mathbf{x}\right)\)</span> in <span class="math notranslate nohighlight">\(\partial \Omega\)</span> and set it to the needed (eventual zero) values in the various parts of the boundary as needed. However it is easier to think in terms of partitions when working with FEniCS, as we will see.</p>
+</div>
+</section>
+</section>
+<section id="the-weak-form">
+<h3>The Weak Form<a class="headerlink" href="#the-weak-form" title="Permalink to this headline">#</a></h3>
+<p>We need to convert our PDE into a weak form to solve our problem with FEniCS. This is done by recognising that <span class="math notranslate nohighlight">\(u\)</span> is a vector of an appropriate Sobolev space. Then, another test function <span class="math notranslate nohighlight">\(\phi\)</span> is taken from the Sobolev space, with the requirement of being <span class="math notranslate nohighlight">\(0\)</span> on <span class="math notranslate nohighlight">\(\partial \Omega\)</span>. Multiplication of the governing PDE with <span class="math notranslate nohighlight">\(\phi\)</span> and integration by parts lead to the weak form. The weak form reads:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_\Omega \nabla u \cdot \nabla \phi^\star d\mathbf{x} - k^2 \int_\Omega u \phi^\star d\mathbf{x} = \sum_{l=0}^{L-1}\int_{\partial \Omega_l} g_l \phi^\star ds
+\]</div>
+<p>Where we simplified notation by dropping the functions arguments. <span class="math notranslate nohighlight">\(d\mathbf{x}\)</span> denotes the volume element of <span class="math notranslate nohighlight">\(\Omega\)</span> while <span class="math notranslate nohighlight">\(ds\)</span> denotes the surface element in <span class="math notranslate nohighlight">\(\partial \Omega\)</span>. <span class="math notranslate nohighlight">\(\star\)</span> denotes complex conjugation. Note that the equation above has the following form:</p>
+<div class="math notranslate nohighlight">
+\[
+a \left(u,\phi\right) = L\left(\phi\right)
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(L\)</span> are the bilinear and linear form respectively. FEniCS requires the specification of these two quantities.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Neumann boundary conditions feature directly in the weak form. The same goes for Robin conditions. However, Dirchlet boundary conditions don’t and are treated separately.</p>
+</div>
+</section>
+<section id="more-details">
+<h3>More Details<a class="headerlink" href="#more-details" title="Permalink to this headline">#</a></h3>
+<p>A similar tutorial for legacy FEniCS is presented at the links.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://computational-acoustics.gitlab.io/website/posts/30-intro-to-fenics-part-1/">Intro to FEniCS - Part 1</a>.</p></li>
+<li><p><a class="reference external" href="https://computational-acoustics.gitlab.io/website/posts/31-intro-to-fenics-part-2/">Intro to FEniCS - Part 2 </a>.</p></li>
+<li><p><a class="reference external" href="https://computational-acoustics.gitlab.io/website/posts/32-intro-to-fenics-part-3/">Intro to FEniCS - Part 3 </a>.</p></li>
+</ul>
+<p>This tutorial focuses more on the code, whilst the ones above focus more on the derivation of the weak form.</p>
+<p>For more details about acoustics, FEniCS and computational methods the following books are recommended:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://link.springer.com/book/10.1007%2F978-3-540-77448-8">Computational Acoustics of Noise Propagation in Fluids</a>.</p></li>
+<li><p><a class="reference external" href="https://link.springer.com/book/10.1007/978-3-319-52462-7">Solving PDEs in Python</a>.</p></li>
+<li><p><a class="reference external" href="https://www.wiley.com/en-gb/Fundamentals+of+Acoustics,+4th+Edition-p-9780471847892">Fundamentals of Acoustics</a>.</p></li>
+<li><p><a class="reference external" href="https://jorgensd.github.io/dolfinx-tutorial/">The FEniCSx tutorial</a></p></li>
+</ul>
+</section>
+</section>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<p>We now setup our simulation.</p>
+<p>First, we decide the shape of <span class="math notranslate nohighlight">\(\Omega\)</span>, then the properties of the medium and then the boundary conditions.</p>
+<section id="domain">
+<h3>Domain<a class="headerlink" href="#domain" title="Permalink to this headline">#</a></h3>
+<p>We choose a rectangular room with the following geometry:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dimension</p></th>
+<th class="head"><p>Symbol</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Length</p></td>
+<td><p><span class="math notranslate nohighlight">\(d_{x_0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(4\)</span> meters</p></td>
+</tr>
+<tr class="row-odd"><td><p>Width</p></td>
+<td><p><span class="math notranslate nohighlight">\(d_{x_1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(5\)</span> meters</p></td>
+</tr>
+<tr class="row-even"><td><p>Height</p></td>
+<td><p><span class="math notranslate nohighlight">\(d_{x_2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(3\)</span> meters</p></td>
+</tr>
+</tbody>
+</table>
+<p>Hence <span class="math notranslate nohighlight">\(\Omega = \left(0, d_{x_0} \right) \times \left(0, d_{x_1} \right) \times \left(0, d_{x_2} \right)\)</span>.</p>
+</section>
+<section id="medium-properties">
+<h3>Medium Properties<a class="headerlink" href="#medium-properties" title="Permalink to this headline">#</a></h3>
+<p>We choose air at room temperature:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Symbol</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Speed of Sound</p></td>
+<td><p><span class="math notranslate nohighlight">\(c\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(343\)</span> meters per second</p></td>
+</tr>
+<tr class="row-odd"><td><p>Density</p></td>
+<td><p><span class="math notranslate nohighlight">\(\rho\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1.205\)</span> kilograms per cubic meter</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="boundaries">
+<h3>Boundaries<a class="headerlink" href="#boundaries" title="Permalink to this headline">#</a></h3>
+<p>We partition <span class="math notranslate nohighlight">\(\partial \Omega\)</span> in the <span class="math notranslate nohighlight">\(6\)</span> walls of the room. We make <span class="math notranslate nohighlight">\(5\)</span> of the rigid (normal particle velocity set to <span class="math notranslate nohighlight">\(0\)</span>) while we make one having uniform velocity.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Boundary Definition</p></th>
+<th class="head"><p>Particle Velocity Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( \partial \Omega_0 \doteq \left\{ \mathbf{x} \in \overline{\Omega} : x_0 = 0 \right\} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( w_l \left(\mathbf{x}\right) = 0 \)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( \partial \Omega_1 \doteq \left\{ \mathbf{x} \in \overline{\Omega} : x_0 = d_{x_0} \right\} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( w_l \left(\mathbf{x}\right) = 0 \)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( \partial \Omega_2 \doteq \left\{ \mathbf{x} \in \overline{\Omega} : x_1 = 0 \right\} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( w_l \left(\mathbf{x}\right) = 10 \)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( \partial \Omega_3 \doteq \left\{ \mathbf{x} \in \overline{\Omega} : x_1 = d_{x_1} \right\} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( w_l \left(\mathbf{x}\right) = 0 \)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\( \partial \Omega_4 \doteq \left\{ \mathbf{x} \in \overline{\Omega} : x_2 = 0 \right\} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( w_l \left(\mathbf{x}\right) = 0 \)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\( \partial \Omega_5 \doteq \left\{ \mathbf{x} \in \overline{\Omega} : x_2 = d_{x_2} \right\} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( w_l \left(\mathbf{x}\right) = 0 \)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-code">
+<h3>The Code<a class="headerlink" href="#the-code" title="Permalink to this headline">#</a></h3>
+<p>All the ingredients are ready to put together the simulation.</p>
+<section id="importing-the-needed-packages">
+<h4>Importing the Needed Packages<a class="headerlink" href="#importing-the-needed-packages" title="Permalink to this headline">#</a></h4>
+<p>We start by importing what we need:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">dolfinx</span>
+<span class="kn">import</span> <span class="nn">ufl</span>
+<span class="kn">from</span> <span class="nn">petsc4py</span> <span class="kn">import</span> <span class="n">PETSc</span>
+<span class="kn">import</span> <span class="nn">pyvista</span>
+<span class="kn">from</span> <span class="nn">mpi4py</span> <span class="kn">import</span> <span class="n">MPI</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="simulation-parameters">
+<h4>Simulation Parameters<a class="headerlink" href="#simulation-parameters" title="Permalink to this headline">#</a></h4>
+<p>We then define all the parameters:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nu</span> <span class="o">=</span> <span class="mf">57.17</span>  <span class="c1"># Frequency of the Simulation, Hz</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">343</span>  <span class="c1"># Speed of sound in air, m/s</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mf">1.205</span>  <span class="c1"># Density of air, kg/m^3</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Velocity normal to boundary, for inflow Neumann condition, m/s</span>
+<span class="n">d_x0</span> <span class="o">=</span> <span class="mf">4.</span>  <span class="c1"># Room size along x0, m</span>
+<span class="n">d_x1</span> <span class="o">=</span> <span class="mf">5.</span>  <span class="c1"># Room size along x1, m</span>
+<span class="n">d_x2</span> <span class="o">=</span> <span class="mf">3.</span>  <span class="c1"># Room size along x2, m</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-10</span> <span class="c1"># Tolerance for boundary condition definitions</span>
+
+<span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">nu</span>  <span class="c1"># Angular frequency, rad/s</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">omega</span> <span class="o">/</span> <span class="n">c</span>  <span class="c1"># Wave number, rad/m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="domain-definition-and-meshing">
+<h4>Domain Definition and Meshing<a class="headerlink" href="#domain-definition-and-meshing" title="Permalink to this headline">#</a></h4>
+<p>FEniCS solves our PDE through FEM. FEM makes use of two steps:</p>
+<ul class="simple">
+<li><p>Derivation of the weak form;</p></li>
+<li><p>Domain meshing;</p></li>
+</ul>
+<p>We already derived the weak form for our problem. Domain meshing is instead what allows to reach an approximate numerical solution for our PDE. Meshing means that <span class="math notranslate nohighlight">\(\Omega\)</span> is cut into many non-overlapping subvolumes. We already mentioned how our uknown pressure spatial part <span class="math notranslate nohighlight">\(u\)</span> is a vector in a Sobolev space. Through meshing we simplify this space to one that has <em>finite dimension</em>. This also transforms the integrals of the weak form in sums, which are then expressed as matrix-vector operations. We do not need to worry about these details: we specify the mesh and FEniCS will take care of the rest.</p>
+<p>FEM solutions converge to the actual PDE solution the finer the mesh and the higher the order. Each element of the mesh needs to be smaller than one tenth of the wavelenght for wave solutions to be satisfyingly accurate. Here we will match the element size to one 11-th of the wavelength:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">c</span> <span class="o">/</span> <span class="p">(</span><span class="mi">11</span> <span class="o">*</span> <span class="n">nu</span><span class="p">)</span>  <span class="c1"># Element Size</span>
+<span class="n">n_x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">d_x0</span> <span class="o">/</span> <span class="n">s</span><span class="p">))</span>  <span class="c1"># Number of elements for each direction</span>
+<span class="n">n_x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">d_x1</span> <span class="o">/</span> <span class="n">s</span><span class="p">))</span>
+<span class="n">n_x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">d_x2</span> <span class="o">/</span> <span class="n">s</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now it is the time do define the mesh. Since we have a rectangular room we use the <code class="docutils literal notranslate"><span class="pre">dolfinx.mesh.create_box</span></code> <a class="reference external" href="https://docs.fenicsproject.org/dolfinx/main/python/generated/dolfinx.mesh.html?highlight=create_box#dolfinx.mesh.create_box">function</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">create_box</span><span class="p">(</span>
+    <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="p">,</span>
+    <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="n">d_x0</span><span class="p">,</span> <span class="n">d_x1</span><span class="p">,</span> <span class="n">d_x2</span><span class="p">]],</span>
+    <span class="p">[</span><span class="n">n_x0</span><span class="p">,</span> <span class="n">n_x1</span><span class="p">,</span> <span class="n">n_x2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then define the element type as a second order Lagrange element. This means that whith each element we express the unknown field as a linear superposition of second order Lagrange polynomials. FEM finds an approximate solution to the PDE by finding the coefficients of this superposition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">FiniteElement</span><span class="p">(</span><span class="s2">&quot;Lagrange&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">ufl_cell</span><span class="p">(),</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="function-space">
+<h4>Function Space<a class="headerlink" href="#function-space" title="Permalink to this headline">#</a></h4>
+<p>Now we can go ahead and define a function space for the approximate solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">fem</span><span class="o">.</span><span class="n">FunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The formulation of the weak form in the simplified space is the same as in the original Sobolev space, except that the integrals reduce to sums. We do not need to worry about it as we simply need to specify the terms of the weak form.</p>
+</section>
+<section id="bilinear-form">
+<h4>Bilinear Form<a class="headerlink" href="#bilinear-form" title="Permalink to this headline">#</a></h4>
+<p>In this function space <code class="docutils literal notranslate"><span class="pre">V</span></code> we pickup a generic function <code class="docutils literal notranslate"><span class="pre">u</span></code> from the space <code class="docutils literal notranslate"><span class="pre">V</span></code>, which contains all the possible approximate solutions (i.e. the Trial Function). Then, we take any test function <code class="docutils literal notranslate"><span class="pre">phi</span></code> with which we formulate the weak form.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">TrialFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">TestFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are now ready to specify the bilinear form</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_sq</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">fem</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">PETSc</span><span class="o">.</span><span class="n">ScalarType</span><span class="p">(</span><span class="n">k</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">ufl</span><span class="o">.</span><span class="n">nabla_grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">ufl</span><span class="o">.</span><span class="n">nabla_grad</span><span class="p">(</span><span class="n">phi</span><span class="p">))</span> <span class="o">*</span> <span class="n">ufl</span><span class="o">.</span><span class="n">dx</span> \
+            <span class="o">-</span> <span class="n">k_sq</span> <span class="o">*</span> <span class="n">ufl</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span> <span class="o">*</span> <span class="n">ufl</span><span class="o">.</span><span class="n">dx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You should pay attention to the fact that we use <code class="docutils literal notranslate"><span class="pre">inner</span></code> and <code class="docutils literal notranslate"><span class="pre">nabla_grad</span></code>. For complex-valued problems you need to use <code class="docutils literal notranslate"><span class="pre">ufl.inner</span></code> and <em>always</em> have the <code class="docutils literal notranslate"><span class="pre">TestFunction</span></code> as the second argument. However, they will for vector fields. You should always pick the most appropriate function for your problem. For an overview, see <a class="reference external" href="https://link.springer.com/content/pdf/10.1007%2F978-3-319-52462-7.pdf#%5B%7B%22num%22%3A302%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C0%2C666%2Cnull%5D">page 25</a> and <a class="reference external" href="https://link.springer.com/content/pdf/10.1007%2F978-3-319-52462-7.pdf#%5B%7B%22num%22%3A430%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C0%2C666%2Cnull%5D">page 58</a> of <a class="reference external" href="https://link.springer.com/content/pdf/10.1007%2F978-3-319-52462-7.pdf">Solving PDEs in Python</a> and the <a class="reference external" href="https://fenics.readthedocs.io/projects/ufl/en/latest/manual/form_language.html?highlight=complex#complex-values">UFL-documentation</a></p>
+</div>
+</section>
+<section id="id1">
+<h4>Boundary Conditions<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<p>As we seen in the definition of the bilinear form <code class="docutils literal notranslate"><span class="pre">a</span></code> FEniCS does not have a symbol for integral. We specify instead the integration variable. Above we used <code class="docutils literal notranslate"><span class="pre">fenics.dx</span></code> which is the integration variable for the volume. If we had different submodules we could define custom <code class="docutils literal notranslate"><span class="pre">dx</span></code> values to specify integration within the subvolumes. We will do something along these lines to specify the boundaries.</p>
+<p>To tell FEniCS that we have 6 sub-boundaries we need to create 6 markers, that indicate what the coordinates of each region is.</p>
+<p>We then create a <code class="docutils literal notranslate"><span class="pre">MeshTag</span></code>, a collection of facets with different integers markers for each region.</p>
+<p>First, let’s create the sub-domain markers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">BX0</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">BXL</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">d_x0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">BY0</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">BYL</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">d_x1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">BZ0</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">BZL</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">d_x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are using the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> function <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.isclose.html">isclose</a> since we are dealing with the mesh coordinates, which is expressed as floating point values. This means that there might be small errors; a point <code class="docutils literal notranslate"><span class="pre">x[0]</span></code> can have the value <code class="docutils literal notranslate"><span class="pre">2.22e-16</span></code> instead of <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>Now, we find all facets on the boundary of our mesh using <a class="reference external" href="https://docs.fenicsproject.org/dolfinx/v0.4.1/python/generated/dolfinx.mesh.html?highlight=locate_entities_boundary#dolfinx.mesh.locate_entities_boundary">dolfinx.mesh.locate_entities_boundary</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X0_facets</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">locate_entities_boundary</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">BX0</span><span class="p">)</span>
+<span class="n">X0_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">X0_facets</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">XL_facets</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">locate_entities_boundary</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">BXL</span><span class="p">)</span>
+<span class="n">XL_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">XL_facets</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">Y0_facets</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">locate_entities_boundary</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">BY0</span><span class="p">)</span>
+<span class="n">Y0_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">Y0_facets</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">YL_facets</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">locate_entities_boundary</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">BYL</span><span class="p">)</span>
+<span class="n">YL_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">YL_facets</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">Z0_facets</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">locate_entities_boundary</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">BZ0</span><span class="p">)</span>
+<span class="n">Z0_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">Z0_facets</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">ZL_facets</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">locate_entities_boundary</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">BZL</span><span class="p">)</span>
+<span class="n">ZL_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">ZL_facets</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">facets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">X0_facets</span><span class="p">,</span> <span class="n">XL_facets</span><span class="p">,</span> <span class="n">Y0_facets</span><span class="p">,</span> <span class="n">YL_facets</span><span class="p">,</span> <span class="n">Z0_facets</span><span class="p">,</span> <span class="n">ZL_facets</span><span class="p">])</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">X0_values</span><span class="p">,</span> <span class="n">XL_values</span><span class="p">,</span> <span class="n">Y0_values</span><span class="p">,</span> <span class="n">YL_values</span><span class="p">,</span> <span class="n">Z0_values</span><span class="p">,</span> <span class="n">ZL_values</span><span class="p">])</span>
+<span class="n">sort_order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">facets</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we make the collection of facets and values</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">facet_tags</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">meshtags</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">facets</span><span class="p">[</span><span class="n">sort_order</span><span class="p">],</span> <span class="n">values</span><span class="p">[</span><span class="n">sort_order</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that this is done we can define the custom integration variables <code class="docutils literal notranslate"><span class="pre">ds</span></code> for our boundary. <code class="docutils literal notranslate"><span class="pre">ds</span></code> will return the measure for each different boundary if we use, as input, the ID for that boundary. For example, <code class="docutils literal notranslate"><span class="pre">ds(5)</span></code> will return the integration variable for the <code class="docutils literal notranslate"><span class="pre">bz0</span></code> boundary. Note that we apply a non-zero velocity to <code class="docutils literal notranslate"><span class="pre">by0</span></code>, which has ID <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="s1">&#39;ds&#39;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span> <span class="n">subdomain_data</span><span class="o">=</span><span class="n">facet_tags</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we simply need to define the acoustic fluxes. We need two: one for the rigid walls and one for the active walls</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The flux is 0 for all rigid walls</span>
+<span class="n">g_rig</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">fem</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">PETSc</span><span class="o">.</span><span class="n">ScalarType</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># The flux is this for the active walls</span>
+<span class="n">g_in</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">fem</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="linear-form">
+<h4>Linear Form<a class="headerlink" href="#linear-form" title="Permalink to this headline">#</a></h4>
+<p>We create the linear form, by splitting the boundary integral into the 6 regions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">g_rig</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">ds</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> <span class="o">+</span> <span class="n">ufl</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">g_in</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">ds</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution">
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<p>Now that we have both the bilinear form <code class="docutils literal notranslate"><span class="pre">a</span></code> and the linear form <code class="docutils literal notranslate"><span class="pre">L</span></code> properly defined it is easy to solve for the approximate PDE solution. We create a function to hold the discrete solution <code class="docutils literal notranslate"><span class="pre">uh</span></code> with a new function from <code class="docutils literal notranslate"><span class="pre">V</span></code> in which we want to store our result. Then, we create a <code class="docutils literal notranslate"><span class="pre">dolfinx.fem.LinearProblem</span></code> class, that sets up all the structures need to solve the linear algebra problem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uh</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">fem</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">fem</span><span class="o">.</span><span class="n">petsc</span><span class="o">.</span><span class="n">LinearProblem</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="n">uh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We next call <code class="docutils literal notranslate"><span class="pre">problem.solve()</span></code> to solve the PDE.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coefficient(FunctionSpace(Mesh(VectorElement(FiniteElement(&#39;Lagrange&#39;, tetrahedron, 1), dim=3), 0), FiniteElement(&#39;Lagrange&#39;, tetrahedron, 2)), 0)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-results">
+<h4>Visualizing Results<a class="headerlink" href="#visualizing-results" title="Permalink to this headline">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">u</span></code> contains the real and imaginary parts of the field. We visualize each of them separatly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyvista</span><span class="o">.</span><span class="n">set_jupyter_backend</span><span class="p">(</span><span class="s2">&quot;pythreejs&quot;</span><span class="p">)</span>
+<span class="n">p_mesh</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">UnstructuredGrid</span><span class="p">(</span><span class="o">*</span><span class="n">dolfinx</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">create_vtk_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span><span class="p">))</span>
+<span class="n">pyvista_cells</span><span class="p">,</span> <span class="n">cell_types</span><span class="p">,</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">create_vtk_mesh</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">pyvista_cells</span><span class="p">,</span> <span class="n">cell_types</span><span class="p">,</span> <span class="n">geometry</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">point_data</span><span class="p">[</span><span class="s2">&quot;u_real&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uh</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">real</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">point_data</span><span class="p">[</span><span class="s2">&quot;u_imag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uh</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">imag</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">set_active_scalars</span><span class="p">(</span><span class="s2">&quot;u_real&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_real</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+<span class="n">p_real</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s2">&quot;uh real&quot;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;upper_edge&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">p_real</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;points&quot;</span><span class="p">,</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">p_real</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">p_mesh</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;wireframe&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">OFF_SCREEN</span><span class="p">:</span>
+    <span class="n">p_real</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">dolfinx</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">VTXWriter</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">comm</span><span class="p">,</span> <span class="s2">&quot;output.bp&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">uh</span><span class="p">])</span> <span class="k">as</span> <span class="n">vtx</span><span class="p">:</span>
+    <span class="n">vtx</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_imag</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+
+<span class="n">grid</span><span class="o">.</span><span class="n">set_active_scalars</span><span class="p">(</span><span class="s2">&quot;u_imag&quot;</span><span class="p">)</span>
+<span class="n">p_imag</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">p_mesh</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;wireframe&quot;</span><span class="p">)</span>
+<span class="n">p_imag</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s2">&quot;uh imag&quot;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;upper_edge&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">p_imag</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;points&quot;</span><span class="p">,</span> <span class="n">point_size</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">OFF_SCREEN</span><span class="p">:</span>
+    <span class="n">p_imag</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="a-comment-about-the-solution">
+<h3>A Comment About the Solution<a class="headerlink" href="#a-comment-about-the-solution" title="Permalink to this headline">#</a></h3>
+<p>You have probably noticed that the real part of the solution is pretty much 0 everywhere. This is to be expected because:</p>
+<ul class="simple">
+<li><p>The material is lossless;</p></li>
+<li><p>The flux is purely imaginary;</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3-complex",
+            path: "./tutorials/fem"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3-complex'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="fenics-helmholtz-tutorial-1.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">The Helmholtz Equation with FEniCS</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../fdtd/fdtd-tutorials-main.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">FDTD Tutorials</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By UKAN Computational Acoustics Special Interest Group<br/>
+  
+    <div class="extra_footer">
+      <p>
+This site and its contents are licensed under the <a href="https://opensource.org/licenses/BSD-3-Clause" alt="link to license text">3-Clause BSD License</a>.
+</p>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
