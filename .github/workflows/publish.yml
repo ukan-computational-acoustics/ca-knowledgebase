@@ -59,7 +59,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: caknowledgebase/caknowledgebase:${GITHUB_REF#refs/heads/}
+        tags: caknowledgebase/caknowledgebase:${{ steps.dockertag.outputs.tag }}
         target: ca-knowledgebase
         file: docker/Dockerfile
       # if: github.ref == 'refs/heads/main'
@@ -75,7 +75,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: echo ${{ needs.build-docker.steps.dockertag.tag }}
+    - run: echo ${{ needs.build-docker.steps.dockertag.outputs.tag }}
 
     # Install dependencies
     - name: Set up Python 3.7
