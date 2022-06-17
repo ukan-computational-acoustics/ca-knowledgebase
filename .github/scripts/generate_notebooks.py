@@ -1,5 +1,4 @@
 import os
-import pytest
 
 
 def convert_python_files(dir):
