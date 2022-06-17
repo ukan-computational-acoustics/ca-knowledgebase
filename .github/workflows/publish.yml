@@ -23,7 +23,7 @@ jobs:
     - name: Get main branch
       run: git clone https://github.com/ca-knowledgebase/ca-knowledgebase.github.io.git ca-main
     - name: Go back a commit
-      run:
+      run: |
         cd ca-main
         git reset HEAD~1
         cd ..
