@@ -19,10 +19,20 @@ parts:
   
 - caption: Core Concepts
   chapters:
-  - file: core-concepts/problem-types
-  - file: core-concepts/element-types
-  - file: core-concepts/meshes
-  - file: core-concepts/GreensFunctions
+  - file: core-concepts/why-use-ca
+    sections:
+  - file: core-concepts/how-define-problem
+    sections:
+    - file: core-concepts/problem-types
+  - file: core-concepts/what-problem
+    sections:
+  - file: core-concepts/what-should-alg-do
+    sections:
+    - file: core-concepts/GreensFunctions
+  - file: core-concepts/geom-and-mesh
+    sections: 
+    - file: core-concepts/element-types
+    - file: core-concepts/meshes
   
 - caption: Tutorials
   chapters:
