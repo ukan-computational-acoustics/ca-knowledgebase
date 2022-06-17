@@ -111,6 +111,7 @@ jobs:
         ls
       if: github.ref != 'refs/heads/gh-pages-source'
 
+    - run: echo ${{ github.ref }}
     - name: Push to gh-pages-source
       run: |
         git checkout gh-pages-source
