@@ -1,7 +1,7 @@
 # Author biographies
 
 ## Amelia Gully
-[<i class="fa fa-internet-explorer"></i> ameliagully.com](https://ameliagully.com) [<i class="fa fa-internet-github"></i> @agully1](https://github.com/agully1)
+[<i class="fa fa-internet-explorer"></i> ameliagully.com](https://ameliagully.com) [<i class="fa fa-github"></i> @agully1](https://github.com/agully1)
 
 Amelia Gully is a British Academy Postdoctoral Fellow in the Department of Language and 
 Linguistic Science at the University of York. Her work focuses on the acoustics of speech, and 
@@ -10,7 +10,7 @@ a member of the [UKAN Computational Acoustics Special Interest
 Group](https://acoustics.ac.uk/sigs/computational-acoustics/) committee.
 
 ## Jonathan Hargreaves
-[<i class="fa fa-internet-explorer"></i> salford.ac.uk/our-staff/jonathan-hargreaves](https://salford.ac.uk/our-staff/jonathan-hargreaves) [<i class="fa fa-internet-github"></i> @jahargreaves](https://github.com/jahargreaves)
+[<i class="fa fa-internet-explorer"></i> salford.ac.uk/our-staff/jonathan-hargreaves](https://salford.ac.uk/our-staff/jonathan-hargreaves) [<i class="fa fa-github"></i> @jahargreaves](https://github.com/jahargreaves)
 
 Jonathan Hargreaves is a Lecturer in Acoustic and Audio Engineering at the University of 
 Salford. Most of his research focuses on computational acoustics algorithms, but he also has 
@@ -33,7 +33,7 @@ applications and physiological modelling. He co-leads the
 [UKAN Computational Acoustics Special Interest Group](https://acoustics.ac.uk/sigs/computational-acoustics/).
 
 ## Matthew Scroggs
-[<i class="fa fa-internet-explorer"></i> mscroggs.co.uk](https://mscroggs.co.uk) [<i class="fa fa-internet-github"></i> @mscroggs](https://github.com/mscroggs) [<i class="fa fa-internet-twitter"></i> @mscroggs](https://twitter.com/mscroggs))
+[<i class="fa fa-internet-explorer"></i> mscroggs.co.uk](https://mscroggs.co.uk) [<i class="fa fa-github"></i> @mscroggs](https://github.com/mscroggs) [<i class="fa fa-twitter"></i> @mscroggs](https://twitter.com/mscroggs))
 
 Matthew Scroggs is a postdoctoral associate in the Department of Engineering at the University 
 of Cambridge. He is one of the developers of [the FEniCS finite element 
