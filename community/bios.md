@@ -31,7 +31,7 @@ the [EAA Technical Committee for Computational Acoustics](https://euracoustics.o
 and the IOA Research Coordination Committee.
 
 ## Nick Ovenden
-[<i class="fa fa-internet-explorer"></i> https://iris.ucl.ac.uk/iris/browse/profile?upi=NCOVE55](https://iris.ucl.ac.uk/iris/browse/profile?upi=NCOVE55)
+[<i class="fa fa-internet-explorer"></i> iris.ucl.ac.uk/iris/browse/profile?upi=NCOVE55](https://iris.ucl.ac.uk/iris/browse/profile?upi=NCOVE55)
 
 Nick Ovenden is a Professor of Applied Mathematics at University College London. He currently 
 works on wave propagation in complex media, particulary media containing contrast agents such 
