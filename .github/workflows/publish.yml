@@ -19,37 +19,48 @@ jobs:
       dockertag: ${{ steps.dockertag.outputs.tag }}
     steps:
     - uses: actions/checkout@v2
-    - name: Make cache folder
-      run: mkdir ~/cache
-    - name: Cache Dockerfile
-      id: cache-docker
-      uses: actions/cache@v3
-      with:
-        path: ~/cache/Dockerfile
-        key: Dockerfile-${{ hashFiles('docker/Dockerfile') }}
-    - name: touch ~/cache/Dockerfile
-      run: touch ~/cache/Dockerfile
-    - name: compare Dockerfile with cache
+
+    - name: Get main branch
+      run: git clone https://github.com/ca-knowledgebase/ca-knowledgebase.github.io.git ca-main
+    - name: Go back a commit
+      run:
+        cd ca-main
+        git reset HEAD~1
+        cd ..
+      if: github.ref == 'refs/heads/main'
+    - name: Get old Dockerfile
+      run: |
+        cp ca-main/docker/Dockerfile docker/Dockerfile.old
+        rm -rf ca-main
+    - name: compare Dockerfile with old Dockerfile
       id: diff
       run: |
-          if diff docker/Dockerfile ~/cache/Dockerfile > /dev/null; then
+          if diff docker/Dockerfile docker/Dockerfile.old > /dev/null; then
               echo ::set-output name=changed::no
           else
               echo ::set-output name=changed::yes
           fi
-    - name: Copy Dockerfile to ~/cache/Dockerfile
-      run: cp docker/Dockerfile ~/cache/Dockerfile
-      if: github.ref == 'refs/heads/main'
-
+    - run: cat docker/Dockerfile
+    - run: cat docker/Dockerfile.old
+    - run: echo ${{ steps.diff.outputs.changed }}
+    - run: echo "$(echo \"${{ github.ref }}\" | sha1sum)"
+    - id: test
+      run: |
+        the_tag=($(echo "${{ github.ref }}" | sha1sum))
+        echo ::set-output name=tag::$the_tag
+    - run: echo "${{ steps.test.outputs.tag }}"
     - name: set Docker tag
       run: |
-        if ${{ steps.diff.outputs.changed }}="yes"; then
-            the_tag=${GITHUB_HEAD_REF#refs/heads/}
-            echo ::set-output name=tag::${the_tag/\//_}
+        if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo ::set-output name=tag::main            
+        elif [ "${{ steps.diff.outputs.changed }}" = "yes" ]; then
+            the_tag=($(echo "${{ github.ref }}" | sha1sum))
+            echo ::set-output name=tag::$the_tag
         else
             echo ::set-output name=tag::main
         fi
       id: dockertag
+    - run: echo "${{ steps.dockertag.outputs.tag }}"
     - name: Login to DockerHub
       uses: docker/login-action@v1
       with:
@@ -77,7 +88,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: echo ${{ needs.build-docker.outputs.dockertag }}
+    - run: echo "${{ needs.build-docker.outputs.dockertag }}"
 
     # Install dependencies
     - name: Set up Python 3.7
