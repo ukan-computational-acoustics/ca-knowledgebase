@@ -19,30 +19,32 @@ jobs:
       dockertag: ${{ steps.dockertag.outputs.tag }}
     steps:
     - uses: actions/checkout@v2
-    - name: Make cache folder
-      run: mkdir ~/cache
-    - name: Cache Dockerfile
-      id: cache-docker
-      uses: actions/cache@v3
-      with:
-        path: ~/cache/Dockerfile
-        key: Dockerfile
-    - name: touch ~/cache/Dockerfile
-      run: touch ~/cache/Dockerfile
-    - name: compare Dockerfile with cache
+    - name: Get old Dockerfile
+      run: |
+        git clone https://github.com/ca-knowledgebase/ca-knowledgebase.github.io.git ca-main
+        cd ca-main
+        git reset HEAD~1
+        cd ..
+        cp ca-main/docker/Dockerfile docker/Dockerfile.old
+        rm -rf ca-main        
+      if: github.ref == 'refs/heads/main'
+    - name: Get old Dockerfile
+      run: |
+        git clone https://github.com/ca-knowledgebase/ca-knowledgebase.github.io.git ca-main
+        cp ca-main/docker/Dockerfile docker/Dockerfile.old
+        rm -rf ca-main
+      if: github.ref != 'refs/heads/main'
+    - name: compare Dockerfile with old Dockerfile
       id: diff
       run: |
-          if diff docker/Dockerfile ~/cache/Dockerfile > /dev/null; then
+          if diff docker/Dockerfile docker/Dockerfile.old > /dev/null; then
               echo ::set-output name=changed::no
           else
               echo ::set-output name=changed::yes
           fi
     - run: cat docker/Dockerfile
-    - run: cat ~/cache/Dockerfile
+    - run: cat docker/Dockerfile.old
     - run: echo ${{ steps.diff.outputs.changed }}
-    - name: Copy Dockerfile to ~/cache/Dockerfile
-      run: cp docker/Dockerfile ~/cache/Dockerfile
-      if: github.ref == 'refs/heads/main'
     - run: |
             the_tag=${GITHUB_HEAD_REF#refs/heads/}
             echo "${the_tag/\//_}"
