@@ -1,5 +1,6 @@
 .*.swp
 *.pyc
+*.ipynb
 
 .pynb_checkpoints
 _build

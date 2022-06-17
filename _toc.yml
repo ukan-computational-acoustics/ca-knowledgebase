@@ -19,9 +19,16 @@ parts:
   
 - caption: Core Concepts
   chapters:
-  - file: core-concepts/problem-types
-  - file: core-concepts/element-types
-  - file: core-concepts/meshes
+  - file: core-concepts/why-use-ca
+  - file: core-concepts/how-define-problem
+    sections:
+    - file: core-concepts/problem-types
+  - file: core-concepts/what-problem
+  - file: core-concepts/what-should-alg-do
+  - file: core-concepts/geom-and-mesh
+    sections: 
+    - file: core-concepts/element-types
+    - file: core-concepts/meshes
   - file: core-concepts/GreensFunctions
   
 - caption: Tutorials
@@ -31,7 +38,6 @@ parts:
     - file: tutorials/bem/bem-tutorial-1
   - file: tutorials/fem/fem-tutorials-main
     sections:
-    - file: tutorials/fem/fenics-helmholtz-tutorial-1
     - file: tutorials/fem/fenicsx-helmholtz-tutorial
   
   - file: tutorials/fdtd/fdtd-tutorials-main
@@ -52,7 +58,7 @@ parts:
   
 - caption: Community
   chapters:
-  - file: community/community 
+  - file: community/bios 
   
 - caption: Reference
   chapters:
