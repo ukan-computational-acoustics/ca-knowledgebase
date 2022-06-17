@@ -5,8 +5,7 @@
 # You can run this code directly in your browser by clicking on the rocket logo
 # (<i class="fas fa-rocket"></i>) at the top of the page, and clicking 'Binder'.
 # This will open a Jupyter Notebook in a [Binder](https://mybinder.org/) environment which
-# is set up to contain everything you need to run the code. **Don't forget to save a local
-# copy if you make any changes!**
+# is set up to contain everything you need to run the code. **Don't forget to save a local copy if you make any changes!**
 #
 # If you prefer, you can download the Jupyter Notebook file to run locally, by clicking the
 # download logo ( <i class="fas fa-download"></i> ) at the top of the page and selecting
