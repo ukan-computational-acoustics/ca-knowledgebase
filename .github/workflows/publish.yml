@@ -114,11 +114,13 @@ jobs:
     - run: echo ${{ github.ref }}
     - name: Push to gh-pages-source
       run: |
+        mkdir ../gh-pages-source
+        cd ../gh-pages-source
+        git init
         git checkout gh-pages-source
         git add .
         git commit -a -m "Generate ipynb files"
-        # git remote set-url origin https://${{ SECRETS.GITHUB_USER}}:${{ SECRETS.GITHUB_TOKEN }}@github.com/ca-knowledgebase/ca-knowledgebase.github.io.git
-        git remote set-url origin https://agully1:${{ SECRETS.GITHUB_TOKEN }}@github.com/ca-knowledgebase/ca-knowledgebase.github.io.git
+        git remote set-url origin https://${{ SECRETS.GH_USER}}:${{ SECRETS.GH_TOKEN }}@github.com/ca-knowledgebase/ca-knowledgebase.github.io.git
         git push -u origin gh-pages-source --force
       if: github.ref == 'refs/pull/82/merge'
 
@@ -134,4 +136,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./_build/html
         cname: knowledgebase.acoustics.ac.uk
-      if: github.ref == 'refs/heads/gh-pages-source'
+      if: github.ref == 'refs/heads/main'
