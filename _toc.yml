@@ -32,9 +32,9 @@ parts:
     sections:
     - file: tutorials/fem/fenics-helmholtz-tutorial-1
   - file: tutorials/fdtd/fdtd-tutorials-main
-    #sections:
-    #- file: tutorials/fdtd/fdtd-tutorial-1
-
+    sections:
+    - file: tutorials/fdtd/fdtd-tutorials-1
+    
 - caption: Software Guides
   chapters: 
   - file: software/software-main
