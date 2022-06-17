@@ -43,7 +43,7 @@ jobs:
     - run: cat docker/Dockerfile
     - run: cat docker/Dockerfile.old
     - run: echo ${{ steps.diff.outputs.changed }}
-    - run: echo "${echo \"${{ github.ref }}\" | sha256sum}"
+    - run: echo "$(echo \"${{ github.ref }}\" | sha1sum)"
     - name: set Docker tag
       run: |
         if [ "${{ github.ref }}" = "refs/heads/main" ]; then
