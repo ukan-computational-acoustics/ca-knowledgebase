@@ -59,7 +59,7 @@ parts:
   
 - caption: Community
   chapters:
-  - file: community/community 
+  - file: community/bios 
   
 - caption: Reference
   chapters:
