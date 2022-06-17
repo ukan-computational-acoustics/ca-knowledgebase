@@ -1,4 +1,4 @@
-# Geometry and Meshing
+# How does the algorithm solve the problem?
 
 ## Authors:
 [Jonathan Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves)
@@ -7,5 +7,4 @@
 This part of the site is currently under development. Its content is incomplete.
 ```
 
-This page will discuss the differences between geometry and a mesh
-It will also signpost the sub-pages.
+Signposting mainly on this page. Saying how solution approach directly informs algorithm.

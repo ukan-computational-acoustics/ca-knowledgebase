@@ -1,4 +1,4 @@
-# Geometry and Meshing
+# Weak Forms
 
 ## Authors:
 [Jonathan Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves)
@@ -7,5 +7,4 @@
 This part of the site is currently under development. Its content is incomplete.
 ```
 
-This page will discuss the differences between geometry and a mesh
-It will also signpost the sub-pages.
+Solving on average via principal of least action or other similar approaches.

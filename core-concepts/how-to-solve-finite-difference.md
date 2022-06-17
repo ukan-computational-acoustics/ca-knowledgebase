@@ -1,11 +1,14 @@
-# Geometry and Meshing
+# Finite Difference
 
-## Authors:
+## Authors: 
 [Jonathan Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves)
+Matthew Hamilton
 
 ```{warning}
 This part of the site is currently under development. Its content is incomplete.
 ```
 
-This page will discuss the differences between geometry and a mesh
-It will also signpost the sub-pages.
+This page will cover direct approximation of the PDE via finite difference
+
+
+

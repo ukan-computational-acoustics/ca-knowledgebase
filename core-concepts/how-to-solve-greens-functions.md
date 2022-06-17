@@ -1,5 +1,7 @@
 # Monopoles and free space Green's Functions
-Author: Nick Ovenden (UCL)  
+
+## Authors: 
+[Nick Ovenden](https://knowledgebase.acoustics.ac.uk/community/bios.html#nick-ovenden)
 
 In a quiescent medium of constant sound speed $c$, any spherically symmetric time-harmonic source centred at a point $\mathbf{x_s}$ of angular frequency $\omega$ produces an externally outgoing 
 acoustic field  of the form 
