@@ -46,7 +46,7 @@ jobs:
 
     - name: set Docker tag
       run: |
-        if ${{ steps.diff.outputs.changed }}="yes"; then
+        if [ "${{ steps.diff.outputs.changed }}" = "yes" ]; then
             the_tag=${GITHUB_HEAD_REF#refs/heads/}
             echo ::set-output name=tag::${the_tag/\//_}
         else
