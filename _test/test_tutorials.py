@@ -5,7 +5,8 @@ import pytest
 def find_python_files(dir, subdir=None):
     out = []
     for i in os.listdir(dir):
-        print(i)
+        if i.startswith("."):
+            continue
         new_dir = os.path.join(dir, i)
         if subdir is None:
             new_subdir = i

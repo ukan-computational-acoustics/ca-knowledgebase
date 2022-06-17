@@ -107,9 +107,7 @@ jobs:
         python-version: 3.7
 
     - name: Generate ipynb files
-      run: |
-        ls
-      if: github.ref != 'refs/heads/gh-pages-source'
+      run: python .github/scripts/generate_notebooks.py
 
     - run: echo ${{ github.ref }}
     - name: Push to gh-pages-source
