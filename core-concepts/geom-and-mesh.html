@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Monopoles and free space Green’s Functions</title>
+    <title>Geometry and Meshing</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,13 +52,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="BEM Tutorials" href="../tutorials/bem/bem-tutorials-main.html" />
-    <link rel="prev" title="Meshes" href="meshes.html" />
+    <link rel="next" title="Types of element" href="element-types.html" />
+    <link rel="prev" title="What does your algorithm need to do?" href="what-should-alg-do.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -213,11 +211,11 @@ const thebe_selector_output = ".output, .cell_output"
    What does your algorithm need to do?
   </a>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="geom-and-mesh.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    Geometry and Meshing
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
@@ -235,8 +233,8 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="GreensFunctions.html">
    Monopoles and free space Green’s Functions
   </a>
  </li>
@@ -451,7 +449,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues/new?title=Issue%20on%20page%20%2Fcore-concepts/GreensFunctions.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues/new?title=Issue%20on%20page%20%2Fcore-concepts/geom-and-mesh.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -468,7 +466,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/edit/main/core-concepts/GreensFunctions.md"
+        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/edit/main/core-concepts/geom-and-mesh.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -496,7 +494,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/core-concepts/GreensFunctions.md"
+        <a href="../_sources/core-concepts/geom-and-mesh.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -545,7 +543,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Monopoles and free space Green’s Functions</h1>
+                <h1>Geometry and Meshing</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -557,26 +555,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="monopoles-and-free-space-green-s-functions">
-<h1>Monopoles and free space Green’s Functions<a class="headerlink" href="#monopoles-and-free-space-green-s-functions" title="Permalink to this headline">#</a></h1>
-<p>Author: Nick Ovenden (UCL)</p>
-<p>In a quiescent medium of constant sound speed <span class="math notranslate nohighlight">\(c\)</span>, any spherically symmetric time-harmonic source centred at a point <span class="math notranslate nohighlight">\(\mathbf{x_s}\)</span> of angular frequency <span class="math notranslate nohighlight">\(\omega\)</span> produces an externally outgoing
-acoustic field  of the form</p>
-<div class="math notranslate nohighlight">
-\[ p(\mathbf{x})=\mbox{Re} \left( \mathcal{S} \frac{e^{i\omega |\mathbf{x} - \mathbf{x_s}|/c}}{|\mathbf{x} - \mathbf{x_s}|} \right), \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathcal{S}\)</span> is a complex number representing the strength and phase of the source. As one might expect, this expression is the solution everywhere
-to the following PDE</p>
-<div class="math notranslate nohighlight">
-\[ \left(\nabla^2 + \frac{\omega^2}{c^2} \right) p = -4\pi \mathcal{S} \delta(\mathbf{x} -\mathbf{x_s}) \]</div>
-<p>in an external unbounded domain with <em>no incoming</em> waves from infinity and where <span class="math notranslate nohighlight">\(\delta(\mathbf{x})\)</span> is the delta-dirac function.
-Setting <span class="math notranslate nohighlight">\(\mathcal{S}= -\frac{1}{4\pi}\)</span> leads to the so-called <em>free-field</em> Green’s
-function</p>
-<div class="math notranslate nohighlight">
-\[ G_f(\mathbf{x},\mathbf{x_s})= -\frac{1}{4 \pi} \frac{e^{i\omega |\mathbf{x} - \mathbf{x_s}|/c}}{|\mathbf{x} - \mathbf{x_s}|},\]</div>
-<p>that solves</p>
-<div class="math notranslate nohighlight">
-\[ \left(\nabla^2 + \frac{\omega^2}{c^2} \right) G_f = \delta(\mathbf{x} -\mathbf{x_s}) \]</div>
-<p>in an externally unbounded domain.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="geometry-and-meshing">
+<h1>Geometry and Meshing<a class="headerlink" href="#geometry-and-meshing" title="Permalink to this headline">#</a></h1>
+<p>Author:</p>
+<p>Text</p>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -606,17 +590,17 @@ function</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="meshes.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="what-should-alg-do.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Meshes</p>
+            <p class="prev-next-title">What does your algorithm need to do?</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../tutorials/bem/bem-tutorials-main.html" title="next page">
+    <a class='right-next' id="next-link" href="element-types.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">BEM Tutorials</p>
+        <p class="prev-next-title">Types of element</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
