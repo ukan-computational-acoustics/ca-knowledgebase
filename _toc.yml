@@ -38,6 +38,7 @@ parts:
     - file: tutorials/bem/bem-tutorial-1
   - file: tutorials/fem/fem-tutorials-main
     sections:
+    - file: tutorials/fem/fem_1d_impedance_tube
     - file: tutorials/fem/fenics-helmholtz-tutorial-1
     - file: tutorials/fem/fenicsx-helmholtz-tutorial
   
