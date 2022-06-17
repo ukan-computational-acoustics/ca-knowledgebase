@@ -120,7 +120,7 @@ jobs:
         git config --global user.email "${{ SECRETS.GH_EMAIL }}"
         git config --global user.name "${{ SECRETS.GH_NAME }}"
         git init
-        git checkout gh-pages-source
+        git checkout -b gh-pages-source
         cp -r $repodir/* .
         git add .
         git commit -a -m "Generate ipynb files"
