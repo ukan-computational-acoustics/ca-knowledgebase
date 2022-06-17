@@ -9,11 +9,12 @@ def convert_python_files(dir):
         if os.path.isdir(new_dir):
             convert_python_files(new_dir)
         elif i.endswith(".py"):
+            print(f"jupytest --to ipynb {new_dir}")
             os.system(f"jupytest --to ipynb {new_dir}")
 
 
 root_dir = os.path.join(
     os.path.dirname(os.path.realpath(__file__)),
-    "..")
+    os.path.join("..", ".."))
 
 convert_python_files(root_dir)
