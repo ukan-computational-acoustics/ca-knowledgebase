@@ -9,7 +9,7 @@ If you would like to contribute suggestions or corrections, please do so followi
 
 Most computational acoustics methods approximate a solution to some differential equation by breaking a domain down into small, simple units which are usually called _elements_.
 
-There are two main categories of elements:
+There are two main categories of elements:-
 
 * *Structured* elements are all the same shape and size within a domain. As a result, the same relationships hold across every element and solutions can usually be calculated relatively efficiently. Typically, elements will form a Cartesian grid, although this is not a requirement. It may be difficult to accurately represent curved surfaces with structured elements.
 * *Unstructured* elements will have the same topology throughout a domain (e.g. all elements will be triangular or quadrilateral) but elements can vary in shape and size throughout the domain depending on the requirements of the problem. For example, many smaller elements can be included where more detail is required. As there is not a single description of element behaviour, calculations necessarily become more resource-intensive. 
