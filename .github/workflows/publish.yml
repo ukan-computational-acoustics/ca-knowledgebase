@@ -85,7 +85,9 @@ jobs:
     - name: Run flake8 checks
       run: flake8 .
     - name: Run Python tests
-      run: pytest _test
+      run: |
+        export PYVISTA_OFF_SCREEN=true
+        pytest _test
 
   deploy-book:
     # This job installs dependencies and builds the book
