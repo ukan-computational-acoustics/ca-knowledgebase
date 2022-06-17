@@ -120,7 +120,7 @@ jobs:
         # git remote set-url origin https://${{ SECRETS.GITHUB_USER}}:${{ SECRETS.GITHUB_TOKEN }}@github.com/ca-knowledgebase/ca-knowledgebase.github.io.git
         git remote set-url origin https://agully1:${{ SECRETS.GITHUB_TOKEN }}@github.com/ca-knowledgebase/ca-knowledgebase.github.io.git
         git push -u origin gh-pages-source --force
-      if: github.ref == 'refs/heads/mscroggs/py-files'
+      if: github.ref == 'refs/pull/82/merge'
 
     # Build the book
     - name: Build the book
