@@ -14,7 +14,7 @@ Will the mesh be set up in one, two or three dimensions? Waht about axisymmetry?
 For FEM & FDTD this modifies the PDE. For BEM, this modifies the Green's function. Compactness can be an issue for the latter.
 ```
 
-## 1D
+### 1D
 
 ```{figure} geom-and-mesh-dimensionality-1D.png
 ---
@@ -26,7 +26,7 @@ Decribe here what the image shows
 * Domain is an interval
 * Boundaries are points
 
-## 2D
+### 2D
 
 ```{figure} geom-and-mesh-dimensionality-2D.png
 ---
@@ -38,7 +38,7 @@ Decribe here what the image shows
 * Domain is an area
 * Boundary is a line
 
-## 3D
+### 3D
 
 ```{figure} geom-and-mesh-dimensionality-3D.png
 ---
@@ -51,4 +51,20 @@ Decribe here what the image shows
 * Boundary is a surface
 
 
+## Examples Computational Cost Savings - Meshing a Loudspeaker
 
+### 2D Axisymmetric
+```{figure} geom-and-mesh-meshing-axi2D.png
+---
+name: 2D Axisymmetric Mesh
+---
+2D Axisymmetric Mesh. Image credit: [Jonathan Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves). Produced using [Gmsh](https://gmsh.info/)
+20 elements.
+
+### Full 3D
+```{figure} geom-and-mesh-meshing-3D.png
+---
+name: 3D  Mesh
+---
+3D Mesh. Image credit: [Jonathan Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves). Produced using [Gmsh](https://gmsh.info/)
+2667 elements.
