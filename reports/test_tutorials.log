@@ -17,16 +17,20 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import numpy as np
-import fenics
+tutorial_dir = os.path.join(
+    os.path.dirname(os.path.realpath(__file__)),
+    os.path.join("..", "tutorials"))
+tutorials = find_python_files(tutorial_dir)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Input [0;32mIn [1][0m, in [0;36m<cell line: 2>[0;34m()[0m
-[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
-[0;32m----> 2[0m [38;5;28;01mimport[39;00m [38;5;21;01mfenics[39;00m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [3][0m, in [0;36m<cell line: 1>[0;34m()[0m
+[1;32m      1[0m tutorial_dir [38;5;241m=[39m os[38;5;241m.[39mpath[38;5;241m.[39mjoin(
+[0;32m----> 2[0m     os[38;5;241m.[39mpath[38;5;241m.[39mdirname(os[38;5;241m.[39mpath[38;5;241m.[39mrealpath([38;5;18;43m__file__[39;49m)),
+[1;32m      3[0m     os[38;5;241m.[39mpath[38;5;241m.[39mjoin([38;5;124m"[39m[38;5;124m..[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mtutorials[39m[38;5;124m"[39m))
+[1;32m      4[0m tutorials [38;5;241m=[39m find_python_files(tutorial_dir)
 
-[0;31mModuleNotFoundError[0m: No module named 'fenics'
-ModuleNotFoundError: No module named 'fenics'
+[0;31mNameError[0m: name '__file__' is not defined
+NameError: name '__file__' is not defined
 
