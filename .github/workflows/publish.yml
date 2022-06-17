@@ -43,7 +43,9 @@ jobs:
     - name: Copy Dockerfile to ~/cache/Dockerfile
       run: cp docker/Dockerfile ~/cache/Dockerfile
       ## if: github.ref == 'refs/heads/main'
-
+    - run: |
+            the_tag=${GITHUB_HEAD_REF#refs/heads/}
+            echo ::set-output name=tag::${the_tag/\//_}
     - name: set Docker tag
       run: |
         if [ "${{ steps.diff.outputs.changed }}" = "yes" ]; then
