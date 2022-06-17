@@ -26,7 +26,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/cache/Dockerfile
-        key: Dockerfile-${{ hashFiles('docker/Dockerfile') }}
+        key: Dockerfile
     - name: touch ~/cache/Dockerfile
       run: touch ~/cache/Dockerfile
     - name: compare Dockerfile with cache
@@ -37,10 +37,12 @@ jobs:
           else
               echo ::set-output name=changed::yes
           fi
+    - run: cat docker/Dockerfile
+    - run: cat ~/cache/Dockerfile
     - run: echo ${{ steps.diff.outputs.changed }}
     - name: Copy Dockerfile to ~/cache/Dockerfile
       run: cp docker/Dockerfile ~/cache/Dockerfile
-      if: github.ref == 'refs/heads/main'
+      # if: github.ref == 'refs/heads/main'
 
     - name: set Docker tag
       run: |
@@ -68,7 +70,8 @@ jobs:
         tags: caknowledgebase/caknowledgebase:${{ steps.dockertag.outputs.tag }}
         target: ca-knowledgebase
         file: docker/Dockerfile
-      if: steps.diff.outputs.changed == 'yes'
+      # if: steps.diff.outputs.changed == 'yes'
+      if: github.ref == 'refs/heads/main'
 
   deploy-book:
     runs-on: ubuntu-latest
