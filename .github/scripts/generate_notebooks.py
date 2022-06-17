@@ -3,7 +3,7 @@ import os
 
 def convert_python_files(dir):
     for i in os.listdir(dir):
-        if i.startswith("."):
+        if i.startswith(".") or i == "_test":
             continue
         new_dir = os.path.join(dir, i)
         if os.path.isdir(new_dir):
