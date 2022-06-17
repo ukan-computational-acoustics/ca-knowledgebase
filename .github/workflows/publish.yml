@@ -45,14 +45,13 @@ jobs:
     - run: cat docker/Dockerfile
     - run: cat docker/Dockerfile.old
     - run: echo ${{ steps.diff.outputs.changed }}
-    - run: |
-            the_tag=${GITHUB_HEAD_REF#refs/heads/}
-            echo "${the_tag/\//_}"
+    - run: echo ${echo "${{ github.ref }}" | sha256sum}
     - name: set Docker tag
       run: |
-        if [ "${{ steps.diff.outputs.changed }}" = "yes" ]; then
-            the_tag=${GITHUB_HEAD_REF#refs/heads/}
-            echo ::set-output name=tag::${the_tag/\//_}
+        if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo ::set-output name=tag::main            
+        elif [ "${{ steps.diff.outputs.changed }}" = "yes" ]; then
+            echo ::set-output name=tag::${echo "${{ github.ref }}" | sha256sum}
         else
             echo ::set-output name=tag::main
         fi
