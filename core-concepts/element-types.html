@@ -194,6 +194,11 @@ const thebe_selector_output = ".output, .cell_output"
    Meshes
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GreensFunctions.html">
+   Monopoles and free space Green’s Functions
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -519,7 +524,7 @@ title="Print to PDF"
 <p>If you would like to contribute suggestions or corrections, please do so following the <a class="reference internal" href="../about/contribute-contribute.html"><span class="doc std std-doc">guide for contributors</span></a>.</p>
 </div>
 <p>Most computational acoustics methods approximate a solution to some differential equation by breaking a domain down into small, simple units which are usually called <em>elements</em>.</p>
-<p>There are two main categories of elements:</p>
+<p>There are two main categories of elements:-</p>
 <ul class="simple">
 <li><p><em>Structured</em> elements are all the same shape and size within a domain. As a result, the same relationships hold across every element and solutions can usually be calculated relatively efficiently. Typically, elements will form a Cartesian grid, although this is not a requirement. It may be difficult to accurately represent curved surfaces with structured elements.</p></li>
 <li><p><em>Unstructured</em> elements will have the same topology throughout a domain (e.g. all elements will be triangular or quadrilateral) but elements can vary in shape and size throughout the domain depending on the requirements of the problem. For example, many smaller elements can be included where more detail is required. As there is not a single description of element behaviour, calculations necessarily become more resource-intensive.</p></li>
