@@ -1,4 +1,4 @@
-FROM caknowledgebase/caknowledgebase:0.1.0
+FROM caknowledgebase/caknowledgebase:main
 
 # create user with a home directory
 ARG NB_USER
