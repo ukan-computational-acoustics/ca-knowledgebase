@@ -117,8 +117,7 @@ jobs:
         git commit -a -m "Generate ipynb files"
         git remote add origin https://${{ SECRETS.GH_USER}}:${{ SECRETS.GH_TOKEN }}@github.com/ca-knowledgebase/ca-knowledgebase.github.io.git
         git push -u origin gh-pages-source --force
-      if: github.ref == 'refs/pull/82/merge'
-      # if: github.ref == 'refs/heads/main'
+      if: github.ref == 'refs/heads/main'
 
     # Build the book
     - name: Build the book
