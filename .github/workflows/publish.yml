@@ -42,7 +42,7 @@ jobs:
     - run: echo ${{ steps.diff.outputs.changed }}
     - name: Copy Dockerfile to ~/cache/Dockerfile
       run: cp docker/Dockerfile ~/cache/Dockerfile
-      # if: github.ref == 'refs/heads/main'
+      ## if: github.ref == 'refs/heads/main'
 
     - name: set Docker tag
       run: |
