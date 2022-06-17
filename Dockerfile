@@ -1,4 +1,4 @@
-FROM caknowledgebase/caknowledgebase:0.1.0
+FROM caknowledgebase/caknowledgebase:main
 
 # create user with a home directory
 ARG NB_USER
@@ -11,6 +11,5 @@ WORKDIR ${HOME}
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
-
 USER ${NB_USER}
 ENTRYPOINT []
