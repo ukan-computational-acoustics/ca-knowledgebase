@@ -119,6 +119,10 @@ jobs:
         git push -u origin gh-pages-source --force
       if: github.ref == 'refs/heads/main'
 
+    # This is a hack to get Binder to work
+    - name: Remove py files before building
+      run: python3 .github/scripts/delete_py_files.py
+
     # Build the book
     - name: Build the book
       run: |
