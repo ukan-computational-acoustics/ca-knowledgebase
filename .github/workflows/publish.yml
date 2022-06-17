@@ -42,7 +42,7 @@ jobs:
     - run: echo ${{ steps.diff.outputs.changed }}
     - name: Copy Dockerfile to ~/cache/Dockerfile
       run: cp docker/Dockerfile ~/cache/Dockerfile
-      ## if: github.ref == 'refs/heads/main'
+      if: github.ref == 'refs/heads/main'
     - run: |
             the_tag=${GITHUB_HEAD_REF#refs/heads/}
             echo "${the_tag/\//_}"
@@ -72,8 +72,7 @@ jobs:
         tags: caknowledgebase/caknowledgebase:${{ steps.dockertag.outputs.tag }}
         target: ca-knowledgebase
         file: docker/Dockerfile
-      # if: steps.diff.outputs.changed == 'yes'
-      if: github.ref == 'refs/heads/main'
+      if: steps.diff.outputs.changed == 'yes'
 
   deploy-book:
     runs-on: ubuntu-latest
