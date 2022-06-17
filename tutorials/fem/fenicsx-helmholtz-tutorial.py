@@ -87,7 +87,8 @@
 # * Robin conditions specify an acoustic impedance $Z$ on $\partial \Omega_{R}$ as well as an
 #   optional particle velocity.
 #   $$
-#   p=Zv_{n}=-\frac{Z}{j\omega\rho_{0}}\frac{\partial p}{\partial n}= -\frac{1}{j\omega\rho_{0}A}\frac{\partial p}{\partial n}\quad\quad \text{on} \quad \partial\Omega_{R}
+#   p=Zv_{n}=-\frac{Z}{j\omega\rho_{0}}\frac{\partial p}{\partial n}= -\frac{1}{j\omega\rho_{0}A}\frac{\partial p}{\partial n}
+#   \quad\quad \text{on} \quad \partial\Omega_{R}
 #   $$
 #
 # ### The Weak Form
