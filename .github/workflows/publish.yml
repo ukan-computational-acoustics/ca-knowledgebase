@@ -117,6 +117,8 @@ jobs:
         repodir=$(pwd)
         mkdir ../gh-pages-source
         cd ../gh-pages-source
+        git config --global user.email "${{ SECRETS.GH_EMAIL }}"
+        git config --global user.name "${{ SECRETS.GH_NAME }}"
         git init
         git checkout gh-pages-source
         cp -r $repodir/* .
