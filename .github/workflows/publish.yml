@@ -19,21 +19,19 @@ jobs:
       dockertag: ${{ steps.dockertag.outputs.tag }}
     steps:
     - uses: actions/checkout@v2
-    - name: Get old Dockerfile
-      run: |
-        git clone https://github.com/ca-knowledgebase/ca-knowledgebase.github.io.git ca-main
+
+    - name: Get main branch
+      run: git clone https://github.com/ca-knowledgebase/ca-knowledgebase.github.io.git ca-main
+    - name: Go back a commit
+      run:
         cd ca-main
         git reset HEAD~1
         cd ..
-        cp ca-main/docker/Dockerfile docker/Dockerfile.old
-        rm -rf ca-main        
       if: github.ref == 'refs/heads/main'
     - name: Get old Dockerfile
       run: |
-        git clone https://github.com/ca-knowledgebase/ca-knowledgebase.github.io.git ca-main
         cp ca-main/docker/Dockerfile docker/Dockerfile.old
         rm -rf ca-main
-      if: github.ref != 'refs/heads/main'
     - name: compare Dockerfile with old Dockerfile
       id: diff
       run: |
