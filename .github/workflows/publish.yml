@@ -37,6 +37,7 @@ jobs:
           else
               echo ::set-output name=changed::yes
           fi
+    - run: echo ${{ steps.diff.outputs.changed }}
     - name: Copy Dockerfile to ~/cache/Dockerfile
       run: cp docker/Dockerfile ~/cache/Dockerfile
       if: github.ref == 'refs/heads/main'
@@ -50,6 +51,7 @@ jobs:
             echo ::set-output name=tag::main
         fi
       id: dockertag
+    - run: echo ${{ steps.dockertag.outputs.tag }}
     - name: Login to DockerHub
       uses: docker/login-action@v1
       with:
