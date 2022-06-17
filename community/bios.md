@@ -1,5 +1,12 @@
 # Author biographies
 
+## Jørgen S. Dokken 
+[<i class="fa fa-internet-explorer"></i> jsdokken.com](https://jsdokken.com) [<i class="fa fa-github"></i> @jorgensd](https://github.com/jorgensd) [<i class="fa-brands fa-discourse"></i> @dokken](https://fenicsproject.discourse.group/u/dokken/)
+
+Jørgen S. Dokken is a postdoctoral research associate at the Department of Engineering at the 
+University of Cambridge. He is one of the developers of the [the FEniCS finite element library](https://fenicsproject.org/), 
+[Dolfin-adjoint](http://www.dolfin-adjoint.org/en/latest/) and the author of the [FEniCSx tutorial](https://jorgensd.github.io/dolfinx-tutorial/).
+
 ## Amelia Gully
 [<i class="fa fa-internet-explorer"></i> ameliagully.com](https://ameliagully.com) [<i class="fa fa-github"></i> @agully1](https://github.com/agully1)
 
@@ -33,10 +40,10 @@ applications and physiological modelling. He co-leads the
 [UKAN Computational Acoustics Special Interest Group](https://acoustics.ac.uk/sigs/computational-acoustics/).
 
 ## Matthew Scroggs
-[<i class="fa fa-internet-explorer"></i> mscroggs.co.uk](https://mscroggs.co.uk) [<i class="fa fa-github"></i> @mscroggs](https://github.com/mscroggs) [<i class="fa fa-twitter"></i> @mscroggs](https://twitter.com/mscroggs))
+[<i class="fa fa-internet-explorer"></i> mscroggs.co.uk](https://mscroggs.co.uk) [<i class="fa fa-github"></i> @mscroggs](https://github.com/mscroggs) [<i class="fa fa-twitter"></i> @mscroggs](https://twitter.com/mscroggs)
 
-Matthew Scroggs is a postdoctoral associate in the Department of Engineering at the University 
-of Cambridge. He is one of the developers of [the FEniCS finite element 
+Matthew Scroggs is a postdoctoral research associate in the Department of Engineering at the 
+University of Cambridge. He is one of the developers of [the FEniCS finite element 
 library](https://fenicsproject.org/) and [the Bempp boundary element 
 library](https://bempp.com/).
 
