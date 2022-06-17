@@ -71,6 +71,22 @@ jobs:
         file: docker/Dockerfile
       if: steps.diff.outputs.changed == 'yes'
 
+  run-tests:
+    # This job tests that all the scripts run successfully, and runs style checks
+    runs-on: ubuntu-latest
+    container: caknowledgebase/caknowledgebase:${{ needs.build-docker.outputs.dockertag }}
+    needs:
+    - build-docker
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install flake8 and pytest
+      run: pip3 install flake8 pytest
+    - name: Run flake8 checks
+      run: flake8 .
+    - name: Run Python tests
+      run: pytest _test
+
   deploy-book:
     # This job installs dependencies and builds the book
     # If the branch is main, it then pushes the book to `gh-pages`
