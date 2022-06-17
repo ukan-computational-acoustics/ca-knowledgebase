@@ -114,10 +114,12 @@ jobs:
     - run: echo ${{ github.ref }}
     - name: Push to gh-pages-source
       run: |
+        repodir=$(pwd)
         mkdir ../gh-pages-source
         cd ../gh-pages-source
         git init
         git checkout gh-pages-source
+        cp -r $repodir/* .
         git add .
         git commit -a -m "Generate ipynb files"
         git remote set-url origin https://${{ SECRETS.GH_USER}}:${{ SECRETS.GH_TOKEN }}@github.com/ca-knowledgebase/ca-knowledgebase.github.io.git
