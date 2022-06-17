@@ -13,12 +13,82 @@ on:
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+    outputs:
+      dockertag: ${{ steps.dockertag.outputs.tag }}
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Get main branch
+      run: git clone https://github.com/ca-knowledgebase/ca-knowledgebase.github.io.git ca-main
+    - name: Go back a commit
+      run: |
+        cd ca-main
+        git reset HEAD~1
+        cd ..
+      if: github.ref == 'refs/heads/main'
+    - name: Get old Dockerfile
+      run: |
+        cp ca-main/docker/Dockerfile docker/Dockerfile.old
+        rm -rf ca-main
+    - name: compare Dockerfile with old Dockerfile
+      id: diff
+      run: |
+          if diff docker/Dockerfile docker/Dockerfile.old > /dev/null; then
+              echo ::set-output name=changed::no
+          else
+              echo ::set-output name=changed::yes
+          fi
+    - run: cat docker/Dockerfile
+    - run: cat docker/Dockerfile.old
+    - run: echo ${{ steps.diff.outputs.changed }}
+    - run: echo "$(echo \"${{ github.ref }}\" | sha1sum)"
+    - id: test
+      run: |
+        the_tag=($(echo "${{ github.ref }}" | sha1sum))
+        echo ::set-output name=tag::$the_tag
+    - run: echo "${{ steps.test.outputs.tag }}"
+    - name: set Docker tag
+      run: |
+        if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo ::set-output name=tag::main            
+        elif [ "${{ steps.diff.outputs.changed }}" = "yes" ]; then
+            the_tag=($(echo "${{ github.ref }}" | sha1sum))
+            echo ::set-output name=tag::$the_tag
+        else
+            echo ::set-output name=tag::main
+        fi
+      id: dockertag
+    - run: echo "${{ steps.dockertag.outputs.tag }}"
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+      if: steps.diff.outputs.changed == 'yes'
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+      if: steps.diff.outputs.changed == 'yes'
+    - name: Build Docker images
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: caknowledgebase/caknowledgebase:${{ steps.dockertag.outputs.tag }}
+        target: ca-knowledgebase
+        file: docker/Dockerfile
+      if: steps.diff.outputs.changed == 'yes'
+
   deploy-book:
     runs-on: ubuntu-latest
-    container: dokken92/dolfinx_custom:v0.4.1
+    container: caknowledgebase/caknowledgebase:${{ needs.build-docker.outputs.dockertag }}
+    needs:
+    - build-docker
     
     steps:
     - uses: actions/checkout@v2
+
+    - run: echo "${{ needs.build-docker.outputs.dockertag }}"
 
     # Install dependencies
     - name: Set up Python 3.7
@@ -26,14 +96,11 @@ jobs:
       with:
         python-version: 3.7
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
     # Build the book
     - name: Build the book
       run: |
         PYVISTA_JUPYTER_BACKEND=static PYVISTA_OFF_SCREEN=false jupyter-book build .
-        
+
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3.5.9
