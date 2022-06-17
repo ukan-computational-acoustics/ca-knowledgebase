@@ -45,7 +45,7 @@ jobs:
       ## if: github.ref == 'refs/heads/main'
     - run: |
             the_tag=${GITHUB_HEAD_REF#refs/heads/}
-            echo ::set-output name=tag::${the_tag/\//_}
+            echo "${the_tag/\//_}"
     - name: set Docker tag
       run: |
         if [ "${{ steps.diff.outputs.changed }}" = "yes" ]; then
@@ -55,7 +55,7 @@ jobs:
             echo ::set-output name=tag::main
         fi
       id: dockertag
-    - run: echo ${{ steps.dockertag.outputs.tag }}
+    - run: echo "${{ steps.dockertag.outputs.tag }}"
     - name: Login to DockerHub
       uses: docker/login-action@v1
       with:
@@ -84,7 +84,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: echo ${{ needs.build-docker.outputs.dockertag }}
+    - run: echo "${{ needs.build-docker.outputs.dockertag }}"
 
     # Install dependencies
     - name: Set up Python 3.7
