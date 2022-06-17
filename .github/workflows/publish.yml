@@ -106,6 +106,21 @@ jobs:
       with:
         python-version: 3.7
 
+    - name: Generate ipynb files
+      run: |
+        ls
+      if: github.ref != 'refs/heads/gh-pages-source'
+
+    - name: Push to gh-pages-source
+      run: |
+        git checkout gh-pages-source
+        git add .
+        git commit -a -m "Generate ipynb files"
+        # git remote set-url origin https://${{ SECRETS.GITHUB_USER}}:${{ SECRETS.GITHUB_TOKEN }}@github.com/ca-knowledgebase/ca-knowledgebase.github.io.git
+        git remote set-url origin https://agully1:${{ SECRETS.GITHUB_TOKEN }}@github.com/ca-knowledgebase/ca-knowledgebase.github.io.git
+        git push -u origin gh-pages-source --force
+      if: github.ref == 'refs/heads/mscroggs/py-files'
+
     # Build the book
     - name: Build the book
       run: |
@@ -118,4 +133,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./_build/html
         cname: knowledgebase.acoustics.ac.uk
-      if: github.ref == 'refs/heads/main'
+      if: github.ref == 'refs/heads/gh-pages-source'
