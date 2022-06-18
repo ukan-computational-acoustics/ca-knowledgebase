@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Types of problem</title>
+    <title>What is a PDE?</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="What problem are we solving?" href="what-problem.html" />
+    <link rel="next" title="Acoustics PDEs" href="how-define-problem-acoustics-pdes.html" />
     <link rel="prev" title="How to define the problem to be solved?" href="how-define-problem.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -196,24 +196,29 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Types of problem
+     What is a PDE?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="how-define-problem-acoustics-pdes.html">
+     Acoustics PDEs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="how-define-problem-other-pdes.html">
+     Other PDEs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="how-define-problem-problem-classes.html">
+     Classes of problem
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="what-problem.html">
-   What problem are we solving?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="what-should-alg-do.html">
-   What does your algorithm need to do?
-  </a>
- </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="geom-and-mesh.html">
-   Geometry and Meshing
+  <a class="reference internal" href="how-to-solve.html">
+   How does the algorithm solve the problem?
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -222,21 +227,68 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="element-types.html">
-     Types of element
+    <a class="reference internal" href="how-to-solve-weak-form.html">
+     Weak Forms
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="meshes.html">
-     Meshes
+    <a class="reference internal" href="how-to-solve-finite-difference.html">
+     Finite Difference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="how-to-solve-sums-of-solutions.html">
+     Sums of Analytical Solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="how-to-solve-greens-functions.html">
+     Monopoles and free space Green’s Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="how-to-solve-eikonal.html">
+     Eikonal Approximation and Raytracing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="how-to-solve-magic-of-matrices.html">
+     Sums of Analytical Solutions
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="GreensFunctions.html">
-   Monopoles and free space Green’s Functions
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="geom-and-mesh.html">
+   Geometry and Meshing
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="geom-and-mesh-dimensionality.html">
+     Dimensioanlity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="geom-and-mesh-mesh-structure.html">
+     Mesh Structure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="geom-and-mesh-elements-and-interpolation.html">
+     Elements and Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="geom-and-mesh-mesh-refinement.html">
+     Meshes
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -249,8 +301,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../tutorials/bem/bem-tutorials-main.html">
    BEM Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -266,8 +318,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../tutorials/fem/fem-tutorials-main.html">
    FEM Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -444,7 +496,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues/new?title=Issue%20on%20page%20%2Fcore-concepts/problem-types.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues/new?title=Issue%20on%20page%20%2Fcore-concepts/how-define-problem-what-is-a-pde.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -461,7 +513,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/edit/main/core-concepts/problem-types.md"
+        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/edit/main/core-concepts/how-define-problem-what-is-a-pde.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -489,7 +541,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/core-concepts/problem-types.md"
+        <a href="../_sources/core-concepts/how-define-problem-what-is-a-pde.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -526,23 +578,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#authord">
+   Authord:
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Types of problem</h1>
+                <h1>What is a PDE?</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#authord">
+   Authord:
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -550,27 +639,19 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="types-of-problem">
-<h1>Types of problem<a class="headerlink" href="#types-of-problem" title="Permalink to this headline">#</a></h1>
-<div class="tip admonition">
-<p class="admonition-title">Alpha mode!</p>
-<p>This page is in alpha mode. That means its content has not yet been thoroughly reviewed.</p>
-<p>If you would like to contribute suggestions or corrections, please do so following the <a class="reference internal" href="../about/contribute-contribute.html"><span class="doc std std-doc">guide for contributors</span></a>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="what-is-a-pde">
+<h1>What is a PDE?<a class="headerlink" href="#what-is-a-pde" title="Permalink to this headline">#</a></h1>
+<section id="authord">
+<h2>Authord:<a class="headerlink" href="#authord" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves">Jonathan Hargreaves</a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This part of the site is currently under development. Its content is incomplete.</p>
 </div>
-<p>The <em>type</em> of problem you are attempting to solve using computational acoustics will have a considerable effect upon how you proceed, including things as fundamental as what methods you will be able to use.</p>
-<p>There are four main types of problem:</p>
-<figure class="align-default" id="problem-types">
-<img alt="../_images/problem_types_JH.JPG" src="../_images/problem_types_JH.JPG" />
-<figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Types of problem in computational acoustics. Image produced by: <a class="reference external" href="https://www.salford.ac.uk/our-staff/jonathan-hargreaves">Jonathan Hargreaves</a>.</span><a class="headerlink" href="#problem-types" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p><em>Interior radiation</em> problems</p></li>
-<li><p><em>Interior scattering</em> problems</p></li>
-<li><p><em>Exterior radiation</em> problems</p></li>
-<li><p><em>Exterior scattering</em> problems</p></li>
-</ul>
+<p>This page will talk through what a PDE is, either via a couple of very simple examples or some external links.
+Mass on a spring is the classic one to discuss but there are others.
+Riding a bike or driving a car? Just got input force, inertia and drag then - not stiffness. Would lead to point that PDEs have to 2nd order to be oscillatory, if that’s something we want to get into.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -607,10 +688,10 @@ title="Print to PDF"
             <p class="prev-next-title">How to define the problem to be solved?</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="what-problem.html" title="next page">
+    <a class='right-next' id="next-link" href="how-define-problem-acoustics-pdes.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">What problem are we solving?</p>
+        <p class="prev-next-title">Acoustics PDEs</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

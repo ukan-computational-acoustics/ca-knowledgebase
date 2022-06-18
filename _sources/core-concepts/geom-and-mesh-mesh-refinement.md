@@ -9,12 +9,9 @@ If you would like to contribute suggestions or corrections, please do so followi
 
 The _mesh_ is a representation of a domain by [unstructured elements](element-types) and how the mesh is set up is a major factor in how accurate a simulation will be.
 
-There are two main considerations:
-
-* *Dimensionality*: will the mesh be set up in one, two or three dimensions? The more dimensions, the greater the computational cost of your model. If your model is regular or symmetrical, you may be able to exploit this to reduce the problem size.
 * *Element size*: smaller elements result in greater accuracy, at the expense of increased computational cost. The process of reducing the element size to increase accuracy is called "h-refinement" (see Figure below).
 
-```{figure} meshes_comsol.JPG
+```{figure} geom-and-mesh-mesh-refinement.JPG
 ---
 name: h-refinement
 ---

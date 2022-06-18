@@ -1,4 +1,7 @@
-# Types of problem
+# Classes of problem
+
+## Authors:
+
 
 ```{admonition} Alpha mode!
 :class: tip
@@ -11,7 +14,7 @@ The _type_ of problem you are attempting to solve using computational acoustics 
 
 There are four main types of problem:
 
-```{figure} problem_types_JH.JPG
+```{figure} how-define-problem-problem-classes.JPG
 ---
 name: problem-types
 ---
