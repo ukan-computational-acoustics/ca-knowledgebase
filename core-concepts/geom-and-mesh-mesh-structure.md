@@ -1,4 +1,5 @@
-# Types of element
+# Mesh Structure
+
 
 ```{admonition} Alpha mode!
 :class: tip
@@ -18,7 +19,7 @@ The data used for simulation is also likely to be in one of the two formats. Ima
 
 Different computational acoustics methods use different element types. FEM and BEM typically use unstructured elements, while FDTD uses structured elements, as illustrated in the figure below.
 
-```{figure} elements_JH.JPG
+```{figure} geom-and-mesh-mesh-structure.JPG
 ---
 name: element-types
 ---
