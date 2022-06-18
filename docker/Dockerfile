@@ -185,7 +185,7 @@ RUN git clone -b gmsh_${GMSH_VERSION} --single-branch --depth 1 https://gitlab.o
 
 ENV PYTHONPATH=/usr/local/lib:$PYTHONPATH
 
-# Install PETSc and petsc4py with real and complex types
+# Install PETSc and petsc4py with complex types
 ENV PETSC_DIR=/usr/local/petsc SLEPC_DIR=/usr/local/slepc
 RUN apt-get -qq update && \
     apt-get -y install bison flex && \
@@ -276,7 +276,7 @@ RUN git clone -b ${DOLFINX_VERSION} --single-branch --depth 1 https://github.com
 
 
 ENV PKG_CONFIG_PATH=/usr/local/dolfinx-complex/lib/pkgconfig:$PKG_CONFIG_PATH \
-    PETSC_ARCH=linux-gnu-real-32 \
+    PETSC_ARCH=linux-gnu-complex-32 \
     PYTHONPATH=/usr/local/dolfinx-complex/lib/python${PYTHON_VERSION}/dist-packages:$PYTHONPATH \
     LD_LIBRARY_PATH=/usr/local/dolfinx-complex/lib:$LD_LIBRARY_PATH
 
