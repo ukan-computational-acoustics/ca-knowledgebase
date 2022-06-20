@@ -1,6 +1,7 @@
-# Contribute your own computational acoustics code
+# Add your own computational acoustics code
 
-If you'd like to contribute to the community user code database, please fill out [this form](https://docs.google.com/forms/d/1myQkqaE1XZ4Is2QjG_UUdrtwRAME4DAYu-w8knMzc14). Your code will need to be hosted on GitHub, and we ask that you provide an informative readme file. You should also select a licence type.
+If you'd like to contribute to the community [user code database](https://knowledgebase.acoustics.ac.uk/user/user.html), please fill out [this form](https://docs.google.com/forms/d/1myQkqaE1XZ4Is2QjG_UUdrtwRAME4DAYu-w8knMzc14).
+Your code will need to be hosted on GitHub, and we ask that you provide an informative readme file. You should also select a licence type.
 
 If the sentence above makes sense to you, you don't need to read any further! If you would like to know *how* to create a GitHub repo for your code, read on...
 

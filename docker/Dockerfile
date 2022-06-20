@@ -303,6 +303,7 @@ RUN dpkgArch="$(dpkg --print-architecture)"; \
 
 RUN jupyter nbextension enable --py --sys-prefix ipygany
 
+WORKDIR /root
 
 EXPOSE 8888/tcp
 ENV SHELL /bin/bash
