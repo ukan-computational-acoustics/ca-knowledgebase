@@ -7,7 +7,7 @@ parts:
 - caption: 
   chapters:
   - file: about/get-started
-  - file: about/code-of-conduct
+  - file: CODE_OF_CONDUCT
   - file: about/contribution-guide
     sections:
     - file: about/contribute-suggest

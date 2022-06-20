@@ -23,4 +23,4 @@ If you are contributing a tutorial, please use the [tutorial template](code-temp
 If making changes via pull requests, only changes to markdown (`.md`), Jupyter notebook (`.ipynb`), and YAML (`.yml`) files will be accepted. Do not make edits to HTML content, or any other content in the `_build` folder or in the `gh-pages` branch, as these are automatically overwritten whenever the book is edited and rebuilt. 
 ```
 
-By contributing, you agree that we may redistribute your work under our license. In exchange, we will address your issues and/or assess your change proposal as promptly as we can, and help you become a member of our community. Everyone involved in the Computational Acoustics Knowledgebase agrees to abide by our [code of conduct](code-of-conduct).
+By contributing, you agree that we may redistribute your work under our license. In exchange, we will address your issues and/or assess your change proposal as promptly as we can, and help you become a member of our community. Everyone involved in the Computational Acoustics Knowledgebase agrees to abide by our [code of conduct](../CODE_OF_CONDUCT).

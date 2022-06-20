@@ -3,7 +3,7 @@
 Welcome to the UKAN Computational Acoustics Knowledgebase: a home for the computational acoustics research, development and user community in the UK and beyond.
 
 :::{note}
-By using this site you agree to be bound by our [code of conduct](about/code-of-conduct).
+By using this site you agree to be bound by our [code of conduct](CODE_OF_CONDUCT).
 :::
 
 How to use this site:
