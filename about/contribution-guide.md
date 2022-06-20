@@ -1,12 +1,17 @@
 # Guide for Contributors
 
-*Please note that this is a pre-alpha version of the site and we are not currently accepting contributions from the public.*
+We are always seeking contributions and testers for all sections of the site.
 
-We are always seeking contributions and testers for all sections of the site. See our [list of open issues](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues) for places where contributions are required, or suggest your own.
+To get an idea about what kind of things need doing, take a look at our
+[list of open issues on GitHub](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues).
+If you think something not on that list needs doing, go ahead and [open an issue](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues/new).
 
 :::{note}
 You must have a [GitHub](https://github.com/) account to make suggestions or contributions. Create one [here](https://github.com/signup). You can find a simple tutorial on using basic GitHub functionality [here](https://guides.github.com/activities/hello-world/).
 :::
 
-```{tableofcontents}
+More information about how to contribute can be found in these sections:
+
+```
+{tableofcontents}
 ```
