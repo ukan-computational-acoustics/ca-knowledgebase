@@ -251,8 +251,7 @@ ARG DOLFINX_CMAKE_BUILD_TYPE="RelWithDebInfo"
 # Extra CMake C++ compiler flags for DOLFINx C++ build.
 ARG DOLFINX_CMAKE_CXX_FLAGS
 
-# The dolfinx-onbuild container expects to have folders basix/ ufl/
-# ffcx/ and dolfinx/ mounted/shared at /src.
+# Install the components of FEniCSx
 RUN git clone -b ${UFL_VERSION} --single-branch --depth 1 https://github.com/fenics/ufl.git && \
     git clone -b ${BASIX_VERSION} --single-branch --depth 1 https://github.com/fenics/basix.git && \
     git clone -b ${FFCX_VERSION} --single-branch --depth 1 https://github.com/fenics/ffcx.git && \
