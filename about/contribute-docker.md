@@ -44,3 +44,8 @@ pip3 install *YOUR_LIBRARY*
 ## Rebuilding the Docker image
 When the Dockerfile is changed in a pull request or on the main branch, GitHub will automatically rebuild the Docker image. This takes a long time
 (around 1-2 hours) so it will take a while for and changes that involve a change to the Docker file to appear online.
+
+## Getting help
+The Docker image and the GitHub actions surrounding it were set up by [Matthew Scroggs](community/bios.html#matthew-scroggs) and
+[Jørgen S. Dokken](../community/bios#jorgen-s-dokken). If you encounter any problems with the Docker set up, please
+[open an issue on GitHub](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues/new) and tag Matthew and/or Jørgen.
