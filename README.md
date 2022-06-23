@@ -1,33 +1,20 @@
-![ ](logo.png)
+![UKAN Computational Acoustics Knowledgebase](logo.png)
 
-# ca-knowledgebase.github.io
-[Computational Acoustics Knowledgebase](knowledgebase.acoustics.ac.uk/)
+[![CC BY 4.0][cc-by-shield]][cc-by]
 
-## Table of Contents
+The UKAN Computational Acoustics Knowledgebase is a website full of information
+about solving acoustics problems computationally.
+It can be viewed online at [knowledgebase.acoustics.ac.uk](https://knowledgebase.acoustics.ac.uk)
 
-  - [Table of Contents](#table-of-contents)
-  - [What is this?](#what-is-this)
-    - [Status](#status)
-  - [Who is this for (the repo not the site)](#who-is-this-for-the-repo-not-the-site)
-  - [how to contact](#how-to-contact)
-  - [how to contribute](#how-to-contribute)
-    - [how to clone](#how-to-clone)
-    - [how to install Jupyter](#how-to-install-jupyter)
-      - [do I need to in order to contribute?](#do-i-need-to-in-order-to-contribute)
-    - [how to edit .md](#how-to-edit-md)
-    - [how to edit .ipynb](#how-to-edit-ipynb)
-    - [how to edit .yml](#how-to-edit-yml)
-  - [Flagging an issue](#flagging-an-issue)
+status: [![publish-book](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/actions/workflows/publish.yml/badge.svg)](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/actions/workflows/publish.yml)
 
-## What is this?
-### Status
-## Who is this for (the repo not the site)
-## Contact Us
-## How to Contribute
-### How to clone
-### How to install Jupyter Book
-#### Do I need Jupyter Book in order to contribute?
-### how to edit .md
-### how to edit .ipynb
-### how to edit .yml
-## Flagging an issue
+# License
+
+This work is licensed under a
+[Creative Commons Attribution 4.0 International License][cc-by].
+
+[![CC BY 4.0][cc-by-image]][cc-by]
+
+[cc-by]: http://creativecommons.org/licenses/by/4.0/
+[cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
+[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
