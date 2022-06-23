@@ -19,9 +19,27 @@ parts:
   
 - caption: Core Concepts
   chapters:
-  - file: core-concepts/problem-types
-  - file: core-concepts/element-types
-  - file: core-concepts/meshes
+  - file: core-concepts/why-use-ca
+  - file: core-concepts/how-define-problem
+    sections:
+    - file: core-concepts/how-define-problem-what-is-a-pde
+    - file: core-concepts/how-define-problem-acoustics-pdes
+    - file: core-concepts/how-define-problem-other-pdes
+    - file: core-concepts/how-define-problem-problem-classes
+  - file: core-concepts/how-to-solve
+    sections:
+    - file: core-concepts/how-to-solve-weak-form
+    - file: core-concepts/how-to-solve-finite-difference
+    - file: core-concepts/how-to-solve-sums-of-solutions
+    - file: core-concepts/how-to-solve-greens-functions
+    - file: core-concepts/how-to-solve-eikonal
+    - file: core-concepts/how-to-solve-magic-of-matrices
+  - file: core-concepts/geom-and-mesh
+    sections: 
+    - file: core-concepts/geom-and-mesh-dimensionality
+    - file: core-concepts/geom-and-mesh-mesh-structure
+    - file: core-concepts/geom-and-mesh-elements-and-interpolation
+    - file: core-concepts/geom-and-mesh-mesh-refinement
   
 - caption: Tutorials
   chapters:
@@ -30,7 +48,8 @@ parts:
     - file: tutorials/bem/bem-tutorial-1
   - file: tutorials/fem/fem-tutorials-main
     sections:
-    - file: tutorials/fem/fenics-helmholtz-tutorial-1
+    - file: tutorials/fem/fenicsx-helmholtz-tutorial
+  
   - file: tutorials/fdtd/fdtd-tutorials-main
     sections:
     - file: tutorials/fdtd/fdtd-tutorials-1
@@ -49,7 +68,7 @@ parts:
   
 - caption: Community
   chapters:
-  - file: community/community 
+  - file: community/bios 
   
 - caption: Reference
   chapters:
