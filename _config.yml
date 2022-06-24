@@ -34,10 +34,14 @@ html:
   use_issues_button: true
   use_repository_button: true
   use_edit_page_button: true
-  extra_footer: |
+   extra_footer: |
     <p>
     This site and its contents are licensed under the <a href="https://creativecommons.org/licenses/by/4.0/legalcode" alt="link to license text">Creative Commons Attribution 4.0 International Public License</a>.
     </p>
+  extra_navbar: |
+    <div>
+    <img src='ukan_logo.jpg' alt="acoustics.ac.uk logo"/>
+    </div>
   google_analytics_id: UA-207874104-1
   favicon: "favicon.ico"
     
