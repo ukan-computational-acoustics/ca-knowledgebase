@@ -37,11 +37,3 @@ This site is currently under development. Once complete, it will also include:
 ```
 
 [Contact us](mailto:ukan.ca.knowledgebase@gmail.com) with any questions, suggestions, comments and feedback.
-
-Help us show our current and future funders that this resource is useful by clicking the applause button below:
-
-<div>
-<link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css" />
-<script src="https://unpkg.com/applause-button/dist/applause-button.js"></script>
-<applause-button style="width: 30px; height: 30px;"/>
-</div>
