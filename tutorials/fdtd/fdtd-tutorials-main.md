@@ -9,4 +9,4 @@ This is where you will find tutorials on how to implement FDTD in Python.
 ```{tableofcontents}
 ```
 
-Content will be added soon. If you can contribute to this part of the site, please do so (following our [guide for contributors](../about/contribute-contribute)).
+If you can contribute to this part of the site, please do so (following our [guide for contributors](../about/contribute-contribute)).
