@@ -1,9 +1,5 @@
 # User code contributions
 
-```{warning}
-This part of the site is currently under development. Its content is incomplete.
-```
-
 This page contains a directory of all the computational acoustics code our users have agreed to share with the community. They are each hosted as individual GitHub projects.
 
 If you would like to contribute your code, please see the [instructions for submission](../about/contribute-user-code).
