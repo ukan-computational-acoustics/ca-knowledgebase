@@ -1,8 +1,6 @@
-# Dimensioanlity
+# Dimensionality
 
-## Authors:
-[Jonathan Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves)
-[Amelia Gully](https://knowledgebase.acoustics.ac.uk/community/bios.html#amelia-gully)
+Authors: [Jonathan Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves), [Amelia Gully](https://knowledgebase.acoustics.ac.uk/community/bios.html#amelia-gully)
 
 ```{warning}
 This part of the site is currently under development. Its content is incomplete.
