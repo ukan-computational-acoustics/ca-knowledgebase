@@ -7,14 +7,19 @@ parts:
 - caption: 
   chapters:
   - file: about/get-started
-  - file: about/code-of-conduct
   - file: about/contribution-guide
     sections:
     - file: about/contribute-suggest
     - file: about/contribute-contribute
-    - file: about/code-template
+      sections:
+      - file: about/contribute-github
+      - file: about/code-template
     - file: about/contribute-user-code
     - file: about/contribute-maintain
+      sections:
+      - file: about/contribute-building
+      - file: about/contribute-docker
+    - file: CODE_OF_CONDUCT
   - file: about/who-we-are
   
 - caption: Core Concepts
