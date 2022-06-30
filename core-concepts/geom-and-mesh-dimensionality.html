@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Dimensioanlity</title>
+    <title>Dimensionality</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -270,7 +270,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Dimensioanlity
+     Dimensionality
     </a>
    </li>
    <li class="toctree-l2">
@@ -613,26 +613,19 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#authors">
-   Authors:
+  <a class="reference internal nav-link" href="#d">
+   1D
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#d">
-     1D
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     2D
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     3D
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   2D
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   3D
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#examples-computational-cost-savings-meshing-a-loudspeaker">
@@ -660,7 +653,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Dimensioanlity</h1>
+                <h1>Dimensionality</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -671,26 +664,19 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#authors">
-   Authors:
+  <a class="reference internal nav-link" href="#d">
+   1D
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#d">
-     1D
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     2D
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     3D
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   2D
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   3D
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#examples-computational-cost-savings-meshing-a-loudspeaker">
@@ -719,23 +705,20 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="dimensioanlity">
-<h1>Dimensioanlity<a class="headerlink" href="#dimensioanlity" title="Permalink to this headline">#</a></h1>
-<section id="authors">
-<h2>Authors:<a class="headerlink" href="#authors" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves">Jonathan Hargreaves</a>
-<a class="reference external" href="https://knowledgebase.acoustics.ac.uk/community/bios.html#amelia-gully">Amelia Gully</a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="dimensionality">
+<h1>Dimensionality<a class="headerlink" href="#dimensionality" title="Permalink to this headline">#</a></h1>
+<p>Authors: <a class="reference external" href="https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves">Jonathan Hargreaves</a>, <a class="reference external" href="https://knowledgebase.acoustics.ac.uk/community/bios.html#amelia-gully">Amelia Gully</a></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This part of the site is currently under development. Its content is incomplete.</p>
 </div>
-<p>Will the mesh be set up in one, two or three dimensions? Waht about axisymmetry? The more dimensions, the greater the computational cost of your model. If your model is regular or symmetrical, you may be able to exploit this to reduce the problem size.</p>
+<p>Will the mesh be set up in one, two or three dimensions? What about axisymmetry? The more dimensions, the greater the computational cost of your model. If your model is regular or symmetrical, you may be able to exploit this to reduce the problem size.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For FEM &amp; FDTD this modifies the PDE. For BEM, this modifies the Green’s function. Compactness can be an issue for the latter.</p>
 </div>
 <section id="d">
-<h3>1D<a class="headerlink" href="#d" title="Permalink to this headline">#</a></h3>
+<h2>1D<a class="headerlink" href="#d" title="Permalink to this headline">#</a></h2>
 <figure class="align-default" id="d-geometry">
 <img alt="../_images/geom-and-mesh-dimensionality-1D.png" src="../_images/geom-and-mesh-dimensionality-1D.png" />
 <figcaption>
@@ -749,7 +732,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="id1">
-<h3>2D<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h2>2D<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <figure class="align-default" id="id2">
 <img alt="../_images/geom-and-mesh-dimensionality-2D.png" src="../_images/geom-and-mesh-dimensionality-2D.png" />
 <figcaption>
@@ -763,7 +746,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="id3">
-<h3>3D<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h2>3D<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <figure class="align-default" id="id4">
 <img alt="../_images/geom-and-mesh-dimensionality-3D.png" src="../_images/geom-and-mesh-dimensionality-3D.png" />
 <figcaption>
@@ -775,7 +758,6 @@ title="Print to PDF"
 <li><p>Domain is a volume</p></li>
 <li><p>Boundary is a surface</p></li>
 </ul>
-</section>
 </section>
 <section id="examples-computational-cost-savings-meshing-a-loudspeaker">
 <h2>Examples Computational Cost Savings - Meshing a Loudspeaker<a class="headerlink" href="#examples-computational-cost-savings-meshing-a-loudspeaker" title="Permalink to this headline">#</a></h2>
