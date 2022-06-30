@@ -1,7 +1,5 @@
 # Guide for Contributors
 
-*Please note that this is a pre-alpha version of the site and we are not currently accepting contributions from the public.*
-
 We are always seeking contributions and testers for all sections of the site. See our [list of open issues](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues) for places where contributions are required, or suggest your own.
 
 :::{note}

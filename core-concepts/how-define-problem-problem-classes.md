@@ -1,7 +1,5 @@
 # Classes of problem
-
-## Authors:
-
+Author: [Jonathan Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves)
 
 ```{admonition} Alpha mode!
 :class: tip

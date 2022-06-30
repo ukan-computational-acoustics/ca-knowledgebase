@@ -1,14 +1,12 @@
-# Dimensioanlity
+# Dimensionality
 
-## Authors:
-[Jonathan Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves)
-[Amelia Gully](https://knowledgebase.acoustics.ac.uk/community/bios.html#amelia-gully)
+Authors: [Jonathan Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves), [Amelia Gully](https://knowledgebase.acoustics.ac.uk/community/bios.html#amelia-gully)
 
 ```{warning}
 This part of the site is currently under development. Its content is incomplete.
 ```
 
-Will the mesh be set up in one, two or three dimensions? Waht about axisymmetry? The more dimensions, the greater the computational cost of your model. If your model is regular or symmetrical, you may be able to exploit this to reduce the problem size.
+Will the mesh be set up in one, two or three dimensions? What about axisymmetry? The more dimensions, the greater the computational cost of your model. If your model is regular or symmetrical, you may be able to exploit this to reduce the problem size.
 
 ```{note}
 For FEM & FDTD this modifies the PDE. For BEM, this modifies the Green's function. Compactness can be an issue for the latter.
