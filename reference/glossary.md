@@ -43,3 +43,5 @@ Partial differential equation (PDE)
 Perfectly matched layer (PML)
     An artificial ABC with non-physical properties which vary gradually throughout the layer in order to ensure that no energy is reflected into the interior of the domain.
 ```
+
+If you'd like to suggest a glossry item or add a definition, please click the <i class="fab fa-github"></i> GitHub logo at the top of this page and select <i class="fas fa-lightbulb"></i> Open Issue, and include the details there.

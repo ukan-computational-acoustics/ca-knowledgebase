@@ -13,6 +13,8 @@ There are a large number of computational acoustics resources on the web. Here, 
 [Numerical Sound Synthesis](https://ccrma.stanford.edu/~bilbao/booktop/node1.html)
         Online version of [Stefan Bilbao's](https://www.acoustics.ed.ac.uk/group-members/dr-stefan-bilbao/) book Numerical Sound Synthesis.
 
+[Room Acoustics Modeling with Interactive Visualizations](https://interactiveacoustics.info/)
+	Lauri Savioja's interactive page on geometrical acoustics for room acoustic modeling.
 
 ```
 
