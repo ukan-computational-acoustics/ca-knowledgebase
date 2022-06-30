@@ -1,7 +1,5 @@
 # Other PDEs
-
-## Authors:
-Matthew Hamilton
+Author: Matthew Hamilton
 
 ```{warning}
 This part of the site is currently under development. Its content is incomplete.

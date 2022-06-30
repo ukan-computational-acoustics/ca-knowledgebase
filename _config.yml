@@ -40,6 +40,14 @@ html:
     </p>
   google_analytics_id: UA-207874104-1
   favicon: "favicon.ico"
+  
+parse:
+  myst_enable_extensions:
+    - html_image
+    - dollarmath
+    - linkify
+    - substitution
+    - colon_fence
     
 sphinx:
   config:

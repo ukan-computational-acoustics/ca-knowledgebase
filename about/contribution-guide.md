@@ -1,5 +1,4 @@
 # Guide for Contributors
-
 We are always seeking contributions and testers for all sections of the site.
 
 To get an idea about what kind of things need doing, take a look at our
