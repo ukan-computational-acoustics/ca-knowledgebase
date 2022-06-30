@@ -125,11 +125,6 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="code-of-conduct.html">
-   Code of Conduct
-  </a>
- </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="contribution-guide.html">
    Guide for Contributors
@@ -145,24 +140,58 @@ const thebe_selector_output = ".output, .cell_output"
      Making suggestions
     </a>
    </li>
-   <li class="toctree-l2">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="contribute-contribute.html">
      Contributing material to the site
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="code-template.html">
-     Tutorial template
-    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="contribute-github.html">
+       Getting started with GitHub
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="code-template.html">
+       Tutorial template
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="contribute-user-code.html">
-     Contribute your own computational acoustics code
+     Add your own computational acoustics code
     </a>
    </li>
-   <li class="toctree-l2">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="contribute-maintain.html">
-     For maintainers
+     Further information for maintainers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="contribute-building.html">
+       Building this site
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="contribute-docker.html">
+       The knowledgebase Docker image
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CODE_OF_CONDUCT.html">
+     Code of Conduct
     </a>
    </li>
   </ul>
@@ -188,8 +217,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../core-concepts/how-define-problem.html">
    How to define the problem to be solved?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -220,8 +249,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../core-concepts/how-to-solve.html">
    How does the algorithm solve the problem?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -262,8 +291,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../core-concepts/geom-and-mesh.html">
    Geometry and Meshing
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -301,8 +330,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../tutorials/bem/bem-tutorials-main.html">
    BEM Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -318,8 +347,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../tutorials/fem/fem-tutorials-main.html">
    FEM Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -335,8 +364,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../tutorials/fdtd/fdtd-tutorials-main.html">
    FDTD Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -616,8 +645,9 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="making-suggestions">
 <h1>Making suggestions<a class="headerlink" href="#making-suggestions" title="Permalink to this headline">#</a></h1>
-<p>If you have a suggestion or issue to raise, please use the GitHub issues feature. To create a new issue, click the GitHub icon at the top of any page and select ‘Open Issue’. This will open an issue in the associated GitHub repository.</p>
-<p>Please provide as much detail as possible to allow the issue to be addressed. This should include a link to the page in question.</p>
+<p>If you have a suggestion or issue to raise, please <a class="reference external" href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues/new">open an issue on GitHub</a>.
+To create a new issue about a specific page, you can click the GitHub icon (<i class="fab fa-github"></i>) at the top of any page and select ‘Open Issue’.</p>
+<p>Please provide as much detail as possible to allow the issue to be addressed. This should include link(s) to any relevant pages.</p>
 </section>
 
     <script type="text/x-thebe-config">

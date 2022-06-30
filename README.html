@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>License</title>
+    <title>Contributing</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -123,11 +123,6 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="about/code-of-conduct.html">
-   Code of Conduct
-  </a>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="about/contribution-guide.html">
    Guide for Contributors
@@ -143,24 +138,58 @@ const thebe_selector_output = ".output, .cell_output"
      Making suggestions
     </a>
    </li>
-   <li class="toctree-l2">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="about/contribute-contribute.html">
      Contributing material to the site
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="about/code-template.html">
-     Tutorial template
-    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="about/contribute-github.html">
+       Getting started with GitHub
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="about/code-template.html">
+       Tutorial template
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="about/contribute-user-code.html">
-     Contribute your own computational acoustics code
+     Add your own computational acoustics code
     </a>
    </li>
-   <li class="toctree-l2">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="about/contribute-maintain.html">
-     For maintainers
+     Further information for maintainers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="about/contribute-building.html">
+       Building this site
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="about/contribute-docker.html">
+       The knowledgebase Docker image
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="CODE_OF_CONDUCT.html">
+     Code of Conduct
     </a>
    </li>
   </ul>
@@ -186,8 +215,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="core-concepts/how-define-problem.html">
    How to define the problem to be solved?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -218,8 +247,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="core-concepts/how-to-solve.html">
    How does the algorithm solve the problem?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -260,8 +289,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="core-concepts/geom-and-mesh.html">
    Geometry and Meshing
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -299,8 +328,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="tutorials/bem/bem-tutorials-main.html">
    BEM Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -316,8 +345,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="tutorials/fem/fem-tutorials-main.html">
    FEM Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -333,8 +362,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="tutorials/fdtd/fdtd-tutorials-main.html">
    FDTD Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -588,23 +617,104 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Contributing
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#contributing-directly">
+     Contributing directly
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reporting-errors-making-suggestions">
+     Reporting errors &amp; making suggestions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-of-conduct">
+     Code of conduct
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#license">
+   License
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>License</h1>
+                <h1>Contributing</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Contributing
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#contributing-directly">
+     Contributing directly
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reporting-errors-making-suggestions">
+     Reporting errors &amp; making suggestions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-of-conduct">
+     Code of conduct
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#license">
+   License
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -618,10 +728,30 @@ title="Print to PDF"
 about solving acoustics problems computationally.
 It can be viewed online at <a class="reference external" href="https://knowledgebase.acoustics.ac.uk">knowledgebase.acoustics.ac.uk</a></p>
 <p>status: <a class="reference external" href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/actions/workflows/publish.yml"><img alt="publish-book" src="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/actions/workflows/publish.yml/badge.svg" /></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">#</a></h1>
+<p>You can find a detailed guide about how to contribute to the knowledgebase at <a class="reference external" href="https://knowledgebase.acoustics.ac.uk/about/contribution-guide.html">https://knowledgebase.acoustics.ac.uk/about/contribution-guide.html</a>.</p>
+<section id="contributing-directly">
+<h2>Contributing directly<a class="headerlink" href="#contributing-directly" title="Permalink to this headline">#</a></h2>
+<p>Details about how to contribute material to the knowledgebase can be found at <a class="reference external" href="https://knowledgebase.acoustics.ac.uk/about/contribute-contribute.html">https://knowledgebase.acoustics.ac.uk/about/contribute-contribute.html</a>.</p>
+<p>The <a class="reference external" href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues">GitHub issues</a> are a good place to start, as they
+contain details of suggested changes an improvements. If you are new to contributing to the knowledgebase, you might like to
+look at any issues tagged <a class="reference external" href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/labels/good%20first%20issue">good first issue</a>.</p>
+</section>
+<section id="reporting-errors-making-suggestions">
+<h2>Reporting errors &amp; making suggestions<a class="headerlink" href="#reporting-errors-making-suggestions" title="Permalink to this headline">#</a></h2>
+<p>If you spot a mistake on the knowledgebase website or want to make a suggestion about the content, you can
+<a class="reference external" href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues/new">open an issue on GitHub</a>.</p>
+</section>
+<section id="code-of-conduct">
+<h2>Code of conduct<a class="headerlink" href="#code-of-conduct" title="Permalink to this headline">#</a></h2>
+<p>We expect all contributors to follow our <a class="reference internal" href="CODE_OF_CONDUCT.html"><span class="doc std std-doc">code of conduct</span></a>. Unacceptable behaviour can be reported to
+<a class="reference external" href="mailto:ukan&#46;ca&#46;knowledgebase&#37;&#52;&#48;gmail&#46;com">ukan<span>&#46;</span>ca<span>&#46;</span>knowledgebase<span>&#64;</span>gmail<span>&#46;</span>com</a>.</p>
+</section>
+</section>
 <section class="tex2jax_ignore mathjax_ignore" id="license">
 <h1>License<a class="headerlink" href="#license" title="Permalink to this headline">#</a></h1>
-<p>This work is licensed under a
-<a class="reference external" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+<p>This work is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
 <p><a class="reference external" href="http://creativecommons.org/licenses/by/4.0/"><img alt="CC BY 4.0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
 </section>
 

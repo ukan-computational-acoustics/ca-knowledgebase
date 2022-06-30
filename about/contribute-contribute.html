@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tutorial template" href="code-template.html" />
+    <link rel="next" title="Getting started with GitHub" href="contribute-github.html" />
     <link rel="prev" title="Making suggestions" href="contribute-suggest.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -125,11 +125,6 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="code-of-conduct.html">
-   Code of Conduct
-  </a>
- </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="contribution-guide.html">
    Guide for Contributors
@@ -145,24 +140,58 @@ const thebe_selector_output = ".output, .cell_output"
      Making suggestions
     </a>
    </li>
-   <li class="toctree-l2 current active">
+   <li class="toctree-l2 current active has-children">
     <a class="current reference internal" href="#">
      Contributing material to the site
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="code-template.html">
-     Tutorial template
-    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="contribute-github.html">
+       Getting started with GitHub
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="code-template.html">
+       Tutorial template
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="contribute-user-code.html">
-     Contribute your own computational acoustics code
+     Add your own computational acoustics code
     </a>
    </li>
-   <li class="toctree-l2">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="contribute-maintain.html">
-     For maintainers
+     Further information for maintainers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="contribute-building.html">
+       Building this site
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="contribute-docker.html">
+       The knowledgebase Docker image
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CODE_OF_CONDUCT.html">
+     Code of Conduct
     </a>
    </li>
   </ul>
@@ -188,8 +217,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../core-concepts/how-define-problem.html">
    How to define the problem to be solved?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -220,8 +249,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../core-concepts/how-to-solve.html">
    How does the algorithm solve the problem?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -262,8 +291,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../core-concepts/geom-and-mesh.html">
    Geometry and Meshing
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -301,8 +330,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../tutorials/bem/bem-tutorials-main.html">
    BEM Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -318,8 +347,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../tutorials/fem/fem-tutorials-main.html">
    FEM Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -335,8 +364,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../tutorials/fdtd/fdtd-tutorials-main.html">
    FDTD Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -616,28 +645,29 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="contributing-material-to-the-site">
 <h1>Contributing material to the site<a class="headerlink" href="#contributing-material-to-the-site" title="Permalink to this headline">#</a></h1>
-<p>If you choose to contribute, you may want to look at <a class="reference external" href="https://app.egghead.io/playlists/how-to-contribute-to-an-open-source-project-on-github">How to Contribute to an Open Source Project on GitHub</a>. In brief:</p>
-<ol class="simple">
-<li><p>The published copy of the knowledgebase is in the main branch of the repository (so that GitHub will regenerate it automatically). Please create all branches from that, and merge the main repository’s main branch into your main branch before starting work. Please do not work directly in your main branch, since that will make it difficult for you to work on other contributions.</p></li>
-<li><p>We use <a class="reference external" href="https://guides.github.com/introduction/flow/">GitHub flow</a> to manage changes:</p>
-<ol class="simple">
-<li><p>Create a new branch in your desktop copy of this repository for each significant change.</p></li>
-<li><p>Commit the change in that branch.</p></li>
-<li><p>Push that branch to your fork of this repository on GitHub.</p></li>
-<li><p>Submit a pull request from that branch to the main repository.</p></li>
-<li><p>If you receive feedback, make changes on your desktop and push to your branch on GitHub: the pull request will update automatically.</p></li>
-</ol>
-</li>
-</ol>
-<p>The site has maintainers who review issues and pull requests or encourage others to do so. The maintainers are community volunteers, and have final say over what gets merged into the knowledgebase.</p>
-<p>The majority of this guide is written in markdown (<code class="docutils literal notranslate"><span class="pre">.md</span></code>) and Jupyter notebook (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) files. Jupyter Books use MyST which is an extension of basic markdown syntax. See their <a class="reference external" href="https://jupyterbook.org/reference/cheatsheet.html">MyST cheatsheet</a> for information about formatting. Markdown pages do not contain executable content, whereas the notebook files do. See the Jupyter Books <a class="reference external" href="https://jupyterbook.org/content/executable/index.html">guide on writing executable content</a> for more information about notebooks.</p>
+<p>The source code of this knowledgebase can be found on <a class="reference external" href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io">Github</a>. The site is hosted
+using GitHub pages, and will automatically rebuild after every change to the main branch.</p>
+<p>If you are new to using GitHub, you may find our <a class="reference internal" href="contribute-github.html"><span class="doc std std-doc">getting started with GitHub guide</span></a> useful.</p>
+<p>The site has maintainers who review issues and pull requests or encourage others to do so. The maintainers are community volunteers, and have final
+say over what gets merged into the knowledgebase. Pull requests must receive at least one ‘approval’ before they can be merged.</p>
+<p>The majority of this guide is written in markdown (<code class="docutils literal notranslate"><span class="pre">.md</span></code>) and Jupyter notebook (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) files. Jupyter Books use MyST which is an extension of basic
+markdown syntax. See their <a class="reference external" href="https://jupyterbook.org/reference/cheatsheet.html">MyST cheatsheet</a> for information about formatting. Markdown pages do not
+contain executable content, whereas the notebook files do. See the Jupyter Books
+<a class="reference external" href="https://jupyterbook.org/content/executable/index.html">guide on writing executable content</a> for more information about notebooks.</p>
 <p>The structure and configuration of the book are determined by the YAML files <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code>. Don’t edit these unless you know what you’re doing!</p>
-<p>If you are contributing a tutorial, please use the <a class="reference internal" href="code-template.html"><span class="doc std std-doc">tutorial template</span></a> provided.</p>
+<p>If you are contributing a tutorial, please use the tutorial template provided. This can be found at
+<a class="reference external" href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/blob/main/about/code-template.ipynb">https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/blob/main/about/code-template.ipynb</a>.
+You can see what this template looks like when turned into a section of the knowledgebase by viewing <a class="reference internal" href="code-template.html"><span class="doc std std-doc">this tutorial template page</span></a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If making changes via pull requests, only changes to markdown (<code class="docutils literal notranslate"><span class="pre">.md</span></code>), Jupyter notebook (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>), and YAML (<code class="docutils literal notranslate"><span class="pre">.yml</span></code>) files will be accepted. Do not make edits to HTML content, or any other content in the <code class="docutils literal notranslate"><span class="pre">_build</span></code> folder or in the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch, as these are automatically overwritten whenever the book is edited and rebuilt.</p>
+<p>If making changes via pull requests, only changes to markdown (<code class="docutils literal notranslate"><span class="pre">.md</span></code>), Jupyter notebook (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>), and YAML (<code class="docutils literal notranslate"><span class="pre">.yml</span></code>) files will be accepted. Do not make edits to
+HTML content, or any other content in the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch, as these are automatically overwritten whenever the book is edited and rebuilt.</p>
 </div>
-<p>By contributing, you agree that we may redistribute your work under our license. In exchange, we will address your issues and/or assess your change proposal as promptly as we can, and help you become a member of our community. Everyone involved in the Computational Acoustics Knowledgebase agrees to abide by our <a class="reference internal" href="code-of-conduct.html"><span class="doc std std-doc">code of conduct</span></a>.</p>
+<p>By contributing, you agree that we may redistribute your work under our license. In exchange, we will address your issues and/or assess your change proposal as
+promptly as we can, and help you become a member of our community. Everyone involved in the Computational Acoustics Knowledgebase agrees to abide by our
+<a class="reference internal" href="../CODE_OF_CONDUCT.html"><span class="doc std std-doc">code of conduct</span></a>.</p>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -674,10 +704,10 @@ title="Print to PDF"
             <p class="prev-next-title">Making suggestions</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="code-template.html" title="next page">
+    <a class='right-next' id="next-link" href="contribute-github.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial template</p>
+        <p class="prev-next-title">Getting started with GitHub</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
