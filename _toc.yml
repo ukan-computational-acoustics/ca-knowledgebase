@@ -50,7 +50,8 @@ parts:
   chapters:
   - file: tutorials/bem/bem-tutorials-main
     sections:
-    - file: tutorials/bem/bem-tutorial-1
+    - file: tutorials/bem/BEM_in_words
+    - file: tutorials/bem/quick_BEM3
   - file: tutorials/fem/fem-tutorials-main
     sections:
     - file: tutorials/fem/fenicsx-helmholtz-tutorial
