@@ -20,6 +20,13 @@ Jørgen S. Dokken is a postdoctoral research associate at the Department of Engi
 University of Cambridge. He is one of the developers of the [the FEniCS finite element library](https://fenicsproject.org/),
 [Dolfin-adjoint](http://www.dolfin-adjoint.org/en/latest/) and the author of the [FEniCSx tutorial](https://jorgensd.github.io/dolfinx-tutorial/).
 
+## Andrew Gibbs
+
+[<i class="fa fa-internet-explorer"></i>Andrew's personal webpage, ](http://www.homepages.ucl.ac.uk/~ucahagi/)
+[<i class="fa fa-internet-explorer"></i>Andrew's GitHub page](https://github.com/AndrewGibbs)
+
+Andrew is a postdoctoral researcher at University College London, developing and analysing Boundary Element Methods. Currently his focus is on acoustic scattering by fractals, and high frequency acoustic scattering by polygons.
+
 ## Amelia Gully
 
 [<i class="fa fa-internet-explorer"></i> ameliagully.com](https://ameliagully.com) &nbsp; [<i class="fa fa-github"></i> @agully1](https://github.com/agully1)
