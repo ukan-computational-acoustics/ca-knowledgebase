@@ -62,6 +62,4 @@ applications and physiological modelling. He co-leads the
 Matthew Scroggs is a postdoctoral research associate in the Department of Engineering at the
 University of Cambridge. He is one of the developers of [the FEniCS finite element
 library](https://fenicsproject.org/) and [the Bempp boundary element
-library](https://bempp.com/).
-
-
+library](https://bempp.com/). He is the maintainer of [DefElement, an encyclopedia of finite element definitions](https://defelement.com).
