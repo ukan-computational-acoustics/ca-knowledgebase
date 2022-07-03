@@ -1,5 +1,7 @@
-# Introduction
-## Physical intuition
+# BEM in words
+Author: Andrew Gibbs
+## Introduction
+### Physical intuition
 
 Suppose we have an incoming acoustic wave $u^i$ and a scattering obstacle $\Omega$, and we want to determine the amplitude of the scattered acoustic field $u^s(x)$, i.e. how much sound has bounced back, at any point $x$ in the region surrounding the obstacle?
 
@@ -7,7 +9,7 @@ Physically, the idea of BEM may be interpreted as covering the obstacle in lots 
 
 To solve the BEM problem, i.e. to fine tune the volume on each microphone, we must solve a problem on the surface of $\Omega$, rather than in the area surrounding $\Omega$. We will write $\partial\Omega$ to represent the surface. Practically this can be appealing, because this problem is usually simpler: in a lower spatial dimensions and on a bounded domain. For example, modelling scattering by a cube, most of the computational work will be done on the circumference on the square faces of the cube.
 
-## Representation in terms of point sources
+### Representation in terms of point sources
 
 We will write $\Phi(x,y)$ to mean the point-source / Green's function / metaphorical speaker at point $y$ on $\partial \Omega$, observed at point $x$ on $\Omega$. Naturally we would expect $\Phi(x,y)$ to be a wave, and to get larger as $y$ moves towards $x$. 
 
@@ -34,7 +36,7 @@ If we consider two types of speakers, $\Phi(x,y)$ and $\frac{\partial \Phi(x,y)}
 
 Depending on boundary conditions, it may be possible to remove one of the two integrals above. For example, a sound-hard obstacle has boundary condition $u=0$ on $\partial\Omega$.
 
-## The steps to the Boundary Element Method
+### The steps to the Boundary Element Method
 
 1. Modify (1) to obtain an integral equation on the boundary $\partial \Omega$, where $u$ and/or $\frac{\partial u}{\partial n}$ on $\partial \Omega$ are the unknown quantities. This is called a _Boundary Integral Equation_ (BIE). At this point, no approximation has taken place.
 
@@ -44,7 +46,7 @@ Depending on boundary conditions, it may be possible to remove one of the two in
 
 For the remainder of this document, we will describe each of these steps in more detail.
 
-# Constructing a Boundary Integral Equation
+## Constructing a Boundary Integral Equation
 
 We want to solve (1) for the unknown densities.
 
@@ -55,7 +57,7 @@ This process of _moving the problem onto the boundary_ is commonly referred to a
 <details>
 <summary> Click here to show optional details on trace operators</summary>
 
-## Trace operators
+### Trace operators
 The simplest of the trace operators is the _Dirichlet_ trace $\gamma_D$, which can be interpreted physically as moving $x$ to the boundary $\partial\Omega$. This trace gives us
  $$
 \gamma_Du^s(x) = -\int_{\partial\Omega}\Phi(x,y)\frac{\partial u}{\partial n}(y)\mathrm{d}s(y)
@@ -112,7 +114,7 @@ where $K(x,y)$ is a known function called the _kernel_ (no relation to the compu
 
 Similarly, $f$ is known explicitly, and will depend on the choice of trace used and the incoming wave $u^i$. In the simplest case, we have $f = u^i$.
 
-## BIE directory
+### BIE directory
  <!-- Some of these formulations are not well-posed at certain wavenumbers $k$, meaning that they may have multiple solutions. If our BIE is not well posed, then our BEM has no chance of being accurate! -->
 
 This section contains a list of the formulations required for common acoustic scattering problems. Before we define these formulations, it is necessary to introduce the five main integral operators, their names are listed to the right:
@@ -153,7 +155,7 @@ The term $\eta$ is referred to as the _coupling parameter_, and can be chosen to
 Impedance/Robin problems are considerably more complicated, click here for details.
 </summary>
 
-## Impedance on the screen
+### Impedance on the screen
 Now consider more general Impedance / Robin problems on the screen, with boundary conditions
 $$
 \gamma^\pm_N u\pm\lambda^\pm\gamma_D^\pm u = -(\gamma_N^\pm u^i\pm\lambda^\pm\gamma_D^\pm u^i),
@@ -172,7 +174,7 @@ This is uniquely solvable for $\lambda^++\lambda^-\neq0$.
 </details>
 
 
-# Constructing a Boundary Element Method (BEM)
+## Constructing a Boundary Element Method (BEM)
 
 The main aim of the BEM is to approximate $v_N$ by approximately solving (2), then plug this approximation into (1), to obtain an approximation for $u^s$. This is done by writing
 $$
@@ -182,7 +184,7 @@ where the $\phi_n$ are basis functions, for example piecewise linear, piecewise 
 
 <!-- Actually write the approximate $u^s$ -->
 
-## Collocation BEM
+### Collocation BEM
 
 The idea behind collocation is to force (2) to hold at $N$ _collocation points_ $x_1,\ldots,x_N$, on the surface $\partial \Omega$. This can be expressed as
 $$
@@ -203,7 +205,7 @@ Collocation has the practical advantage over Galerkin (which will be summarised 
 * Another technique is to supplement the linear system with some collocation points _inside_ of $\Omega$ satisfying a different equation, which follows from (1), noting that $u=0$ in $\Omega$. There are known as CHIEF points.
 * When $\phi_n$ are piecewise linear functions, e.g. hat functions, choosing collocation points as the midpoints of $\mathrm{supp}\phi_n$ is actually a bad idea, and can lead to the linear system being unsolvable.
 
-## Galerkin BEM
+### Galerkin BEM
 
 The idea behind Galerkin BEM is similar to Galerkin FEM, we force (2) to hold when integrate against each of our basis functions
 
@@ -223,11 +225,11 @@ The only disadvantage of Galerkin (when compared against collocation) is the ext
 
 Sometimes this can be worth it, because the system to solve is often much better behaved in practice. There are some theoretical guarantees about solvability and accuracy, which follow when the operator $\mathcal{K}$ satisfies the _coercivity_ property. For this reason, mathematicians often prefer Galerkin BEM, and engineers prefer collocation.
 
-# Obtaining an approximate representation
+## Obtaining an approximate representation
 
 Finally, we can plug our approximation $v_N$ in place of $u$ or $\frac{\partial u}{\partial n}$ in (1) to obtain our approximation to $u^s(x)$.
 
-## Sound-soft/Dirichlet representation
+### Sound-soft/Dirichlet representation
 Here we have $\phi_h\approx \frac{\partial u}{\partial n}$, so 
 $$
 \begin{equation}
@@ -235,16 +237,16 @@ u^s(x)\approx u^s_h(x) = -\int_{\partial\Omega}\Phi(x,y)v_N(y)\ \mathrm{d}s(y) =
 \end{equation}
 $$
 
-## Sound-hard/Neumann representation
+### Sound-hard/Neumann representation
 Here we have $\phi_h\approx u$, so
 $$
 u^s(x)\approx u^s_h(x) = \int_{\partial\Omega}\frac{\partial \Phi(x,y)}{\partial n(y)}v_N\ \mathrm{d}s(y)
 =\sum_{n=1}^Nc_n\int_{\partial\Omega}\frac{\partial \Phi(x,y)}{\partial n(y)}\phi_h(y)\ \mathrm{d}s(y),
 $$
 
-# Some final comments
+## Some final comments
 
-## Comparison with FEM
+### Comparison with FEM
 
 The following table summarises the <span style="color:green">pros</span>  and <span style="color:red"> cons</span> of BEM, when compared against FEM for solving the same problem.
 
@@ -256,7 +258,7 @@ The following table summarises the <span style="color:green">pros</span>  and <s
 | Size of unknown domain | <span style="color:red">Unbounded</span>, typically addressed using an artificial boundary, e.g. Perfectly Matched Layers | <span style="color:green">Bounded</span>, on the surface of $\Omega$
 <!-- | Strong ellipticity / coercivity | In a non-standard norm | For screen problems, and star-shaped domains | -->
 
-## Choice of quadrature
+### Choice of quadrature
 In the coded example in the next tutorial, we will use a one-point quadrature rule for our integrals, which is the most basic approximation conceivable. For smooth integrands $(m\neq n)$, [Gauss-Legendre quadrature](https://en.wikipedia.org/wiki/Gaussian_quadrature#Gauss–Legendre_quadrature) is very popular in practice, as this converges much faster. In higher dimensional integrals, a popular approach is to use Gauss quadrature in each direction. This is sub-optimal, cubature rules are the most efficient way to do this, but are rarely used in practice. 
 
 For singular integrals $(m=n)$, grading can be used as a one-size-fits all approach. However, we often know the precise singular behaviour, so grading can be overkill. A more informed approach is that of singularity subtraction, where the singular part of the integrand is evaluated analytically, and the remaining part is evaluated using standard quadrature. A second informed approach is to use generalised Gaussian quadrature, which is designed to be accurate for integrals containing a certain type of singularity.
@@ -265,7 +267,7 @@ For singular double integrals, when the singularity is along the diagonal of the
 
 Quadrature is the main difficulty when implementing a BEM. If possible, use BEM software such as [bempp](https://bempp.com), where quadrature has been implemented carefully and efficiently. If you are hellbent on implementing your own BEM, get your quadrature routines from a colleague who has tried and tested them for similar problems, otherwise prepare yourself for several days/weeks/months of painful debugging.
 
-## Summary
+### Summary
 
 * Certain acoustic scattering problems can be reformulated as a problem on the boundary, where the unknown density determines the amplitude of lots of tiny sources/speakers
 * BEMs are FEMs on the boundary/surface of the obstacle
@@ -290,11 +292,11 @@ If you are coding your own BEM, it is strongly recommended that you avoid writin
 
 I will list below a few techniques which I have found useful in the past:
 
-## Graded quadrature
+### Graded quadrature
 
 This is the most generally applicable form of quadrature for singularities.
 
-## Duffy Transformation
+### Duffy Transformation
 
 This should be used in conjunction with any other method for singular quadrature. -->
 
