@@ -1,5 +1,17 @@
 # Author biographies
 
+## Antonio Baiano Svizzero
+
+[<i class="fa fa-internet-explorer"></i> undaproject.com](https://undaproject.com)
+
+Antonio Baiano Svizzero is a NVH CAE Engineer working for Denso on aero-vibro-acoustic simulation on HVAC systems. His research focuses on modelization of thin plates, aerodynamic source generation mechanism and sound absorbers. He currently collaborates with the University of Naples "Federico II".
+
+## Andrea Cicero
+
+[<i class="fa fa-internet-explorer"></i> ac-acustica.it](https://ac-acustica.it)
+
+Andrea Cicero is a PhD Student at the University of Salford. His research focuses on techniques for low frequency modelling of small room acoustics using the Boundary Element Method. He also practises as an acoustic engineer in Italy.
+
 ## Jørgen S. Dokken
 
 [<i class="fa fa-internet-explorer"></i> jsdokken.com](https://jsdokken.com) &nbsp; [<i class="fa fa-github"></i> @jorgensd](https://github.com/jorgensd) &nbsp; [<i class="fab fa-discourse"></i> @dokken](https://fenicsproject.discourse.group/u/dokken/)
@@ -7,6 +19,12 @@
 Jørgen S. Dokken is a postdoctoral research associate at the Department of Engineering at the
 University of Cambridge. He is one of the developers of the [the FEniCS finite element library](https://fenicsproject.org/),
 [Dolfin-adjoint](http://www.dolfin-adjoint.org/en/latest/) and the author of the [FEniCSx tutorial](https://jorgensd.github.io/dolfinx-tutorial/).
+
+## Andrew Gibbs
+
+[<i class="fa fa-internet-explorer"></i> homepages.ucl.ac.uk/~ucahagi](http://www.homepages.ucl.ac.uk/~ucahagi/) &nbsp; [<i class="fa fa-github"></i> @AndrewGibbs](https://github.com/AndrewGibbs)
+
+Andrew is a postdoctoral researcher at University College London, developing and analysing Boundary Element Methods. Currently his focus is on acoustic scattering by fractals, and high frequency acoustic scattering by polygons.
 
 ## Amelia Gully
 
@@ -50,23 +68,4 @@ applications and physiological modelling. He co-leads the
 Matthew Scroggs is a postdoctoral research associate in the Department of Engineering at the
 University of Cambridge. He is one of the developers of [the FEniCS finite element
 library](https://fenicsproject.org/) and [the Bempp boundary element
-library](https://bempp.com/).
-
-## Andrea Cicero
-
-[<i class="fa fa-internet-explorer"></i> ac-acustica.it](https://ac-acustica.it)
-
-Andrea Cicero is a PhD Studentat the University of Salford. His research focuses on techniques for low frequency modelling of small room acoustics using the Boundary Element Method. He also practises as an acoustic engineer in Italy.
-
-## Antonio Baiano Svizzero
-
-[<i class="fa fa-internet-explorer"></i> undaproject.com](https://undaproject.com)
-
-Antonio Baiano Svizzero is a NVH CAE Engineer working for Denso on aero-vibro-acoustic simulation on HVAC systems. His research focuses on modelization of thin plates, aerodynamic source generation mechanism and sound absorbers. He currently collaborates with the University of Naples "Federico II".
-
-## Andrew Gibbs
-
-[<i class="fa fa-internet-explorer"></i>Andrew's personal webpage, ](http://www.homepages.ucl.ac.uk/~ucahagi/)
-[<i class="fa fa-internet-explorer"></i>Andrew's GitHub page](https://github.com/AndrewGibbs)
-
-Andrew is a postdoctoral researcher at University College London, developing and analysing Boundary Element Methods. Currently his focus is on acoustic scattering by fractals, and high frequency acoustic scattering by polygons.
+library](https://bempp.com/). He is the maintainer of [DefElement, an encyclopedia of finite element definitions](https://defelement.com).

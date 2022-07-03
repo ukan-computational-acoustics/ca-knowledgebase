@@ -19,6 +19,8 @@ If you are contributing a tutorial, please use the tutorial template provided. T
 https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/blob/main/about/code-template.ipynb.
 You can see what this template looks like when turned into a section of the knowledgebase by viewing [this tutorial template page](code-template).
 
+Once you have contributed to the knowledgebase, please add yourself to the [author biographies](commubity/bios.md) page.
+
 ```{warning}
 If making changes via pull requests, only changes to markdown (`.md`), Jupyter notebook (`.ipynb`), and YAML (`.yml`) files will be accepted. Do not make edits to
 HTML content, or any other content in the `gh-pages` branch, as these are automatically overwritten whenever the book is edited and rebuilt. 
