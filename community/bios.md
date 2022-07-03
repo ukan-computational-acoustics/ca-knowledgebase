@@ -1,5 +1,17 @@
 # Author biographies
 
+## Antonio Baiano Svizzero
+
+[<i class="fa fa-internet-explorer"></i> undaproject.com](https://undaproject.com)
+
+Antonio Baiano Svizzero is a NVH CAE Engineer working for Denso on aero-vibro-acoustic simulation on HVAC systems. His research focuses on modelization of thin plates, aerodynamic source generation mechanism and sound absorbers. He currently collaborates with the University of Naples "Federico II".
+
+## Andrea Cicero
+
+[<i class="fa fa-internet-explorer"></i> ac-acustica.it](https://ac-acustica.it)
+
+Andrea Cicero is a PhD Student at the University of Salford. His research focuses on techniques for low frequency modelling of small room acoustics using the Boundary Element Method. He also practises as an acoustic engineer in Italy.
+
 ## Jørgen S. Dokken
 
 [<i class="fa fa-internet-explorer"></i> jsdokken.com](https://jsdokken.com) &nbsp; [<i class="fa fa-github"></i> @jorgensd](https://github.com/jorgensd) &nbsp; [<i class="fab fa-discourse"></i> @dokken](https://fenicsproject.discourse.group/u/dokken/)
@@ -52,14 +64,4 @@ University of Cambridge. He is one of the developers of [the FEniCS finite eleme
 library](https://fenicsproject.org/) and [the Bempp boundary element
 library](https://bempp.com/).
 
-## Andrea Cicero
 
-[<i class="fa fa-internet-explorer"></i> ac-acustica.it](https://ac-acustica.it)
-
-Andrea Cicero is a PhD Studentat the University of Salford. His research focuses on techniques for low frequency modelling of small room acoustics using the Boundary Element Method. He also practises as an acoustic engineer in Italy.
-
-## Antonio Baiano Svizzero
-
-[<i class="fa fa-internet-explorer"></i> undaproject.com](https://undaproject.com)
-
-Antonio Baiano Svizzero is a NVH CAE Engineer working for Denso on aero-vibro-acoustic simulation on HVAC systems. His research focuses on modelization of thin plates, aerodynamic source generation mechanism and sound absorbers. He currently collaborates with the University of Naples "Federico II".
