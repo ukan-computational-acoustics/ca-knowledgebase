@@ -22,8 +22,7 @@ University of Cambridge. He is one of the developers of the [the FEniCS finite e
 
 ## Andrew Gibbs
 
-[<i class="fa fa-internet-explorer"></i>Andrew's personal webpage, ](http://www.homepages.ucl.ac.uk/~ucahagi/)
-[<i class="fa fa-internet-explorer"></i>Andrew's GitHub page](https://github.com/AndrewGibbs)
+[<i class="fa fa-internet-explorer"></i> homepages.ucl.ac.uk/~ucahagi](http://www.homepages.ucl.ac.uk/~ucahagi/) &nbsp; [<i class="fa fa-github"></i> @AndrewGibbs](https://github.com/AndrewGibbs)
 
 Andrew is a postdoctoral researcher at University College London, developing and analysing Boundary Element Methods. Currently his focus is on acoustic scattering by fractals, and high frequency acoustic scattering by polygons.
 
