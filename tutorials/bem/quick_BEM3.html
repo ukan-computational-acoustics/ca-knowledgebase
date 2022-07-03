@@ -58,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="FEM Tutorials" href="../fem/fem-tutorials-main.html" />
-    <link rel="prev" title="BEM Tutorials" href="bem-tutorials-main.html" />
+    <link rel="prev" title="BEM in words" href="BEM_in_words.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -338,6 +338,11 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="BEM_in_words.html">
+     BEM in words
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      The Boundary Element Method (BEM)
@@ -508,7 +513,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/ca-knowledgebase/ca-knowledgebase.github.io/main?urlpath=tree/tutorials/bem/bem-tutorial-1.ipynb"
+        <a href="https://mybinder.org/v2/gh/ca-knowledgebase/ca-knowledgebase.github.io/main?urlpath=tree/tutorials/bem/quick_BEM3.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -568,7 +573,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues/new?title=Issue%20on%20page%20%2Ftutorials/bem/bem-tutorial-1.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues/new?title=Issue%20on%20page%20%2Ftutorials/bem/quick_BEM3.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -585,7 +590,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/edit/main/tutorials/bem/bem-tutorial-1.ipynb"
+        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/edit/main/tutorials/bem/quick_BEM3.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -613,7 +618,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/tutorials/bem/bem-tutorial-1.ipynb"
+        <a href="../../_sources/tutorials/bem/quick_BEM3.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -672,85 +677,53 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisites">
-   Prerequisites
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   The Boundary Element Method (BEM)
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
-   Setup
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-one-obtain-a-representation-for-the-solution-in-terms-of-boundary-data">
-   Step one: Obtain a representation for the solution in terms of boundary data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-two-reformulate-as-a-problem-on-the-boundary-gamma">
-   Step two: Reformulate as a problem on the boundary
-   <span class="math notranslate nohighlight">
-    \(\Gamma\)
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-three-approximate-the-boundary-data">
-   Step three: Approximate the boundary data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-four-use-approximate-boundary-data-in-representation-formula">
-   Step four: Use approximate boundary data in representation formula
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#drawbacks-of-bem-compared-with-fem">
-   Drawbacks of BEM compared with FEM
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-details-variations-on-bem">
-   Further details - variations on BEM
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choice-of-boundary-condition">
-     Choice of boundary condition
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prerequisites">
+     Prerequisites
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choice-of-bie">
-     Choice of BIE
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-one-obtain-a-representation-for-the-solution-in-terms-of-boundary-data">
+     Step one: Obtain a representation for the solution in terms of boundary data
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choice-of-basis">
-     Choice of basis
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-two-reformulate-as-a-problem-on-the-boundary-gamma">
+     Step two: Reformulate as a problem on the boundary
+     <span class="math notranslate nohighlight">
+      \(\Gamma\)
+     </span>
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choice-of-projection">
-     Choice of projection
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choice-of-quadrature">
-     Choice of quadrature
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-three-approximate-the-boundary-data">
+     Step three: Approximate the boundary data
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#from-dlmf-10-4-3-10-8-2-10-2-2-we-can-consider-the-first-term-in-the-asymptotic-expansion-of-the-hankel-function-integrate-the-log-exactly-to-write-int-theta-n-h-2-theta-m-h-2-tilde-phi-theta-m-vartheta-mathrm-d-vartheta">
+   From DLMF (10.4.3), (10.8.2), (10.2.2), we can consider the first term in the asymptotic expansion of the Hankel function, integrate the
+   <span class="math notranslate nohighlight">
+    \(\log\)
+   </span>
+   exactly, to write
+$$
+\int_{\theta_n-h/2}^{\theta_m+h/2}\tilde\Phi(\theta_m,\vartheta)~\mathrm{d}\vartheta
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-four-use-approximate-boundary-data-in-representation-formula">
+     Step four: Use approximate boundary data in representation formula
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -771,85 +744,53 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisites">
-   Prerequisites
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   The Boundary Element Method (BEM)
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
-   Setup
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-one-obtain-a-representation-for-the-solution-in-terms-of-boundary-data">
-   Step one: Obtain a representation for the solution in terms of boundary data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-two-reformulate-as-a-problem-on-the-boundary-gamma">
-   Step two: Reformulate as a problem on the boundary
-   <span class="math notranslate nohighlight">
-    \(\Gamma\)
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-three-approximate-the-boundary-data">
-   Step three: Approximate the boundary data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-four-use-approximate-boundary-data-in-representation-formula">
-   Step four: Use approximate boundary data in representation formula
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#drawbacks-of-bem-compared-with-fem">
-   Drawbacks of BEM compared with FEM
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-details-variations-on-bem">
-   Further details - variations on BEM
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choice-of-boundary-condition">
-     Choice of boundary condition
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prerequisites">
+     Prerequisites
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choice-of-bie">
-     Choice of BIE
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-one-obtain-a-representation-for-the-solution-in-terms-of-boundary-data">
+     Step one: Obtain a representation for the solution in terms of boundary data
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choice-of-basis">
-     Choice of basis
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-two-reformulate-as-a-problem-on-the-boundary-gamma">
+     Step two: Reformulate as a problem on the boundary
+     <span class="math notranslate nohighlight">
+      \(\Gamma\)
+     </span>
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choice-of-projection">
-     Choice of projection
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choice-of-quadrature">
-     Choice of quadrature
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-three-approximate-the-boundary-data">
+     Step three: Approximate the boundary data
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#from-dlmf-10-4-3-10-8-2-10-2-2-we-can-consider-the-first-term-in-the-asymptotic-expansion-of-the-hankel-function-integrate-the-log-exactly-to-write-int-theta-n-h-2-theta-m-h-2-tilde-phi-theta-m-vartheta-mathrm-d-vartheta">
+   From DLMF (10.4.3), (10.8.2), (10.2.2), we can consider the first term in the asymptotic expansion of the Hankel function, integrate the
+   <span class="math notranslate nohighlight">
+    \(\log\)
+   </span>
+   exactly, to write
+$$
+\int_{\theta_n-h/2}^{\theta_m+h/2}\tilde\Phi(\theta_m,\vartheta)~\mathrm{d}\vartheta
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-four-use-approximate-boundary-data-in-representation-formula">
+     Step four: Use approximate boundary data in representation formula
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -863,6 +804,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="the-boundary-element-method-bem">
 <h1>The Boundary Element Method (BEM)<a class="headerlink" href="#the-boundary-element-method-bem" title="Permalink to this headline">#</a></h1>
+<p>Author: Andrew Gibbs</p>
 <p>You can run this code directly in your browser by clicking on the rocket logo ( <i class="fas fa-rocket"></i> ) at the top of the page, and clicking ‘Binder’. This will open a Jupyter Notebook in a <a class="reference external" href="https://mybinder.org/">Binder</a> environment which is set up to contain everything you need to run the code. <strong>Don’t forget to save a local copy if you make any changes!</strong></p>
 <p>If you prefer, you can download the Jupyter Notebook file to run locally, by clicking the download logo ( <i class="fas fa-download"></i> ) at the top of the page and selecting ‘.ipynb’.</p>
 <p>If you are new to using Jupyter Notebooks, <a class="reference external" href="https://www.dataquest.io/blog/jupyter-notebook-tutorial/">this guide</a> will help you get started.</p>
@@ -870,22 +812,10 @@ title="Print to PDF"
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">#</a></h2>
 <p>To understand the basic principles explained in this tutorial, you should:</p>
 <ul class="simple">
-<li><p>Have an understanding of the exterior Helmholtz scattering problem</p></li>
-<li><p>Have a basic understanding of the midpoint rule, for approximating integrals</p></li>
-<li><p>Be comfortable using <code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
+<li><p>(Maths) Have an understanding of the exterior Helmholtz scattering problem</p></li>
+<li><p>(Maths) Have a basic understanding of the midpoint rule, for approximating integrals</p></li>
+<li><p>(Python) Be comfortable using <code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
 </ul>
-</section>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
-<p>This notebook introduces the <strong>Boundary Element Method</strong> (BEM), by a simple numerical example. The main idea behind is to use Green’s identities to represent the (unknown) scattered wave in terms of an unknown which is defined only on the boundary of our domain. For example, if we are modelling scattering by a sphere, the unknown is a function which lives on the surface of the sphere. BEM involves applying a finite element method to approximate this unknown on the boundary, hence the name. This is advantagous for the following two reasons:</p>
-<ul class="simple">
-<li><p>We have reduced the dimension of our problem by one, so meshing is considerably simpler, and fewer degrees of freedom are required</p></li>
-<li><p>We do not need to worry about meshing an unbounded domian, constructing an artificial boundary, etc.</p></li>
-</ul>
-</section>
-<section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
-<p>This example is intended to be from first principles, so we will only use methods from three of the main python libraries:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -897,28 +827,20 @@ title="Print to PDF"
 </section>
 <section id="step-one-obtain-a-representation-for-the-solution-in-terms-of-boundary-data">
 <h2>Step one: Obtain a representation for the solution in terms of boundary data<a class="headerlink" href="#step-one-obtain-a-representation-for-the-solution-in-terms-of-boundary-data" title="Permalink to this headline">#</a></h2>
-<p>For our scattering problem, we consider an incident wave <span class="math notranslate nohighlight">\(u^i(x)\)</span> impinging on an obstacle <span class="math notranslate nohighlight">\(\Omega\subset\mathbb{R}^n\)</span>, where <span class="math notranslate nohighlight">\(n=2,3\)</span>. Our starting point is the Helmholtz equation</p>
-<div class="math notranslate nohighlight">
-\[\label{eq:1}
-(\Delta+k^2)u=0,
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(u\)</span> denotes the total field, and <span class="math notranslate nohighlight">\(u^s=u-u^i\)</span> is the scattered field, which satisfies the Sommerfeld radiation condition.</p>
-<p>Applying <a class="reference external" href="https://en.wikipedia.org/wiki/Green%27s_identities#Green%27s_third_identity">Green’s third identity</a> we obtain the representation:</p>
-<div class="math notranslate nohighlight">
-\[
-u(x) = u^i(x) - \int_\Gamma \left[\Phi(x,y)\frac{\partial u}{\partial n}(y) - \frac{\partial \Phi(x,y)}{\partial n(y)}u(y)\right]~\mathrm{d}s(y),\quad x\in\mathbb{R}^n\setminus\Omega,
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\frac{\partial}{\partial n}\)</span> denotes the outward normal derivative, <span class="math notranslate nohighlight">\(\Gamma\)</span> denotes the boundary of <span class="math notranslate nohighlight">\(\Omega\)</span>, and <span class="math notranslate nohighlight">\(\Phi\)</span> denotes the fundamental solution</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<p>Our starting point is the representation:
+$<span class="math notranslate nohighlight">\(
+u(x) = u^i(x) - \int_{\partial\Omega} \left[\Phi(x,y)\frac{\partial u}{\partial n}(y) - \frac{\partial \Phi(x,y)}{\partial n(y)}u(y)\right]~\mathrm{d}s(y),\quad x\in\mathbb{R}^n\setminus\Omega,
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\frac{\partial}{\partial n}<span class="math notranslate nohighlight">\( denotes the outward normal derivative, \)</span>\partial\Omega<span class="math notranslate nohighlight">\( denotes the boundary of \)</span>\Omega<span class="math notranslate nohighlight">\(, and \)</span>\Phi<span class="math notranslate nohighlight">\( denotes the fundamental solution
+\)</span><span class="math notranslate nohighlight">\(
 \Phi(x,y) = \left\{
 \begin{array}{ll}
 \frac{\mathrm{i}}{4}H^{(1)}_0(k|x-y|),&amp;\quad n=2,\\
 \frac{\mathrm{e}^{\mathrm{i}k|x-y|}}{4\pi|x-y|},&amp;\quad n=3,
 \end{array}
 \right.
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(H^{(1)}_0\)</span> is the <a class="reference external" href="https://mathworld.wolfram.com/HankelFunctionoftheFirstKind.html">Hankel function</a> of the first kind order zero. You probably recognise the function for <span class="math notranslate nohighlight">\(n=3\)</span>, but if you haven’t seen <span class="math notranslate nohighlight">\(H^{(1)}_0\)</span> before, it looks like the ripples on the surface of a lake after you drop a pebble into the water:</p>
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>H^{(1)}_0<span class="math notranslate nohighlight">\( is the [Hankel function](https://mathworld.wolfram.com/HankelFunctionoftheFirstKind.html) of the first kind order zero. You probably recognise the function for \)</span>n=3<span class="math notranslate nohighlight">\(, but if you haven't seen \)</span>H^{(1)}_0$ before, it looks like the ripples on the surface of a lake after you drop a pebble into the water:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">hankel1</span> <span class="k">as</span> <span class="n">H1</span>
@@ -926,23 +848,24 @@ u(x) = u^i(x) - \int_\Gamma \left[\Phi(x,y)\frac{\partial u}{\partial n}(y) - \f
 <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 <span class="n">ripples</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">H1</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">X</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">Y</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">t</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">t</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">t</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ripples</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Real part of H_0^{(1)}(|x|))&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Real part of $</span><span class="se">\\</span><span class="s1">Phi(x,0)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Real part of H_0^{(1)}(|x|))&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$x_2$&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/bem-tutorial-1_3_1.png" src="../../_images/bem-tutorial-1_3_1.png" />
+<img alt="../../_images/quick_BEM3_3_1.png" src="../../_images/quick_BEM3_3_1.png" />
 </div>
 </div>
-<p>For this simple example, we will consider scattering by a circle in two-dimensions, with sound-soft aka Dirichlet boundary conditions. This means that <span class="math notranslate nohighlight">\(u=0\)</span> on <span class="math notranslate nohighlight">\(\Gamma\)</span>, so the BIE above simplifies to</p>
-<div class="math notranslate nohighlight">
-\[
+<p>For this simple example, we will consider scattering by a circle in two-dimensions, with sound-soft aka Dirichlet boundary conditions. This means that <span class="math notranslate nohighlight">\(u=0\)</span> on <span class="math notranslate nohighlight">\(\Gamma\)</span>, so the BIE above simplifies to
+$<span class="math notranslate nohighlight">\(
 u(x) = u^i(x) - \int_\Gamma \Phi(x,y)\frac{\partial u}{\partial n}(y)~\mathrm{d}s(y),\quad x\in\mathbb{R}^2\setminus\Omega.
-\]</div>
-<p>The integral may be interpreted as lots of tiny speakers <span class="math notranslate nohighlight">\(\Phi(x,y)\)</span> on our surface <span class="math notranslate nohighlight">\(\Gamma\)</span>, whilst <span class="math notranslate nohighlight">\(\frac{\partial u}{\partial n}(y)\)</span> can be interpreted as the volume of these speakers. We will choose our incoming wave to be an incident plane wave, <span class="math notranslate nohighlight">\(u^i(x):=\mathrm{e}^{\mathrm{i} k x\cdot d}\)</span>, where <span class="math notranslate nohighlight">\(d\in\mathbb{R}^2\)</span> is a unit vector which represents the direction of propagation.</p>
+\)</span><span class="math notranslate nohighlight">\(
+The integral may be interpreted as lots of tiny speakers \)</span>\Phi(x,y)<span class="math notranslate nohighlight">\( on our surface \)</span>\Gamma<span class="math notranslate nohighlight">\(, whilst \)</span>\frac{\partial u}{\partial n}(y)<span class="math notranslate nohighlight">\( can be interpreted as the volume of these speakers. We will choose our incoming wave to be an incident plane wave, \)</span>u^i(x)=\mathrm{e}^{\mathrm{i} k x\cdot d}<span class="math notranslate nohighlight">\(, where \)</span>d\in\mathbb{R}^2$ is a unit vector which represents the direction of propagation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mf">5.0</span>  <span class="c1"># wavenumber</span>
@@ -962,17 +885,15 @@ u(x) = u^i(x) - \int_\Gamma \Phi(x,y)\frac{\partial u}{\partial n}(y)~\mathrm{d}
 </section>
 <section id="step-two-reformulate-as-a-problem-on-the-boundary-gamma">
 <h2>Step two: Reformulate as a problem on the boundary <span class="math notranslate nohighlight">\(\Gamma\)</span><a class="headerlink" href="#step-two-reformulate-as-a-problem-on-the-boundary-gamma" title="Permalink to this headline">#</a></h2>
-<p>Remember, our long-term aim is to approximate <span class="math notranslate nohighlight">\(\frac{\partial u}{\partial n}\)</span>, then we can plug that approximation into the above equation, to obtain an approximation for <span class="math notranslate nohighlight">\(u(x)\)</span>. To get an equation we can solve, we take the limit of the above equation as <span class="math notranslate nohighlight">\(x\)</span> tends to <span class="math notranslate nohighlight">\(\Gamma\)</span> and rearrange, to obtain a <strong>boundary integral equation</strong> (BIE):</p>
-<div class="math notranslate nohighlight">
-\[
-\int_\Gamma \Phi(x,y)\frac{\partial u}{\partial n}(y)~\mathrm{d}s(y)=u^i(x),\quad x\in\Gamma.
-\]</div>
-<p>A BEM is an approximation of an equation of this type, defined on the boundary <span class="math notranslate nohighlight">\(\Gamma\)</span>. Before approximating, we can parametrise the circle <span class="math notranslate nohighlight">\(\Gamma\)</span> by <span class="math notranslate nohighlight">\(\theta\in[0,2\pi)\to x\in\Gamma\)</span> in the natural way, <span class="math notranslate nohighlight">\(x(\theta)=[\cos(\theta),\sin(\theta)]\)</span>, to rewrite the above BIE in terms of a one-dimensional parameter</p>
-<div class="math notranslate nohighlight">
-\[
+<p>Remember, our long-term aim is to approximate <span class="math notranslate nohighlight">\(\frac{\partial u}{\partial n}\)</span>, then we can plug that approximation into the above equation, to obtain an approximation for <span class="math notranslate nohighlight">\(u(x)\)</span>. To get an equation we can solve, we take the limit of the above equation as <span class="math notranslate nohighlight">\(x\)</span> tends to <span class="math notranslate nohighlight">\(\Gamma\)</span> and rearrange, to obtain a <strong>boundary integral equation</strong> (BIE):
+$<span class="math notranslate nohighlight">\(
+\int_{\partial\Omega} \Phi(x,y)\frac{\partial u}{\partial n}(y)~\mathrm{d}s(y)=u^i(x),\quad x\in{\partial\Omega}.
+\)</span><span class="math notranslate nohighlight">\(
+A BEM is an approximation of an equation of this type, defined on the boundary \)</span>{\partial\Omega}<span class="math notranslate nohighlight">\(. Before approximating, we can parametrise the circle \)</span>{\partial\Omega}<span class="math notranslate nohighlight">\( by \)</span>\theta\in[0,2\pi)\to x\in{\partial\Omega}<span class="math notranslate nohighlight">\( in the natural way, \)</span>x(\theta)=[\cos(\theta),\sin(\theta)]<span class="math notranslate nohighlight">\(, to rewrite the above BIE in terms of a one-dimensional parameter
+\)</span><span class="math notranslate nohighlight">\(
 \int_0^{2\pi} \tilde\Phi(\theta,\vartheta)\frac{\partial u}{\partial n}(y(\vartheta))~\mathrm{d}\vartheta=u^i(x(\theta)),\quad \theta\in[0,2\pi),
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\tilde\Phi(\theta,\vartheta):=\Phi(x(\theta),y(\vartheta))\)</span> is purely to keep things a bit simpler.
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\tilde\Phi(\theta,\vartheta):=\Phi(x(\theta),y(\vartheta))$ is purely to keep things a bit simpler.
 There are many BEMs, but for the purpose of this example, I will choose the simplest one I can think of.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -986,12 +907,11 @@ There are many BEMs, but for the purpose of this example, I will choose the simp
 </section>
 <section id="step-three-approximate-the-boundary-data">
 <h2>Step three: Approximate the boundary data<a class="headerlink" href="#step-three-approximate-the-boundary-data" title="Permalink to this headline">#</a></h2>
-<p>Choose <span class="math notranslate nohighlight">\(N\)</span> equispaced points on the circle <span class="math notranslate nohighlight">\(\theta_n=nh\)</span> where <span class="math notranslate nohighlight">\(h:=2\pi/N\)</span> for <span class="math notranslate nohighlight">\(n=0,\ldots,N-1\)</span>. For our approximation, we specify that the above BIE must hold exactly at these points. This is known as a <strong>collocation  BEM</strong>, and <span class="math notranslate nohighlight">\(\theta_n\)</span> are the <strong>collocation points</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
+<p>Choose <span class="math notranslate nohighlight">\(N\)</span> equispaced points on the circle <span class="math notranslate nohighlight">\(\theta_n=nh\)</span> where <span class="math notranslate nohighlight">\(h:=2\pi/N\)</span> for <span class="math notranslate nohighlight">\(n=0,\ldots,N-1\)</span>. For our approximation, we specify that the above BIE must hold exactly at these points. This is known as a <strong>collocation  BEM</strong>, and <span class="math notranslate nohighlight">\(\theta_n\)</span> are the <strong>collocation points</strong>:
+$<span class="math notranslate nohighlight">\(
 \int_0^{2\pi} \tilde\Phi(\theta_n,\vartheta)v_h(\vartheta)~\mathrm{d}\vartheta=u^i(x(\theta_n)),\quad n=0,\ldots,N-1,
-\]</div>
-<p>where we choose the details of our approximation <span class="math notranslate nohighlight">\(v^{(h)}(\theta)\approx\frac{\partial u}{\partial n}(y(\theta))\)</span> next.</p>
+\)</span><span class="math notranslate nohighlight">\(
+where we choose the details of our approximation \)</span>v^{(h)}(\theta)\approx\frac{\partial u}{\partial n}(y(\theta))$ next.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">80</span>  <span class="c1"># number of collocation points</span>
@@ -1006,30 +926,28 @@ There are many BEMs, but for the purpose of this example, I will choose the simp
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Collocation points on circle&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/bem-tutorial-1_10_1.png" src="../../_images/bem-tutorial-1_10_1.png" />
+<img alt="../../_images/quick_BEM3_10_1.png" src="../../_images/quick_BEM3_10_1.png" />
 </div>
 </div>
-<p>We will use a <a class="reference external" href="https://mathworld.wolfram.com/PiecewiseConstantFunction.html">piecewise constant</a> approximation <span class="math notranslate nohighlight">\(v^{(h)}(\theta)\)</span>, such that <span class="math notranslate nohighlight">\(v^{(h)}(\theta)=v_m\)</span> for  <span class="math notranslate nohighlight">\(\theta\in[\theta_m-h/2,\theta_m+h/2]\)</span> and <span class="math notranslate nohighlight">\(v^{(h)}(\theta)=0\)</span> otherwise, for <span class="math notranslate nohighlight">\(m=1,\ldots,N\)</span>. Note that the values <span class="math notranslate nohighlight">\(v_m\)</span> are currently unknown. A piecewise constant approximation is sometimes referred to as <span class="math notranslate nohighlight">\(h\)</span>-BEM. So the full name of this method is <strong>collocation <span class="math notranslate nohighlight">\(h\)</span>-BEM</strong>, and it can be expressed in the following form:</p>
-<div class="math notranslate nohighlight">
-\[
+<p>We will use a <a class="reference external" href="https://mathworld.wolfram.com/PiecewiseConstantFunction.html">piecewise constant</a> approximation <span class="math notranslate nohighlight">\(v^{(h)}(\theta)\)</span>, such that <span class="math notranslate nohighlight">\(v^{(h)}(\theta)=v_m\)</span> for  <span class="math notranslate nohighlight">\(\theta\in[\theta_m-h/2,\theta_m+h/2]\)</span> and <span class="math notranslate nohighlight">\(v^{(h)}(\theta)=0\)</span> otherwise, for <span class="math notranslate nohighlight">\(m=1,\ldots,N\)</span>. Note that the values <span class="math notranslate nohighlight">\(v_m\)</span> are currently unknown. A piecewise constant approximation is sometimes referred to as <span class="math notranslate nohighlight">\(h\)</span>-BEM. So the full name of this method is <strong>collocation <span class="math notranslate nohighlight">\(h\)</span>-BEM</strong>, and it can be expressed in the following form:
+$<span class="math notranslate nohighlight">\(
 \sum_{m=1}^Nv_m\int_{\theta_m-h/2}^{\theta_m+h/2} \tilde\Phi(\theta_n,\vartheta)~\mathrm{d}\vartheta=u^i(x(\theta_n)),\quad n=0,\ldots,N-1.
-\]</div>
-<p>We can represent the above equation as a linear system for the unknowns <span class="math notranslate nohighlight">\(v_m\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[A\mathbf{v}=\mathbf{u},\]</div>
-<p>where <span class="math notranslate nohighlight">\(A_{mn}:=\int_{\theta_m-h/2}^{\theta_m+h/2}\tilde\Phi(\theta_m,\vartheta)~\mathrm{d}\vartheta\)</span>, and <span class="math notranslate nohighlight">\(u_n := u^i(x(\theta_n))\)</span>. Even in this simple example, I hope it is clear that efficient methods for evaluating singular integrals play a key role in BEMs. The Nystrom variant of BEM is fast and simple (perfect for this example). The idea is to approximate (almost) each integral <span class="math notranslate nohighlight">\(A_{mn}:=\int_{\theta_m-h/2}^{\theta_m+h/2}\tilde\Phi(\theta_n,\vartheta)~\mathrm{d}\vartheta\)</span> by a one-point quadrature rule, which means we can use our collocation points as our quadrature points. This gives</p>
-<div class="math notranslate nohighlight">
-\[A_{mn}= h\tilde\Phi(\theta_n,\theta_m)+O(h^2),\quad\text{for }m\neq n,\]</div>
-<p>where <span class="math notranslate nohighlight">\(O(h^2)\)</span> means the error is bounded above by <span class="math notranslate nohighlight">\(Ch^2\)</span>, for some constant <span class="math notranslate nohighlight">\(C\)</span> and sufficiently small <span class="math notranslate nohighlight">\(h\)</span>.</p>
+\)</span><span class="math notranslate nohighlight">\(
+We can represent the above equation as a linear system for the unknowns \)</span>v_m<span class="math notranslate nohighlight">\(:
+\)</span><span class="math notranslate nohighlight">\(A\mathbf{v}=\mathbf{u},\)</span><span class="math notranslate nohighlight">\(
+where \)</span>A_{mn}:=\int_{\theta_m-h/2}^{\theta_m+h/2}\tilde\Phi(\theta_m,\vartheta)~\mathrm{d}\vartheta<span class="math notranslate nohighlight">\(, and \)</span>u_n := u^i(x(\theta_n))<span class="math notranslate nohighlight">\(. Even in this simple example, I hope it is clear that efficient methods for evaluating singular integrals play a key role in BEMs. The Nystrom variant of BEM is fast and simple (perfect for this example). The idea is to approximate (almost) each integral \)</span>A_{mn}:=\int_{\theta_m-h/2}^{\theta_m+h/2}\tilde\Phi(\theta_n,\vartheta)~\mathrm{d}\vartheta<span class="math notranslate nohighlight">\( by a one-point quadrature rule, which means we can use our collocation points as our quadrature points. This gives 
+\)</span><span class="math notranslate nohighlight">\(A_{mn}= h\tilde\Phi(\theta_n,\theta_m)+O(h^2),\quad\text{for }m\neq n,\)</span><span class="math notranslate nohighlight">\(
+where \)</span>O(h^2)<span class="math notranslate nohighlight">\( means the error is bounded above by \)</span>Ch^2<span class="math notranslate nohighlight">\(, for some constant \)</span>C<span class="math notranslate nohighlight">\( and sufficiently small \)</span>h$.</p>
 <p>But we must be careful, a one-point quadrature rule for <span class="math notranslate nohighlight">\(m=n\)</span> gives <span class="math notranslate nohighlight">\(h\Phi(\theta_n,\theta_m)=\infty\)</span>, since the Hankel function is unbounded at zero! So we need something a little more sophisticated for the diagonal elements.</p>
-<p>From DLMF <a class="reference external" href="https://dlmf.nist.gov/10.4.3">(10.4.3)</a>, <a class="reference external" href="https://dlmf.nist.gov/10.8.2">(10.8.2)</a>, <a class="reference external" href="https://dlmf.nist.gov/10.2#E2">(10.2.2)</a>, we can consider the first term in the asymptotic expansion of the Hankel function, integrate the <span class="math notranslate nohighlight">\(\log\)</span> exactly, to write</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{\theta_n-h/2}^{\theta_m+h/2}\tilde\Phi(\theta_m,\vartheta)~\mathrm{d}\vartheta
-=
-\frac{\mathrm{i}h\left(2\mathrm{i}\gamma+2\mathrm{i}\log(hk/4)+\mathrm{i}\pi-2\mathrm{i}\right)}{4\pi}+O(h^{2-\epsilon})
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\gamma\approx0.577\)</span> is Euler’s number and <span class="math notranslate nohighlight">\(\epsilon\)</span> is any number in <span class="math notranslate nohighlight">\((0,1)\)</span>.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="from-dlmf-10-4-3-10-8-2-10-2-2-we-can-consider-the-first-term-in-the-asymptotic-expansion-of-the-hankel-function-integrate-the-log-exactly-to-write-int-theta-n-h-2-theta-m-h-2-tilde-phi-theta-m-vartheta-mathrm-d-vartheta">
+<h1>From DLMF <a class="reference external" href="https://dlmf.nist.gov/10.4.3">(10.4.3)</a>, <a class="reference external" href="https://dlmf.nist.gov/10.8.2">(10.8.2)</a>, <a class="reference external" href="https://dlmf.nist.gov/10.2#E2">(10.2.2)</a>, we can consider the first term in the asymptotic expansion of the Hankel function, integrate the <span class="math notranslate nohighlight">\(\log\)</span> exactly, to write
+$$
+\int_{\theta_n-h/2}^{\theta_m+h/2}\tilde\Phi(\theta_m,\vartheta)~\mathrm{d}\vartheta<a class="headerlink" href="#from-dlmf-10-4-3-10-8-2-10-2-2-we-can-consider-the-first-term-in-the-asymptotic-expansion-of-the-hankel-function-integrate-the-log-exactly-to-write-int-theta-n-h-2-theta-m-h-2-tilde-phi-theta-m-vartheta-mathrm-d-vartheta" title="Permalink to this headline">#</a></h1>
+<p>\frac{\mathrm{i}h\left(2\mathrm{i}\gamma+2\mathrm{i}\log(hk/4)+\mathrm{i}\pi-2\mathrm{i}\right)}{4\pi}+O(h^{2-\epsilon})
+$<span class="math notranslate nohighlight">\(
+where \)</span>\gamma\approx0.577<span class="math notranslate nohighlight">\( is Euler's number and \)</span>\epsilon<span class="math notranslate nohighlight">\( is any number in \)</span>(0,1)$.</p>
 <p>Now we can construct the matrix <span class="math notranslate nohighlight">\(A\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1067,23 +985,20 @@ There are many BEMs, but for the purpose of this example, I will choose the simp
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Real part of approximation to normal derivative&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/bem-tutorial-1_13_1.png" src="../../_images/bem-tutorial-1_13_1.png" />
+<img alt="../../_images/quick_BEM3_13_1.png" src="../../_images/quick_BEM3_13_1.png" />
 </div>
 </div>
-</section>
 <section id="step-four-use-approximate-boundary-data-in-representation-formula">
 <h2>Step four: Use approximate boundary data in representation formula<a class="headerlink" href="#step-four-use-approximate-boundary-data-in-representation-formula" title="Permalink to this headline">#</a></h2>
 <p>Specifically: we will use the approximate boundary data <strong>from step three</strong> in the representation formula <strong>from step one</strong>.</p>
-<p>Plugging <span class="math notranslate nohighlight">\(v_h\)</span> into the representation formula, and paramerising in the same way as before, gives</p>
-<div class="math notranslate nohighlight">
-\[
+<p>Plugging <span class="math notranslate nohighlight">\(v_h\)</span> into the representation formula, and paramerising in the same way as before, gives
+$<span class="math notranslate nohighlight">\(
 u(x) \approx u_h(x) := u^i(x) - \int_0^{2\pi}\Phi(x,y(\theta))v_h(\theta)~\mathrm{d}\theta,\quad x\in\mathbb{R}^2\setminus\Omega.
-\]</div>
-<p>To be quick, we can use a one-point quadrature rule to evaluate this integral:</p>
-<div class="math notranslate nohighlight">
-\[
+\)</span><span class="math notranslate nohighlight">\(
+To be quick, we can use a one-point quadrature rule to evaluate this integral:
+\)</span><span class="math notranslate nohighlight">\(
 u_h(x)\approx u^i(x) - h\sum_{m=1}^Nv_n\Phi(x,y(\theta_m)),\quad x\in\mathbb{R}^2\setminus\Omega.
-\]</div>
+\)</span>$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a method which approximates the solution at a point in the scattering domain</span>
@@ -1117,75 +1032,9 @@ u_h(x)\approx u^i(x) - h\sum_{m=1}^Nv_n\Phi(x,y(\theta_m)),\quad x\in\mathbb{R}^
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Real part of approximation to solution&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/bem-tutorial-1_16_1.png" src="../../_images/bem-tutorial-1_16_1.png" />
+<img alt="../../_images/quick_BEM3_16_1.png" src="../../_images/quick_BEM3_16_1.png" />
 </div>
 </div>
-</section>
-<section id="drawbacks-of-bem-compared-with-fem">
-<h2>Drawbacks of BEM compared with FEM<a class="headerlink" href="#drawbacks-of-bem-compared-with-fem" title="Permalink to this headline">#</a></h2>
-<p>As mentioned in the introduction, the key advantage of BEM is that reduces the dimension of the problem by one. We saw that this resuls in a linear system, which is (usually) significantly smaller in size than we would expect with other methods. But we don’t get this for free, there are two main drawbacks:</p>
-<ul class="simple">
-<li><p>The matrix entries requires the approximation singular integrals, and this can be difficult to do efficiently.</p></li>
-<li><p>The matrix will be dense.</p></li>
-</ul>
-<p>The first of these two points is the main difficulty when implementing a BEM. If possible, use BEM software such as <a class="reference external" href="https://bempp.com">bempp</a>, where quadrature has been implemented carefully and efficiently. If you are hellbent on implementing your own BEM, get your quadrature routines from a colleage who has tried and tested them for similar problems.</p>
-</section>
-<section id="further-details-variations-on-bem">
-<h2>Further details - variations on BEM<a class="headerlink" href="#further-details-variations-on-bem" title="Permalink to this headline">#</a></h2>
-<p>We have seen one example, but there are several other ways to implement a boundary element method. I will summarise these here:</p>
-<section id="choice-of-boundary-condition">
-<h3>Choice of boundary condition<a class="headerlink" href="#choice-of-boundary-condition" title="Permalink to this headline">#</a></h3>
-<p>We used sound-soft/Dirichlet boundary condition for this example. Different choices of boundary condition will lead to a different BIE forrmulation.</p>
-</section>
-<section id="choice-of-bie">
-<h3>Choice of BIE<a class="headerlink" href="#choice-of-bie" title="Permalink to this headline">#</a></h3>
-<p>We used the BIE which arose naturally when we moved <span class="math notranslate nohighlight">\(x\)</span> onto the boundary, in the sound-soft problem. This was the simplest to explain, however there exist values of <span class="math notranslate nohighlight">\(k\)</span> for which this BIE is ill-posed, in which case our BEM has no chance of being accurate. Other BIEs exist for the same problem, some of which are well-posed for all values of <span class="math notranslate nohighlight">\(k\)</span>. The most commonly used is the <strong>standard combined formulation</strong>, which is well-posed for any <span class="math notranslate nohighlight">\(k\)</span>, and only requires a few extra lines of code.</p>
-<p>The general form of a BIE is:</p>
-<div class="math notranslate nohighlight">
-\[
-Kv
-=f,\quad\text{on }\Gamma
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(K\)</span> is an integral opeartor, which map functions on <span class="math notranslate nohighlight">\(\Gamma\)</span> to functions on <span class="math notranslate nohighlight">\(\Gamma\)</span>, <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> are known. The unknown is <span class="math notranslate nohighlight">\(v\)</span>, which may be <span class="math notranslate nohighlight">\(v=\frac{\partial u}{\partial n}\)</span> (sound-soft), <span class="math notranslate nohighlight">\(v=u\)</span> (sound-hard), or  <span class="math notranslate nohighlight">\(v=\left(\begin{array}{c}
-u\\\frac{\partial u}{\partial n}
-\end{array}\right)\)</span> (impedance).</p>
-</section>
-<section id="choice-of-basis">
-<h3>Choice of basis<a class="headerlink" href="#choice-of-basis" title="Permalink to this headline">#</a></h3>
-<p>We approximated the boundary data using a piecewise constant function. Higher degree polynomials can be used on a piecewise mesh, and on smooth obstacles such as these a fourier basis could be used, which removes the need for a mesh entirely. For obstacles with corners, the boundary data will be singular towards the corners, so graded meshes can be used. For certain geometries, specialised bases can be used, which incorporate known singular or oscillatory behaviour, to avoid grading.</p>
-</section>
-<section id="choice-of-projection">
-<h3>Choice of projection<a class="headerlink" href="#choice-of-projection" title="Permalink to this headline">#</a></h3>
-<p>We used a collocation BEM which forces the BIE to hold exactly at a fixed set of points, written generally this is:</p>
-<div class="math notranslate nohighlight">
-\[
-\sum_{m=1}^N K\varphi_m(x_n)=f(x_n),\quad\text{for }n=1,\ldots,N
-\]</div>
-<p>The main alternative is Galerkin BEM, which forces the BIE to hold in a weak sense when tested against our approximation space, like so:</p>
-<div class="math notranslate nohighlight">
-\[
-\sum_{m=1}^N(K\varphi_m,\varphi_n) = (f,\varphi_n),\quad\text{for }n=1,\ldots,N,
-\]</div>
-<p>where <span class="math notranslate nohighlight">\((f,g)=\int_\Gamma f(x)\overline{g}(x)\mathrm{d}s(x)\)</span>.</p>
-<p>Galerkin BEM has the advantage that we have guarenteed convergence for most problems, wheras collocation problems can be ill-posed for certain choices of collocation points, and nobody has a general rule for choosing them in a reliable way. The disadvantage of Galerkin is that the implementation requires an extra integral. So when <span class="math notranslate nohighlight">\(n=2\)</span> Galerkin has two-dimensional integrals, and when <span class="math notranslate nohighlight">\(n=3\)</span> Galerkin has four dimensional integrals. For this reason, engineers prefer collocation, and mathematicians perfer Galerkin.</p>
-<p>Because of its efficiency, researchers are often looking for ways to tweak collocation so that its results are as accurate/reliable as Galerkin, but without the nasty double integrals. A well-established technique is the use of CHIEF points. Points inside the scatterer, where the field is known to be zero, are added to the approximation problem. A more recent area of research is <a class="reference external" href="https://arxiv.org/abs/2103.17212"><em>oversampled collocation</em></a>, where the number of collocation points is larger than the number of basis functions. This can overcome the risks asociated with collocation.</p>
-</section>
-<section id="choice-of-quadrature">
-<h3>Choice of quadrature<a class="headerlink" href="#choice-of-quadrature" title="Permalink to this headline">#</a></h3>
-<p>In the coded example, we used a one-point quadrature rule for our integrals, which is the most basic approximation concievable. For smooth integrands <span class="math notranslate nohighlight">\((m\neq n)\)</span>, <a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_quadrature#Gauss%E2%80%93Legendre_quadrature">Gauss-Legendre quadrature</a> is very popular in practice, as this converges much faster. In higher dimensional integrals, a popular approach is to use Gauss quadrature in each direction. This is sub-optimal, cubature rules are the most efficient way to do this, but are rarely used in practice.</p>
-<p>For singular integrals <span class="math notranslate nohighlight">\((m=n)\)</span>, grading can be used as a one-size-fits all approach. However, we often know the precise singular behaviour, so grading can be overkill. A more informed approach is that of singularity subtraction, where the singular part of the integrand is evaluated analytically, and the remaining part is evaluated using standard quadrature. A second informed approach is to use generalised Gaussian quadrature, which is designed to be accurate for integrals containing a certain type of singularity.</p>
-<p>For singular double integrals, when the singularity is along the diagonal of the integration domain, the Duffy transform can be used to convert to two integrals over a square/cube/hypercube with singularities at the edges, making it more amenable to techniques for 1D singular integrals.</p>
-</section>
-</section>
-<section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Certain scattering problems can be reforumlated as a problem on the boundary</p></li>
-<li><p>A BEM can be used to solve this problem on the boundary</p></li>
-<li><p>Certain BIEs and/or certain choices of collocation points can lead to numerical instabilities</p></li>
-<li><p>Care must be taken to ensure all integrals, especially the singular ones, are being evaluated to a sufficiet accuracy</p></li>
-<li><p>For this reason Galerkin (as opposd to collocation) BEM is harder to implement, and typically slower to run. But the results are more reliable</p></li>
-</ul>
 </section>
 </section>
 
@@ -1216,11 +1065,11 @@ u\\\frac{\partial u}{\partial n}
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="bem-tutorials-main.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="BEM_in_words.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">BEM Tutorials</p>
+            <p class="prev-next-title">BEM in words</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../fem/fem-tutorials-main.html" title="next page">

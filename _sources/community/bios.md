@@ -63,3 +63,10 @@ Andrea Cicero is a PhD Studentat the University of Salford. His research focuses
 [<i class="fa fa-internet-explorer"></i> undaproject.com](https://undaproject.com)
 
 Antonio Baiano Svizzero is a NVH CAE Engineer working for Denso on aero-vibro-acoustic simulation on HVAC systems. His research focuses on modelization of thin plates, aerodynamic source generation mechanism and sound absorbers. He currently collaborates with the University of Naples "Federico II".
+
+## Andrew Gibbs
+
+[<i class="fa fa-internet-explorer"></i>Andrew's personal webpage, ](http://www.homepages.ucl.ac.uk/~ucahagi/)
+[<i class="fa fa-internet-explorer"></i>Andrew's GitHub page](https://github.com/AndrewGibbs)
+
+Andrew is a postdoctoral researcher at University College London, developing and analysing Boundary Element Methods. Currently his focus is on acoustic scattering by fractals, and high frequency acoustic scattering by polygons.

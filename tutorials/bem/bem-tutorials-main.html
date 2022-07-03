@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="The Boundary Element Method (BEM)" href="bem-tutorial-1.html" />
+    <link rel="next" title="BEM in words" href="BEM_in_words.html" />
     <link rel="prev" title="Meshes" href="../../core-concepts/geom-and-mesh-mesh-refinement.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -337,7 +337,12 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="bem-tutorial-1.html">
+    <a class="reference internal" href="BEM_in_words.html">
+     BEM in words
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quick_BEM3.html">
      The Boundary Element Method (BEM)
     </a>
    </li>
@@ -652,7 +657,20 @@ title="Print to PDF"
 <p>This is where you will find tutorials on how to implement BEM in Python.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="bem-tutorial-1.html">The Boundary Element Method (BEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BEM_in_words.html">BEM in words</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BEM_in_words.html#the-idea-behind-collocation-is-to-force-2-to-hold-at-n-collocation-points-x-1-ldots-x-n-on-the-surface-partial-omega-this-can-be-expressed-as-sum-n-1-nc-n-chi-mathcal-i-mathcal-k-phi-n-x-m-f-x-m-quad-text-for-m-1-ldots-n-where-the-unknowns-are-the-coefficients-c-n-this-is-equivalent-to-solving-the-linear-system-left-chi-phi-n-x-m-int-mathrm-supp-phi-n-k-x-m-y-phi-n-y-mathrm-d-s-y-right-n-m-1-n-left-c-n-right-n-1-n">The idea behind collocation is to force (2) to hold at <span class="math notranslate nohighlight">\(N\)</span> <em>collocation points</em> <span class="math notranslate nohighlight">\(x_1,\ldots,x_N\)</span>, on the surface <span class="math notranslate nohighlight">\(\partial \Omega\)</span>. This can be expressed as
+$<span class="math notranslate nohighlight">\(
+\sum_{n=1}^Nc_n(\chi\mathcal{I}+\mathcal{K})\phi_n(x_m) = f(x_m),\quad\text{for }m=1,\ldots,N,
+\)</span><span class="math notranslate nohighlight">\(
+where the unknowns are the coefficients \)</span>c_n<span class="math notranslate nohighlight">\(. This is equivalent to solving the linear system:
+\)</span>$
+\left[\chi\phi_n(x_m)+\int_{\mathrm{supp}\ \phi_n}K(x_m,y)\phi_n(y)\mathrm{d} s(y)\right]<em>{n,m=1}^N
+\left[c_n
+\right]</em>{n=1}^N</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_BEM3.html">The Boundary Element Method (BEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_BEM3.html#from-dlmf-10-4-3-10-8-2-10-2-2-we-can-consider-the-first-term-in-the-asymptotic-expansion-of-the-hankel-function-integrate-the-log-exactly-to-write-int-theta-n-h-2-theta-m-h-2-tilde-phi-theta-m-vartheta-mathrm-d-vartheta">From DLMF (10.4.3), (10.8.2), (10.2.2), we can consider the first term in the asymptotic expansion of the Hankel function, integrate the <span class="math notranslate nohighlight">\(\log\)</span> exactly, to write
+$$
+\int_{\theta_n-h/2}^{\theta_m+h/2}\tilde\Phi(\theta_m,\vartheta)~\mathrm{d}\vartheta</a></li>
 </ul>
 </div>
 <p>Content will be added soon. If you can contribute to this part of the site, please do so (following our <span class="xref myst">guide for contributors</span>).</p>
@@ -692,10 +710,10 @@ title="Print to PDF"
             <p class="prev-next-title">Meshes</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="bem-tutorial-1.html" title="next page">
+    <a class='right-next' id="next-link" href="BEM_in_words.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Boundary Element Method (BEM)</p>
+        <p class="prev-next-title">BEM in words</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

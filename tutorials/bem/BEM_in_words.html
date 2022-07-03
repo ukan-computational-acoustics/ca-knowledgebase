@@ -1,0 +1,1414 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BEM in words</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The Boundary Element Method (BEM)" href="quick_BEM3.html" />
+    <link rel="prev" title="BEM Tutorials" href="bem-tutorials-main.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-207874104-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../about/contribution-guide.html">
+   Guide for Contributors
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../about/contribute-suggest.html">
+     Making suggestions
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../about/contribute-contribute.html">
+     Contributing material to the site
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../about/contribute-github.html">
+       Getting started with GitHub
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../about/code-template.html">
+       Tutorial template
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../about/contribute-user-code.html">
+     Add your own computational acoustics code
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../about/contribute-maintain.html">
+     Further information for maintainers
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../about/contribute-building.html">
+       Building this site
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../about/contribute-docker.html">
+       The knowledgebase Docker image
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../CODE_OF_CONDUCT.html">
+     Code of Conduct
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../about/who-we-are.html">
+   Who We Are
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Core Concepts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../core-concepts/why-use-ca.html">
+   Why use Computational Acoustics?
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../core-concepts/how-define-problem.html">
+   How to define the problem to be solved?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../core-concepts/how-define-problem-what-is-a-pde.html">
+     What is a PDE?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../core-concepts/how-define-problem-acoustics-pdes.html">
+     Acoustics PDEs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../core-concepts/how-define-problem-other-pdes.html">
+     Other PDEs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../core-concepts/how-define-problem-problem-classes.html">
+     Classes of problem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../core-concepts/how-to-solve.html">
+   How does the algorithm solve the problem?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../core-concepts/how-to-solve-weak-form.html">
+     Weak Forms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../core-concepts/how-to-solve-finite-difference.html">
+     Finite Difference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../core-concepts/how-to-solve-sums-of-solutions.html">
+     Sums of Analytical Solutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../core-concepts/how-to-solve-greens-functions.html">
+     Monopoles and free space Green’s Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../core-concepts/how-to-solve-eikonal.html">
+     Eikonal Approximation and Raytracing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../core-concepts/how-to-solve-magic-of-matrices.html">
+     Sums of Analytical Solutions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../core-concepts/geom-and-mesh.html">
+   Geometry and Meshing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../core-concepts/geom-and-mesh-dimensionality.html">
+     Dimensionality
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../core-concepts/geom-and-mesh-mesh-structure.html">
+     Mesh Structure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../core-concepts/geom-and-mesh-elements-and-interpolation.html">
+     Elements and Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../core-concepts/geom-and-mesh-mesh-refinement.html">
+     Meshes
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="bem-tutorials-main.html">
+   BEM Tutorials
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     BEM in words
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quick_BEM3.html">
+     The Boundary Element Method (BEM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fem/fem-tutorials-main.html">
+   FEM Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fem/fenicsx-helmholtz-tutorial.html">
+     The Helmholtz Equation with FEniCSx
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fdtd/fdtd-tutorials-main.html">
+   FDTD Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../fdtd/fdtd-tutorials-1.html">
+     The 1D Wave
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Software Guides
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../software/software-main.html">
+   Computational acoustics software
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Code
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../user/user.html">
+   User code contributions
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data/data.html">
+   Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Community
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../community/bios.html">
+   Author biographies
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/coding.html">
+   Help with coding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/resources.html">
+   Resources
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues/new?title=Issue%20on%20page%20%2Ftutorials/bem/BEM_in_words.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/edit/main/tutorials/bem/BEM_in_words.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/tutorials/bem/BEM_in_words.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   BEM in words
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduction">
+     Introduction
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#physical-intuition">
+       Physical intuition
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#representation-in-terms-of-point-sources">
+       Representation in terms of point sources
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-steps-to-the-boundary-element-method">
+       The steps to the Boundary Element Method
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constructing-a-boundary-integral-equation">
+     Constructing a Boundary Integral Equation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#trace-operators">
+       Trace operators
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bie-directory">
+       BIE directory
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#impedance-on-the-screen">
+       Impedance on the screen
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constructing-a-boundary-element-method-bem">
+     Constructing a Boundary Element Method (BEM)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#collocation-bem">
+       Collocation BEM
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-idea-behind-collocation-is-to-force-2-to-hold-at-n-collocation-points-x-1-ldots-x-n-on-the-surface-partial-omega-this-can-be-expressed-as-sum-n-1-nc-n-chi-mathcal-i-mathcal-k-phi-n-x-m-f-x-m-quad-text-for-m-1-ldots-n-where-the-unknowns-are-the-coefficients-c-n-this-is-equivalent-to-solving-the-linear-system-left-chi-phi-n-x-m-int-mathrm-supp-phi-n-k-x-m-y-phi-n-y-mathrm-d-s-y-right-n-m-1-n-left-c-n-right-n-1-n">
+   The idea behind collocation is to force (2) to hold at
+   <span class="math notranslate nohighlight">
+    \(N\)
+   </span>
+   <em>
+    collocation points
+   </em>
+   <span class="math notranslate nohighlight">
+    \(x_1,\ldots,x_N\)
+   </span>
+   , on the surface
+   <span class="math notranslate nohighlight">
+    \(\partial \Omega\)
+   </span>
+   . This can be expressed as
+$
+   <span class="math notranslate nohighlight">
+    \(
+\sum_{n=1}^Nc_n(\chi\mathcal{I}+\mathcal{K})\phi_n(x_m) = f(x_m),\quad\text{for }m=1,\ldots,N,
+\)
+   </span>
+   <span class="math notranslate nohighlight">
+    \(
+where the unknowns are the coefficients \)
+   </span>
+   c_n
+   <span class="math notranslate nohighlight">
+    \(. This is equivalent to solving the linear system:
+\)
+   </span>
+   $
+\left[\chi\phi_n(x_m)+\int_{\mathrm{supp}\ \phi_n}K(x_m,y)\phi_n(y)\mathrm{d} s(y)\right]
+   <em>
+    {n,m=1}^N
+\left[c_n
+\right]
+   </em>
+   {n=1}^N
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#galerkin-bem">
+     Galerkin BEM
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#obtaining-an-approximate-representation">
+     Obtaining an approximate representation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sound-soft-dirichlet-representation">
+       Sound-soft/Dirichlet representation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sound-hard-neumann-representation">
+       Sound-hard/Neumann representation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-final-comments">
+     Some final comments
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparison-with-fem">
+       Comparison with FEM
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#choice-of-quadrature">
+       Choice of quadrature
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#summary">
+       Summary
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>BEM in words</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   BEM in words
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduction">
+     Introduction
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#physical-intuition">
+       Physical intuition
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#representation-in-terms-of-point-sources">
+       Representation in terms of point sources
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-steps-to-the-boundary-element-method">
+       The steps to the Boundary Element Method
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constructing-a-boundary-integral-equation">
+     Constructing a Boundary Integral Equation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#trace-operators">
+       Trace operators
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bie-directory">
+       BIE directory
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#impedance-on-the-screen">
+       Impedance on the screen
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constructing-a-boundary-element-method-bem">
+     Constructing a Boundary Element Method (BEM)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#collocation-bem">
+       Collocation BEM
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-idea-behind-collocation-is-to-force-2-to-hold-at-n-collocation-points-x-1-ldots-x-n-on-the-surface-partial-omega-this-can-be-expressed-as-sum-n-1-nc-n-chi-mathcal-i-mathcal-k-phi-n-x-m-f-x-m-quad-text-for-m-1-ldots-n-where-the-unknowns-are-the-coefficients-c-n-this-is-equivalent-to-solving-the-linear-system-left-chi-phi-n-x-m-int-mathrm-supp-phi-n-k-x-m-y-phi-n-y-mathrm-d-s-y-right-n-m-1-n-left-c-n-right-n-1-n">
+   The idea behind collocation is to force (2) to hold at
+   <span class="math notranslate nohighlight">
+    \(N\)
+   </span>
+   <em>
+    collocation points
+   </em>
+   <span class="math notranslate nohighlight">
+    \(x_1,\ldots,x_N\)
+   </span>
+   , on the surface
+   <span class="math notranslate nohighlight">
+    \(\partial \Omega\)
+   </span>
+   . This can be expressed as
+$
+   <span class="math notranslate nohighlight">
+    \(
+\sum_{n=1}^Nc_n(\chi\mathcal{I}+\mathcal{K})\phi_n(x_m) = f(x_m),\quad\text{for }m=1,\ldots,N,
+\)
+   </span>
+   <span class="math notranslate nohighlight">
+    \(
+where the unknowns are the coefficients \)
+   </span>
+   c_n
+   <span class="math notranslate nohighlight">
+    \(. This is equivalent to solving the linear system:
+\)
+   </span>
+   $
+\left[\chi\phi_n(x_m)+\int_{\mathrm{supp}\ \phi_n}K(x_m,y)\phi_n(y)\mathrm{d} s(y)\right]
+   <em>
+    {n,m=1}^N
+\left[c_n
+\right]
+   </em>
+   {n=1}^N
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#galerkin-bem">
+     Galerkin BEM
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#obtaining-an-approximate-representation">
+     Obtaining an approximate representation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sound-soft-dirichlet-representation">
+       Sound-soft/Dirichlet representation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sound-hard-neumann-representation">
+       Sound-hard/Neumann representation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-final-comments">
+     Some final comments
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparison-with-fem">
+       Comparison with FEM
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#choice-of-quadrature">
+       Choice of quadrature
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#summary">
+       Summary
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="bem-in-words">
+<h1>BEM in words<a class="headerlink" href="#bem-in-words" title="Permalink to this headline">#</a></h1>
+<p>Author: Andrew Gibbs</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<section id="physical-intuition">
+<h3>Physical intuition<a class="headerlink" href="#physical-intuition" title="Permalink to this headline">#</a></h3>
+<p>Suppose we have an incoming acoustic wave <span class="math notranslate nohighlight">\(u^i\)</span> and a scattering obstacle <span class="math notranslate nohighlight">\(\Omega\)</span>, and we want to determine the amplitude of the scattered acoustic field <span class="math notranslate nohighlight">\(u^s(x)\)</span>, i.e. how much sound has bounced back, at any point <span class="math notranslate nohighlight">\(x\)</span> in the region surrounding the obstacle?</p>
+<p>Physically, the idea of BEM may be interpreted as covering the obstacle in lots of tiny speakers. (Each microphone is analogy for the more officially-named <em>point source</em> or the <em>Green’s function</em>.) The aim of BEM is to solve a different problem; to adjust the volume on each speaker individually so that the combined amplitude of all of the microphones, if we were listening away from the obstacle, is the same as the scattered acoustic field <span class="math notranslate nohighlight">\(u^s\)</span> in our original problem.</p>
+<p>To solve the BEM problem, i.e. to fine tune the volume on each microphone, we must solve a problem on the surface of <span class="math notranslate nohighlight">\(\Omega\)</span>, rather than in the area surrounding <span class="math notranslate nohighlight">\(\Omega\)</span>. We will write <span class="math notranslate nohighlight">\(\partial\Omega\)</span> to represent the surface. Practically this can be appealing, because this problem is usually simpler: in a lower spatial dimensions and on a bounded domain. For example, modelling scattering by a cube, most of the computational work will be done on the circumference on the square faces of the cube.</p>
+</section>
+<section id="representation-in-terms-of-point-sources">
+<h3>Representation in terms of point sources<a class="headerlink" href="#representation-in-terms-of-point-sources" title="Permalink to this headline">#</a></h3>
+<p>We will write <span class="math notranslate nohighlight">\(\Phi(x,y)\)</span> to mean the point-source / Green’s function / metaphorical speaker at point <span class="math notranslate nohighlight">\(y\)</span> on <span class="math notranslate nohighlight">\(\partial \Omega\)</span>, observed at point <span class="math notranslate nohighlight">\(x\)</span> on <span class="math notranslate nohighlight">\(\Omega\)</span>. Naturally we would expect <span class="math notranslate nohighlight">\(\Phi(x,y)\)</span> to be a wave, and to get larger as <span class="math notranslate nohighlight">\(y\)</span> moves towards <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>It follow’s from <a class="reference external" href="https://en.wikipedia.org/wiki/Green%27s_identities#Green%27s_third_identity">Green’s third identity</a> that
+$<span class="math notranslate nohighlight">\(
+\begin{equation}
+u^s(x) = -\int_{\partial\Omega}\Phi(x,y)\frac{\partial u}{\partial n}(y)\ \mathrm{d}s(y) + \int_{\partial\Omega}\frac{\partial \Phi(x,y)}{\partial n(y)}u(y)\ \mathrm{d}s(y),
+\end{equation}
+\)</span>$</p>
+<p><span class="math notranslate nohighlight">\(\Phi\)</span> denotes the fundamental solution / point source / Green’s function / figurative speaker:
+$<span class="math notranslate nohighlight">\(
+\Phi(x,y) := \left\{
+\begin{array}{ll}
+\frac{\mathrm{i}}{4}H^{(1)}_0(k|x-y|),&amp;\quad \text{two dimensions},\\
+{\exp({\mathrm{i}k|x-y|}})/({4\pi|x-y|}),&amp;\quad \text{three dimensions},
+\end{array}
+\right.
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>H^{(1)}_0$ is the <a class="reference external" href="https://mathworld.wolfram.com/HankelFunctionoftheFirstKind.html">Hankel function</a> of the first kind order zero.</p>
+<p>Here <span class="math notranslate nohighlight">\(x\)</span> is some point away from the obstacle <span class="math notranslate nohighlight">\(\Omega\)</span>.
+If we consider two types of speakers, <span class="math notranslate nohighlight">\(\Phi(x,y)\)</span> and <span class="math notranslate nohighlight">\(\frac{\partial \Phi(x,y)}{\partial n(y)}\)</span>, then the above should be interpreted as a weighted sum of a large number of these point-sources/speakers, over the surface of the obstacle. Conveniently, the unknown density which weights these sources (i.e. the other term in the integrals), has been expressed in terms of our total field <span class="math notranslate nohighlight">\(u\)</span>.</p>
+<p>Depending on boundary conditions, it may be possible to remove one of the two integrals above. For example, a sound-hard obstacle has boundary condition <span class="math notranslate nohighlight">\(u=0\)</span> on <span class="math notranslate nohighlight">\(\partial\Omega\)</span>.</p>
+</section>
+<section id="the-steps-to-the-boundary-element-method">
+<h3>The steps to the Boundary Element Method<a class="headerlink" href="#the-steps-to-the-boundary-element-method" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>Modify (1) to obtain an integral equation on the boundary <span class="math notranslate nohighlight">\(\partial \Omega\)</span>, where <span class="math notranslate nohighlight">\(u\)</span> and/or <span class="math notranslate nohighlight">\(\frac{\partial u}{\partial n}\)</span> on <span class="math notranslate nohighlight">\(\partial \Omega\)</span> are the unknown quantities. This is called a <em>Boundary Integral Equation</em> (BIE). At this point, no approximation has taken place.</p></li>
+<li><p>Approximately solve the BIE, using a finite element method on the boundary. Hence the name <em>Boundary Element Method</em>.</p></li>
+<li><p>Plug our approximation to <span class="math notranslate nohighlight">\(u\)</span> and/or <span class="math notranslate nohighlight">\(\frac{\partial u}{\partial n}\)</span> into the representation formula (1), to obtain an approximation to <span class="math notranslate nohighlight">\(u^s\)</span> away from the boundary.</p></li>
+</ol>
+<p>For the remainder of this document, we will describe each of these steps in more detail.</p>
+</section>
+</section>
+<section id="constructing-a-boundary-integral-equation">
+<h2>Constructing a Boundary Integral Equation<a class="headerlink" href="#constructing-a-boundary-integral-equation" title="Permalink to this headline">#</a></h2>
+<p>We want to solve (1) for the unknown densities.</p>
+<p>The next step is to move the problem onto the boundary <span class="math notranslate nohighlight">\(\partial \Omega\)</span>, so that <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> live on <span class="math notranslate nohighlight">\(\partial \Omega\)</span>, and then our original problem is reduced to an (arguably simpler) problem on <span class="math notranslate nohighlight">\(\partial \Omega\)</span>.</p>
+<p>This process of <em>moving the problem onto the boundary</em> is commonly referred to as a <em>trace</em> (no relation to the matrix operation of the same name). There are three or four commonly used traces, which warrants a separate discussion in its own right. This can be skipped for now, and taken on trust.</p>
+<details>
+<summary> Click here to show optional details on trace operators</summary>
+<section id="trace-operators">
+<h3>Trace operators<a class="headerlink" href="#trace-operators" title="Permalink to this headline">#</a></h3>
+<p>The simplest of the trace operators is the <em>Dirichlet</em> trace <span class="math notranslate nohighlight">\(\gamma_D\)</span>, which can be interpreted physically as moving <span class="math notranslate nohighlight">\(x\)</span> to the boundary <span class="math notranslate nohighlight">\(\partial\Omega\)</span>. This trace gives us
+$<span class="math notranslate nohighlight">\(
+\gamma_Du^s(x) = -\int_{\partial\Omega}\Phi(x,y)\frac{\partial u}{\partial n}(y)\mathrm{d}s(y)
++
+\int_{\partial\Omega}\frac{\partial\Phi(x,y)}{\partial n(y)}u(y)\mathrm{d}s(y) + \frac{1}{2}u(x),
+ \)</span><span class="math notranslate nohighlight">\(
+ for \)</span>x<span class="math notranslate nohighlight">\( on \)</span>\partial \Omega<span class="math notranslate nohighlight">\(. This is often compactly written as
+ \)</span><span class="math notranslate nohighlight">\(
+\gamma_Du^s = S\frac{\partial u}{\partial n} - \left(D+\frac{1}{2}\mathcal{I}\right)u,\quad\text{on }\partial\Omega.
+ \)</span>$</p>
+<p>The second most commonly used trace is the Neumann trace, which can be interpreted as moving <span class="math notranslate nohighlight">\(\nabla u\)</span> onto <span class="math notranslate nohighlight">\(\partial\Omega\)</span> (non-tangentially) and then taking the dot product with the normal derivative at this limit point. This gives us:
+$<span class="math notranslate nohighlight">\(
+ \begin{align*}
+\gamma_Nu^s(x) =&amp; -\int_{\partial\Omega}\frac{\Phi(x,y)}{\partial n(x)}\frac{\partial u}{\partial n}(y)\mathrm{d}s(y)
++\frac{1}{2}\frac{\partial u}{\partial n}(x)\\
+&amp;+
+\frac{\partial}{\partial n(x)}\int_{\partial\Omega}\frac{\partial\Phi(x,y)}{\partial n(y)}u(y)\mathrm{d}s(y)
+\end{align*},\quad x\text{ on }\partial\Omega,
+ \)</span><span class="math notranslate nohighlight">\(
+ which has the compact form
+ \)</span><span class="math notranslate nohighlight">\(
+\gamma_N u^s = \left(-D'+\frac{1}{2}\mathcal{I}\right)\frac{\partial u}{\partial n} + Hu.
+ \)</span>$
+Both of these trace equations can be used to construct our boundary integral equation which follows.</p>
+</details>
+<p>After taking a trace, we obtain an integral equation of the form
+$<span class="math notranslate nohighlight">\(
+\begin{equation}
+(\chi\mathcal{I}+\mathcal{K})v(x) = f(x),\quad x\text{ on }\partial \Omega.
+\end{equation}
+\)</span><span class="math notranslate nohighlight">\(
+where our unknown \)</span>v<span class="math notranslate nohighlight">\( depends on the boundary conditions, i.e. the material of \)</span>\Omega<span class="math notranslate nohighlight">\( as follows:
+\)</span><span class="math notranslate nohighlight">\(
+\begin{equation}
+v = \left\{\begin{array}{ll}
+{\partial u}/{\partial n}&amp; \text{sound-soft / Dirichlet}\\
+u&amp;\text{sound-hard / Neumann}\\
+({\partial u}/{\partial n}, u ) &amp;\text{impedance / Robin}
+\end{array}\right.
+\end{equation}
+\)</span><span class="math notranslate nohighlight">\(
+In the third case, our unknown quantity \)</span>v<span class="math notranslate nohighlight">\( is a vector of two unknown functions. For problems of scattering by thin screens/plates, the quantities above are replaced by their jump in value from either side of the screen. For example, \)</span>u<span class="math notranslate nohighlight">\( would be replaced by \)</span>u^+-u^-<span class="math notranslate nohighlight">\(, where \)</span>u+<span class="math notranslate nohighlight">\( and \)</span>u^-<span class="math notranslate nohighlight">\( are respectively the limiting values of \)</span>u$ above and below the screen.</p>
+<p>In (1) <span class="math notranslate nohighlight">\(\mathcal{I}\)</span> denotes the identity operator, which maps a function to its self. Some BIEs will contain the identity operator in which case <span class="math notranslate nohighlight">\(\chi=\pm\frac{1}{2}\)</span>, more details follow below. If there are no identity terms, clearly <span class="math notranslate nohighlight">\(\chi=0\)</span>.</p>
+<p>In (1) <span class="math notranslate nohighlight">\(\mathcal{K}\)</span> is a <em>boundary integral operator</em> (BIO), meaning it maps functions on the boundary <span class="math notranslate nohighlight">\(\partial \Omega\)</span> to functions on <span class="math notranslate nohighlight">\(\partial \Omega\)</span>
+$<span class="math notranslate nohighlight">\(
+\mathcal{K}\psi(x) := \int_{\partial \Omega}K(x,y)\psi(y)\mathrm{d} s(y),
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>K(x,y)<span class="math notranslate nohighlight">\( is a known function called the _kernel_ (no relation to the computer component or algebraic objects of the same name) and will depend on the choice of trace taken, but in the simplest case, with Dirichlet BCs / sound-soft obstacle, \)</span>K=\Phi$.</p>
+<p>Similarly, <span class="math notranslate nohighlight">\(f\)</span> is known explicitly, and will depend on the choice of trace used and the incoming wave <span class="math notranslate nohighlight">\(u^i\)</span>. In the simplest case, we have <span class="math notranslate nohighlight">\(f = u^i\)</span>.</p>
+</section>
+<section id="bie-directory">
+<h3>BIE directory<a class="headerlink" href="#bie-directory" title="Permalink to this headline">#</a></h3>
+ <!-- Some of these formulations are not well-posed at certain wavenumbers $k$, meaning that they may have multiple solutions. If our BIE is not well posed, then our BEM has no chance of being accurate! -->
+<p>This section contains a list of the formulations required for common acoustic scattering problems. Before we define these formulations, it is necessary to introduce the five main integral operators, their names are listed to the right:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\mathcal{I}\psi(x) &amp;= \psi(x),\quad&amp;&amp;\text{Identity}\\
+S\psi(x) &amp;= \int_{\partial\Omega}\Phi(x,y)\psi(y),\mathrm{d}s(y)\quad&amp;&amp;\text{Single Layer}\\
+D\psi(x) &amp;=\int_{\partial\Omega}\frac{\partial\Phi(x,y)}{\partial n(y)}\psi(y)\mathrm{d}s(y)\quad&amp;&amp;\text{Double Layer}\\
+D'\psi(x) &amp;=\int_{\partial\Omega}\frac{\partial\Phi(x,y)}{\partial n(x)}\psi(y)\mathrm{d}s
+(y)\quad&amp;&amp;\text{Adjoint double Layer}\\
+H\psi(x) &amp;=\int_{\partial\Omega}\frac{\partial^2\Phi(x,y)}{\partial n(x)\partial n(y)}\psi(y)\mathrm{d}s
+(y)\quad&amp;&amp;\text{Hypersingular}
+\end{align*}
+\end{split}\]</div>
+<p>For each type of problem solvable by BEM, the starting point is a relevant <em>boundary integral equation</em>, which makes use of some combination of the above operators. These can be derived using the trace identities in the above (optional) section.</p>
+<p>Depending on the shape of <span class="math notranslate nohighlight">\(\Omega\)</span> and the boundary conditions, there may be one or many possible BIE formulations of the form (2). The appropriate formulations are given below, sometimes there are multiple formulations which could be used. The formulation can often be simplified when considering problems on thin screens/plates, by <em>volume</em> we refer to more typical scattering obstacles such as polygons in two dimensions and tetrahedra in three dimensions. By plates/screens, we refer to obstacles which are <em>thin</em> in one direction, for example a square plate in three dimensions. And as is explained in the table, certain formulations are not well-posed at certain wavenumbers <span class="math notranslate nohighlight">\(k\)</span>, meaning that they may have multiple solutions. If our BIE is not well posed, then the approximate problem we solve later has no chance!</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Material / BCs</p></th>
+<th class="head"><p>Screen / volume</p></th>
+<th class="head"><p>BIO <span class="math notranslate nohighlight">\(\mathcal{K}\)</span></p></th>
+<th class="head"><p>RHS <span class="math notranslate nohighlight">\(f\)</span></p></th>
+<th class="head"><p>Solvable?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Sound-soft / Dirichlet</p></td>
+<td><p>Screen</p></td>
+<td><p><span class="math notranslate nohighlight">\(S\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(u^i\)</span></p></td>
+<td><p>Always</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>Volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(S\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(u^i\)</span></p></td>
+<td><p>Not at certain <span class="math notranslate nohighlight">\(k\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>Volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{2}\mathcal{I}+D'\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{\partial u^i}{\partial n}\)</span></p></td>
+<td><p>Not at certain <span class="math notranslate nohighlight">\(k\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>Volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{2}\mathcal{I}+D'-\mathrm{i}\eta S\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{\partial u^i}{\partial n}-\mathrm{i}\eta u^i\)</span></p></td>
+<td><p>If <span class="math notranslate nohighlight">\(\eta\neq0\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Sound-Hard / Neumann</p></td>
+<td><p>Screen</p></td>
+<td><p><span class="math notranslate nohighlight">\(H\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{\partial u^i}{\partial n}\)</span></p></td>
+<td><p>Always</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>Volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{2}\mathcal{I}-D\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(u^i\)</span></p></td>
+<td><p>Not at certain <span class="math notranslate nohighlight">\(k\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>Volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(H\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{\partial u^i}{\partial n}\)</span></p></td>
+<td><p>Not at certain <span class="math notranslate nohighlight">\(k\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>Volume</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{2}\mathcal{I}-\mathcal{D}-\mathrm{i}\eta H\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(u^i+\mathrm{i}\eta\frac{\partial u^i}{\partial n}\)</span></p></td>
+<td><p>If <span class="math notranslate nohighlight">\(\eta\neq0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Regarding the BIEs which are not valid <em>at certain</em> <span class="math notranslate nohighlight">\(k\)</span>, you could consider yourself unlucky if you happened to encounter such a <span class="math notranslate nohighlight">\(k\)</span> in practice, as they are rare; corresponding to eigenvalues of interior Laplace problems. The simple BIEs (with fewer operators in <span class="math notranslate nohighlight">\(\mathcal{K}\)</span>) are sometimes more popular in practice, because these bad wavenumbers <span class="math notranslate nohighlight">\(k\)</span> are rare, and implementation is much easier.</p>
+<p>The term <span class="math notranslate nohighlight">\(\eta\)</span> is referred to as the <em>coupling parameter</em>, and can be chosen to be any non-zero real number to ensure the BIE is well posed. For example, in the Dirichlet case, the two equations which are ill-posed at certain <span class="math notranslate nohighlight">\(k\)</span> values are never ill-posed at the same <span class="math notranslate nohighlight">\(k\)</span> value. A classical idea is to <em>couple</em> the equations via <span class="math notranslate nohighlight">\(\eta\)</span>, so that the coupled equation is well-posed for all <span class="math notranslate nohighlight">\(k\)</span>. In practice, a good choice is <span class="math notranslate nohighlight">\(\eta=k\)</span>.</p>
+<details>
+<summary>
+Impedance/Robin problems are considerably more complicated, click here for details.
+</summary>
+</section>
+<section id="impedance-on-the-screen">
+<h3>Impedance on the screen<a class="headerlink" href="#impedance-on-the-screen" title="Permalink to this headline">#</a></h3>
+<p>Now consider more general Impedance / Robin problems on the screen, with boundary conditions
+$<span class="math notranslate nohighlight">\(
+\gamma^\pm_N u\pm\lambda^\pm\gamma_D^\pm u = -(\gamma_N^\pm u^i\pm\lambda^\pm\gamma_D^\pm u^i),
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\gamma^\pm_D<span class="math notranslate nohighlight">\( and \)</span>\gamma^\pm_N<span class="math notranslate nohighlight">\( denote the Dirichlet and Neumann traces taken from above/below the screen, and \)</span>\lambda^pm$ are the impedance parameters describing the material. Here the boundary integral equation takes a matrix form, with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathcal{K} = \left[\begin{array}{ll} -\frac{1}{2}(\lambda^++\lambda^-)\mathcal{I}-2H&amp;(\lambda^+-\lambda^-)S \\ \frac{1}{2}(\lambda^+-\lambda^-)\mathcal{I} &amp; \mathcal{I}-(\lambda^++\lambda^-)S\end{array}\right]\end{split}\]</div>
+<p>and
+$<span class="math notranslate nohighlight">\(
+f = \left[\begin{array}{c}(\lambda^+-\lambda^-)\frac{\partial u^i}{\partial n}\\
+(\lambda^--\lambda^+)u^i\end{array}
+\right].
+\)</span><span class="math notranslate nohighlight">\(
+This is uniquely solvable for \)</span>\lambda^++\lambda^-\neq0$.</p>
+</details>
+</section>
+</section>
+<section id="constructing-a-boundary-element-method-bem">
+<h2>Constructing a Boundary Element Method (BEM)<a class="headerlink" href="#constructing-a-boundary-element-method-bem" title="Permalink to this headline">#</a></h2>
+<p>The main aim of the BEM is to approximate <span class="math notranslate nohighlight">\(v_N\)</span> by approximately solving (2), then plug this approximation into (1), to obtain an approximation for <span class="math notranslate nohighlight">\(u^s\)</span>. This is done by writing
+$<span class="math notranslate nohighlight">\(
+v(x)\approx v_N(x)=\sum_{n=1}^Nc_n\phi_n(x),
+\)</span><span class="math notranslate nohighlight">\(
+where the \)</span>\phi_n<span class="math notranslate nohighlight">\( are basis functions, for example piecewise linear, piecewise constants. Hence the name _Boundary Element Method_; we are implementing a finite element method on the boundary \)</span>\partial \Omega$. We then solve either the collocation or Galerkin problem.</p>
+<!-- Actually write the approximate $u^s$ -->
+<section id="collocation-bem">
+<h3>Collocation BEM<a class="headerlink" href="#collocation-bem" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="the-idea-behind-collocation-is-to-force-2-to-hold-at-n-collocation-points-x-1-ldots-x-n-on-the-surface-partial-omega-this-can-be-expressed-as-sum-n-1-nc-n-chi-mathcal-i-mathcal-k-phi-n-x-m-f-x-m-quad-text-for-m-1-ldots-n-where-the-unknowns-are-the-coefficients-c-n-this-is-equivalent-to-solving-the-linear-system-left-chi-phi-n-x-m-int-mathrm-supp-phi-n-k-x-m-y-phi-n-y-mathrm-d-s-y-right-n-m-1-n-left-c-n-right-n-1-n">
+<h1>The idea behind collocation is to force (2) to hold at <span class="math notranslate nohighlight">\(N\)</span> <em>collocation points</em> <span class="math notranslate nohighlight">\(x_1,\ldots,x_N\)</span>, on the surface <span class="math notranslate nohighlight">\(\partial \Omega\)</span>. This can be expressed as
+$<span class="math notranslate nohighlight">\(
+\sum_{n=1}^Nc_n(\chi\mathcal{I}+\mathcal{K})\phi_n(x_m) = f(x_m),\quad\text{for }m=1,\ldots,N,
+\)</span><span class="math notranslate nohighlight">\(
+where the unknowns are the coefficients \)</span>c_n<span class="math notranslate nohighlight">\(. This is equivalent to solving the linear system:
+\)</span>$
+\left[\chi\phi_n(x_m)+\int_{\mathrm{supp}\ \phi_n}K(x_m,y)\phi_n(y)\mathrm{d} s(y)\right]<em>{n,m=1}^N
+\left[c_n
+\right]</em>{n=1}^N<a class="headerlink" href="#the-idea-behind-collocation-is-to-force-2-to-hold-at-n-collocation-points-x-1-ldots-x-n-on-the-surface-partial-omega-this-can-be-expressed-as-sum-n-1-nc-n-chi-mathcal-i-mathcal-k-phi-n-x-m-f-x-m-quad-text-for-m-1-ldots-n-where-the-unknowns-are-the-coefficients-c-n-this-is-equivalent-to-solving-the-linear-system-left-chi-phi-n-x-m-int-mathrm-supp-phi-n-k-x-m-y-phi-n-y-mathrm-d-s-y-right-n-m-1-n-left-c-n-right-n-1-n" title="Permalink to this headline">#</a></h1>
+<p>\left[f(x_m)\right]_{m=1}^N.
+$$</p>
+<p>Collocation has the practical advantage over Galerkin (which will be summarised next) because there are only single integrals. However, there are few theoretical guarantees about the above linear system being well-conditioned, or even solvable, and little is known about the <em>best</em> way to choose <span class="math notranslate nohighlight">\(x_m\)</span>. Here’s a summary of what is known:</p>
+<ul class="simple">
+<li><p>Taking more collocation points than basis functions is known as <em>oversampling</em>. By doing this, and reformulating as a least-squares problem, one can often overcome the instabilities associated with collocation.</p></li>
+<li><p>Another technique is to supplement the linear system with some collocation points <em>inside</em> of <span class="math notranslate nohighlight">\(\Omega\)</span> satisfying a different equation, which follows from (1), noting that <span class="math notranslate nohighlight">\(u=0\)</span> in <span class="math notranslate nohighlight">\(\Omega\)</span>. There are known as CHIEF points.</p></li>
+<li><p>When <span class="math notranslate nohighlight">\(\phi_n\)</span> are piecewise linear functions, e.g. hat functions, choosing collocation points as the midpoints of <span class="math notranslate nohighlight">\(\mathrm{supp}\phi_n\)</span> is actually a bad idea, and can lead to the linear system being unsolvable.</p></li>
+</ul>
+<section id="galerkin-bem">
+<h2>Galerkin BEM<a class="headerlink" href="#galerkin-bem" title="Permalink to this headline">#</a></h2>
+<p>The idea behind Galerkin BEM is similar to Galerkin FEM, we force (2) to hold when integrate against each of our basis functions</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{n=1}^Nc_n\left&lt;(\chi\mathcal{I}+\mathcal{K})\phi_n,\phi_m\right&gt; = \left&lt;f,\phi_m\right&gt;,\quad\text{for }m=1,\ldots,N,
+\]</div>
+<p>where the unknowns are the coefficients <span class="math notranslate nohighlight">\(c_n\)</span>, and the triangular brackets denote the inner product $<span class="math notranslate nohighlight">\(\left&lt;\psi,\varphi\right&gt;=\int_{\partial\Omega}\psi(x)~\overline{\varphi}(x)~\mathrm{d}s(x).\)</span><span class="math notranslate nohighlight">\( This is equivalent to solving the linear system:
+\)</span><span class="math notranslate nohighlight">\(
+\left[\chi\int_{\mathrm{supp}\phi_m}\phi_n(x)\overline{\phi_m}(x)\mathrm{d}s(x) + \int_{\mathrm{supp}\ \phi_m}\int_{\mathrm{supp}\ \phi_n}K(x,y)\phi_n(y)\overline{\phi_m}(x)\mathrm{d} s(y)\mathrm{d} s(x)\right]_{n,m=1}^N
+\left[c_n
+\right]_{n=1}^N
+\\=
+\left[\int_{\partial\Omega}f(x)\overline{\phi_m}(x)\mathrm{d}s(x)\right]_{m=1}^N.
+\)</span>$</p>
+<p>The only disadvantage of Galerkin (when compared against collocation) is the extra integral, and the double integral can be tricky to implement, especially on a two-dimensional surface, this will likely be an integral over four spatial variables.</p>
+<p>Sometimes this can be worth it, because the system to solve is often much better behaved in practice. There are some theoretical guarantees about solvability and accuracy, which follow when the operator <span class="math notranslate nohighlight">\(\mathcal{K}\)</span> satisfies the <em>coercivity</em> property. For this reason, mathematicians often prefer Galerkin BEM, and engineers prefer collocation.</p>
+</section>
+<section id="obtaining-an-approximate-representation">
+<h2>Obtaining an approximate representation<a class="headerlink" href="#obtaining-an-approximate-representation" title="Permalink to this headline">#</a></h2>
+<p>Finally, we can plug our approximation <span class="math notranslate nohighlight">\(v_N\)</span> in place of <span class="math notranslate nohighlight">\(u\)</span> or <span class="math notranslate nohighlight">\(\frac{\partial u}{\partial n}\)</span> in (1) to obtain our approximation to <span class="math notranslate nohighlight">\(u^s(x)\)</span>.</p>
+<section id="sound-soft-dirichlet-representation">
+<h3>Sound-soft/Dirichlet representation<a class="headerlink" href="#sound-soft-dirichlet-representation" title="Permalink to this headline">#</a></h3>
+<p>Here we have <span class="math notranslate nohighlight">\(\phi_h\approx \frac{\partial u}{\partial n}\)</span>, so
+$<span class="math notranslate nohighlight">\(
+\begin{equation}
+u^s(x)\approx u^s_h(x) = -\int_{\partial\Omega}\Phi(x,y)v_N(y)\ \mathrm{d}s(y) = -\sum_{n=1}^Nc_n\int_{\partial\Omega}\Phi(x,y)\phi_n(y)\ \mathrm{d}s(y),
+\end{equation}
+\)</span>$</p>
+</section>
+<section id="sound-hard-neumann-representation">
+<h3>Sound-hard/Neumann representation<a class="headerlink" href="#sound-hard-neumann-representation" title="Permalink to this headline">#</a></h3>
+<p>Here we have <span class="math notranslate nohighlight">\(\phi_h\approx u\)</span>, so
+$<span class="math notranslate nohighlight">\(
+u^s(x)\approx u^s_h(x) = \int_{\partial\Omega}\frac{\partial \Phi(x,y)}{\partial n(y)}v_N\ \mathrm{d}s(y)
+=\sum_{n=1}^Nc_n\int_{\partial\Omega}\frac{\partial \Phi(x,y)}{\partial n(y)}\phi_h(y)\ \mathrm{d}s(y),
+\)</span>$</p>
+</section>
+</section>
+<section id="some-final-comments">
+<h2>Some final comments<a class="headerlink" href="#some-final-comments" title="Permalink to this headline">#</a></h2>
+<section id="comparison-with-fem">
+<h3>Comparison with FEM<a class="headerlink" href="#comparison-with-fem" title="Permalink to this headline">#</a></h3>
+<p>The following table summarises the <span style="color:green">pros</span>  and <span style="color:red"> cons</span> of BEM, when compared against FEM for solving the same problem.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>FEM</p></th>
+<th class="head"><p>BEM</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Spatial dimension of unknown</p></td>
+<td><p>Same as original problem (with the exception of Trefftz DG  FEM)</p></td>
+<td><p><span style="color:green"> One less than original problem</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Matrix</p></td>
+<td><p><span style="color:green"> Sparse</span> and large</p></td>
+<td><p><span style="color:red"> Dense</span> and <span style="color:green">not so large</span> (due to lower spatial dimension)</p></td>
+</tr>
+<tr class="row-even"><td><p>Matrix entries</p></td>
+<td><p>Smooth integrals</p></td>
+<td><p><span style="color:red"> Singular integrals</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Size of unknown domain</p></td>
+<td><p><span style="color:red">Unbounded</span>, typically addressed using an artificial boundary, e.g. Perfectly Matched Layers</p></td>
+<td><p><span style="color:green">Bounded</span>, on the surface of <span class="math notranslate nohighlight">\(\Omega\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<!-- | Strong ellipticity / coercivity | In a non-standard norm | For screen problems, and star-shaped domains | -->
+</section>
+<section id="choice-of-quadrature">
+<h3>Choice of quadrature<a class="headerlink" href="#choice-of-quadrature" title="Permalink to this headline">#</a></h3>
+<p>In the coded example in the next tutorial, we will use a one-point quadrature rule for our integrals, which is the most basic approximation conceivable. For smooth integrands <span class="math notranslate nohighlight">\((m\neq n)\)</span>, <a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_quadrature#Gauss%E2%80%93Legendre_quadrature">Gauss-Legendre quadrature</a> is very popular in practice, as this converges much faster. In higher dimensional integrals, a popular approach is to use Gauss quadrature in each direction. This is sub-optimal, cubature rules are the most efficient way to do this, but are rarely used in practice.</p>
+<p>For singular integrals <span class="math notranslate nohighlight">\((m=n)\)</span>, grading can be used as a one-size-fits all approach. However, we often know the precise singular behaviour, so grading can be overkill. A more informed approach is that of singularity subtraction, where the singular part of the integrand is evaluated analytically, and the remaining part is evaluated using standard quadrature. A second informed approach is to use generalised Gaussian quadrature, which is designed to be accurate for integrals containing a certain type of singularity.</p>
+<p>For singular double integrals, when the singularity is along the diagonal of the integration domain, the Duffy transform can be used to convert to two integrals over a square/cube/hypercube with singularities at the edges, making it more amenable to techniques for 1D singular integrals.</p>
+<p>Quadrature is the main difficulty when implementing a BEM. If possible, use BEM software such as <a class="reference external" href="https://bempp.com">bempp</a>, where quadrature has been implemented carefully and efficiently. If you are hellbent on implementing your own BEM, get your quadrature routines from a colleague who has tried and tested them for similar problems, otherwise prepare yourself for several days/weeks/months of painful debugging.</p>
+</section>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Certain acoustic scattering problems can be reformulated as a problem on the boundary, where the unknown density determines the amplitude of lots of tiny sources/speakers</p></li>
+<li><p>BEMs are FEMs on the boundary/surface of the obstacle</p></li>
+<li><p>Certain BIEs and/or certain choices of collocation points can lead to numerical instabilities</p></li>
+<li><p>Implementing and understanding BEMs can be harder than FEMs, but there are computational advantages</p></li>
+</ul>
+<!-- References needed:
+Further reading: Sauter & Schwab
+ACTA numerica
+Colton & Kress
+
+Collocation:
+The Wendland ones,
+CHIEF points
+-->
+<!-- # Quadrature
+
+One of the harder aspects of BEM, when compared against FEM, is the evaluation of singular integrals. These typically occur on (and possibly close to) the diagonal entries $m=n$ of the linear system of equations.
+
+If you are coding your own BEM, it is strongly recommended that you avoid writing your own quadrature rules from scratch, because there are lots of special cases to consider, and lots of mistakes can occur!
+
+I will list below a few techniques which I have found useful in the past:
+
+### Graded quadrature
+
+This is the most generally applicable form of quadrature for singularities.
+
+### Duffy Transformation
+
+This should be used in conjunction with any other method for singular quadrature. -->
+<!-- Link to Nick O's Green's function stuff here -->
+<!-- We will use a second type of source, which is the normal derivate $\frac{\partial \Phi(x,y)}{\partial n(y)}$, i.e. the derivative taken outwards from the boundary $\partial \Omega$. Summing up lots of these sources at every point $y$ on the surface $\partial \Omega$, we arrive at the representation
+$$
+u^s(x) = \int_{\partial\Omega}\Phi(x,y)\phi(y)\ \mathrm{d}s(y) + \int_{\partial\Omega}\frac{\partial \Phi(x,y)}{\partial n(y)}\psi(y)\ \mathrm{d}s(y).
+$$
+
+We have arrived So if we can determine (or approximate) $\phi$ and $\psi$, we can determine (or approximate) $u^s$. It actually follows from Green's 2nd identity that we can express $\phi$ and $\psi$ in -->
+<!-- Add a mathematical derivation too, but make it hidden -->
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/bem"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="bem-tutorials-main.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">BEM Tutorials</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="quick_BEM3.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Boundary Element Method (BEM)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By UKAN Computational Acoustics Special Interest Group<br/>
+  
+    <div class="extra_footer">
+      <p>
+This site and its contents are licensed under the <a href="https://creativecommons.org/licenses/by/4.0/legalcode" alt="link to license text">Creative Commons Attribution 4.0 International Public License</a>.
+</p>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
