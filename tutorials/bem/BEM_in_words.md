@@ -14,13 +14,13 @@ To solve the BEM problem, i.e. to fine tune the volume on each microphone, we mu
 We will write $\Phi(x,y)$ to mean the point-source / Green's function / metaphorical speaker at point $y$ on $\partial \Omega$, observed at point $x$ on $\Omega$. Naturally we would expect $\Phi(x,y)$ to be a wave, and to get larger as $y$ moves towards $x$. 
 
 It follow's from [Green's third identity](https://en.wikipedia.org/wiki/Green's_identities#Green's_third_identity) that
+
 $$
-\begin{equation}
 u^s(x) = -\int_{\partial\Omega}\Phi(x,y)\frac{\partial u}{\partial n}(y)\ \mathrm{d}s(y) + \int_{\partial\Omega}\frac{\partial \Phi(x,y)}{\partial n(y)}u(y)\ \mathrm{d}s(y),
-\end{equation}
 $$
 
 $\Phi$ denotes the fundamental solution / point source / Green's function / figurative speaker:
+
 $$
 \Phi(x,y) := \left\{
 \begin{array}{ll}
@@ -29,6 +29,7 @@ $$
 \end{array}
 \right.
 $$
+
 where $H^{(1)}_0$ is the [Hankel function](https://mathworld.wolfram.com/HankelFunctionoftheFirstKind.html) of the first kind order zero.
 
 Here $x$ is some point away from the obstacle $\Omega$.
@@ -59,17 +60,21 @@ This process of _moving the problem onto the boundary_ is commonly referred to a
 
 ### Trace operators
 The simplest of the trace operators is the _Dirichlet_ trace $\gamma_D$, which can be interpreted physically as moving $x$ to the boundary $\partial\Omega$. This trace gives us
+
  $$
 \gamma_Du^s(x) = -\int_{\partial\Omega}\Phi(x,y)\frac{\partial u}{\partial n}(y)\mathrm{d}s(y)
 +
 \int_{\partial\Omega}\frac{\partial\Phi(x,y)}{\partial n(y)}u(y)\mathrm{d}s(y) + \frac{1}{2}u(x),
  $$
+ 
  for $x$ on $\partial \Omega$. This is often compactly written as
+ 
  $$
 \gamma_Du^s = S\frac{\partial u}{\partial n} - \left(D+\frac{1}{2}\mathcal{I}\right)u,\quad\text{on }\partial\Omega.
  $$
 
  The second most commonly used trace is the Neumann trace, which can be interpreted as moving $\nabla u$ onto $\partial\Omega$ (non-tangentially) and then taking the dot product with the normal derivative at this limit point. This gives us:
+
  $$
  \begin{align*}
 \gamma_Nu^s(x) =& -\int_{\partial\Omega}\frac{\Phi(x,y)}{\partial n(x)}\frac{\partial u}{\partial n}(y)\mathrm{d}s(y)
@@ -78,38 +83,45 @@ The simplest of the trace operators is the _Dirichlet_ trace $\gamma_D$, which c
 \frac{\partial}{\partial n(x)}\int_{\partial\Omega}\frac{\partial\Phi(x,y)}{\partial n(y)}u(y)\mathrm{d}s(y)
 \end{align*},\quad x\text{ on }\partial\Omega,
  $$
+ 
  which has the compact form
+ 
  $$
 \gamma_N u^s = \left(-D'+\frac{1}{2}\mathcal{I}\right)\frac{\partial u}{\partial n} + Hu.
  $$
+ 
  Both of these trace equations can be used to construct our boundary integral equation which follows.
 </details>
 
 
 After taking a trace, we obtain an integral equation of the form
+
 $$
 \begin{equation}
 (\chi\mathcal{I}+\mathcal{K})v(x) = f(x),\quad x\text{ on }\partial \Omega.
 \end{equation}
 $$
+
 where our unknown $v$ depends on the boundary conditions, i.e. the material of $\Omega$ as follows:
+
 $$
-\begin{equation}
 v = \left\{\begin{array}{ll}
 {\partial u}/{\partial n}& \text{sound-soft / Dirichlet}\\
 u&\text{sound-hard / Neumann}\\
 ({\partial u}/{\partial n}, u ) &\text{impedance / Robin}
 \end{array}\right.
-\end{equation}
 $$
+
 In the third case, our unknown quantity $v$ is a vector of two unknown functions. For problems of scattering by thin screens/plates, the quantities above are replaced by their jump in value from either side of the screen. For example, $u$ would be replaced by $u^+-u^-$, where $u+$ and $u^-$ are respectively the limiting values of $u$ above and below the screen.
 
 In (1) $\mathcal{I}$ denotes the identity operator, which maps a function to its self. Some BIEs will contain the identity operator in which case $\chi=\pm\frac{1}{2}$, more details follow below. If there are no identity terms, clearly $\chi=0$.
 
 In (1) $\mathcal{K}$ is a _boundary integral operator_ (BIO), meaning it maps functions on the boundary $\partial \Omega$ to functions on $\partial \Omega$
+
 $$
 \mathcal{K}\psi(x) := \int_{\partial \Omega}K(x,y)\psi(y)\mathrm{d} s(y),
 $$
+
 where $K(x,y)$ is a known function called the _kernel_ (no relation to the computer component or algebraic objects of the same name) and will depend on the choice of trace taken, but in the simplest case, with Dirichlet BCs / sound-soft obstacle, $K=\Phi$.
 
 Similarly, $f$ is known explicitly, and will depend on the choice of trace used and the incoming wave $u^i$. In the simplest case, we have $f = u^i$.
@@ -157,18 +169,23 @@ Impedance/Robin problems are considerably more complicated, click here for detai
 
 ### Impedance on the screen
 Now consider more general Impedance / Robin problems on the screen, with boundary conditions
+
 $$
 \gamma^\pm_N u\pm\lambda^\pm\gamma_D^\pm u = -(\gamma_N^\pm u^i\pm\lambda^\pm\gamma_D^\pm u^i),
 $$
+
 where $\gamma^\pm_D$ and $\gamma^\pm_N$ denote the Dirichlet and Neumann traces taken from above/below the screen, and $\lambda^pm$ are the impedance parameters describing the material. Here the boundary integral equation takes a matrix form, with
 
 $$\mathcal{K} = \left[\begin{array}{ll} -\frac{1}{2}(\lambda^++\lambda^-)\mathcal{I}-2H&(\lambda^+-\lambda^-)S \\ \frac{1}{2}(\lambda^+-\lambda^-)\mathcal{I} & \mathcal{I}-(\lambda^++\lambda^-)S\end{array}\right]$$
-and 
+
+and
+
 $$
 f = \left[\begin{array}{c}(\lambda^+-\lambda^-)\frac{\partial u^i}{\partial n}\\
 (\lambda^--\lambda^+)u^i\end{array}
 \right].
 $$
+
 This is uniquely solvable for $\lambda^++\lambda^-\neq0$.
 
 </details>
@@ -177,9 +194,11 @@ This is uniquely solvable for $\lambda^++\lambda^-\neq0$.
 ## Constructing a Boundary Element Method (BEM)
 
 The main aim of the BEM is to approximate $v_N$ by approximately solving (2), then plug this approximation into (1), to obtain an approximation for $u^s$. This is done by writing
+
 $$
 v(x)\approx v_N(x)=\sum_{n=1}^Nc_n\phi_n(x),
 $$
+
 where the $\phi_n$ are basis functions, for example piecewise linear, piecewise constants. Hence the name _Boundary Element Method_; we are implementing a finite element method on the boundary $\partial \Omega$. We then solve either the collocation or Galerkin problem.
 
 <!-- Actually write the approximate $u^s$ -->
@@ -187,10 +206,13 @@ where the $\phi_n$ are basis functions, for example piecewise linear, piecewise 
 ### Collocation BEM
 
 The idea behind collocation is to force (2) to hold at $N$ _collocation points_ $x_1,\ldots,x_N$, on the surface $\partial \Omega$. This can be expressed as
+
 $$
 \sum_{n=1}^Nc_n(\chi\mathcal{I}+\mathcal{K})\phi_n(x_m) = f(x_m),\quad\text{for }m=1,\ldots,N,
 $$
+
 where the unknowns are the coefficients $c_n$. This is equivalent to solving the linear system:
+
 $$
 \left[\chi\phi_n(x_m)+\int_{\mathrm{supp}\ \phi_n}K(x_m,y)\phi_n(y)\mathrm{d} s(y)\right]_{n,m=1}^N
 \left[c_n
@@ -212,7 +234,13 @@ The idea behind Galerkin BEM is similar to Galerkin FEM, we force (2) to hold wh
 $$
 \sum_{n=1}^Nc_n\left<(\chi\mathcal{I}+\mathcal{K})\phi_n,\phi_m\right> = \left<f,\phi_m\right>,\quad\text{for }m=1,\ldots,N,
 $$
-where the unknowns are the coefficients $c_n$, and the triangular brackets denote the inner product $$\left<\psi,\varphi\right>=\int_{\partial\Omega}\psi(x)~\overline{\varphi}(x)~\mathrm{d}s(x).$$ This is equivalent to solving the linear system:
+
+where the unknowns are the coefficients $c_n$, and the triangular brackets denote the inner product 
+
+$$\left<\psi,\varphi\right>=\int_{\partial\Omega}\psi(x)~\overline{\varphi}(x)~\mathrm{d}s(x).$$
+
+This is equivalent to solving the linear system:
+
 $$
 \left[\chi\int_{\mathrm{supp}\phi_m}\phi_n(x)\overline{\phi_m}(x)\mathrm{d}s(x) + \int_{\mathrm{supp}\ \phi_m}\int_{\mathrm{supp}\ \phi_n}K(x,y)\phi_n(y)\overline{\phi_m}(x)\mathrm{d} s(y)\mathrm{d} s(x)\right]_{n,m=1}^N
 \left[c_n
@@ -230,7 +258,9 @@ Sometimes this can be worth it, because the system to solve is often much better
 Finally, we can plug our approximation $v_N$ in place of $u$ or $\frac{\partial u}{\partial n}$ in (1) to obtain our approximation to $u^s(x)$.
 
 ### Sound-soft/Dirichlet representation
+
 Here we have $\phi_h\approx \frac{\partial u}{\partial n}$, so 
+
 $$
 \begin{equation}
 u^s(x)\approx u^s_h(x) = -\int_{\partial\Omega}\Phi(x,y)v_N(y)\ \mathrm{d}s(y) = -\sum_{n=1}^Nc_n\int_{\partial\Omega}\Phi(x,y)\phi_n(y)\ \mathrm{d}s(y),
@@ -238,7 +268,9 @@ u^s(x)\approx u^s_h(x) = -\int_{\partial\Omega}\Phi(x,y)v_N(y)\ \mathrm{d}s(y) =
 $$
 
 ### Sound-hard/Neumann representation
+
 Here we have $\phi_h\approx u$, so
+
 $$
 u^s(x)\approx u^s_h(x) = \int_{\partial\Omega}\frac{\partial \Phi(x,y)}{\partial n(y)}v_N\ \mathrm{d}s(y)
 =\sum_{n=1}^Nc_n\int_{\partial\Omega}\frac{\partial \Phi(x,y)}{\partial n(y)}\phi_h(y)\ \mathrm{d}s(y),
@@ -304,6 +336,7 @@ This should be used in conjunction with any other method for singular quadrature
 <!-- Link to Nick O's Green's function stuff here -->
 
 <!-- We will use a second type of source, which is the normal derivate $\frac{\partial \Phi(x,y)}{\partial n(y)}$, i.e. the derivative taken outwards from the boundary $\partial \Omega$. Summing up lots of these sources at every point $y$ on the surface $\partial \Omega$, we arrive at the representation
+
 $$
 u^s(x) = \int_{\partial\Omega}\Phi(x,y)\phi(y)\ \mathrm{d}s(y) + \int_{\partial\Omega}\frac{\partial \Phi(x,y)}{\partial n(y)}\psi(y)\ \mathrm{d}s(y).
 $$
