@@ -40,8 +40,6 @@ jobs:
           else
               echo ::set-output name=changed::yes
           fi
-    - run: cat docker/Dockerfile
-    - run: cat docker/Dockerfile.old
     - name: set Docker tag
       run: |
         if [ "${{ github.ref }}" = "refs/heads/main" ]; then
