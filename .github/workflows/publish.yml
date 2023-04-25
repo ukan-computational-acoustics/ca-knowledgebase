@@ -106,15 +106,25 @@ jobs:
         PYVISTA_JUPYTER_BACKEND=static PYVISTA_OFF_SCREEN=false jupyter-book build .
 
   deploy-book:
+    runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    container: caknowledgebase/caknowledgebase:${{ needs.build-docker.outputs.dockertag }}
     needs:
-    - build-book
+    - build-docker
 
     permissions:
       contents: read
       pages: write
       id-token: write
     steps:
+    - uses: actions/checkout@v2
+
+    # Build the book
+    - name: Build the book
+      run: |
+        PYVISTA_JUPYTER_BACKEND=static PYVISTA_OFF_SCREEN=false jupyter-book build .
+
+    # Push to GitHub Pages
     - name: Setup Pages
       uses: actions/configure-pages@v3
     - name: Upload artifact
