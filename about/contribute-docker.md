@@ -10,7 +10,7 @@ docker run -ti -p 8888:8888 caknowledgebase/caknowledgebase:main
 You will then be shown a link to follow to open the Jupyter lab.
 
 ## The structure of the Dockerfile
-The Dockerfile can be found in the [docker folder](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/tree/main/docker).
+The Dockerfile can be found in the [docker folder](https://github.com/ukan-computational-acoustics/ca-knowledgebase/tree/main/docker).
 (This should not be confused with the much smaller Dockerfile in the root folder of this repo. This smaller Dockfile only exists to make the Binder
 links on the knowledgebase website work.)
 
@@ -48,4 +48,4 @@ When the Dockerfile is changed in a pull request or on the main branch, GitHub w
 ## Getting help
 The Docker image and the GitHub actions surrounding it were set up by [Matthew Scroggs](community/bios.html#matthew-scroggs) and
 [Jørgen S. Dokken](../community/bios#jorgen-s-dokken). If you encounter any problems with the Docker set up, please
-[open an issue on GitHub](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues/new) and tag Matthew and/or Jørgen.
+[open an issue on GitHub](https://github.com/ukan-computational-acoustics/ca-knowledgebase/issues/new) and tag Matthew and/or Jørgen.

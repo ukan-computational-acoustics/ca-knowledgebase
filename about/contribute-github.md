@@ -7,7 +7,7 @@ and the [Software Carpentry lesson on version control with git](https://swcarpen
 In brief, you should follow the following steps to contribute to the knowledgebase. These steps demonstrate using git from the command line; if you
 are using a GUI client, you should have buttons with test similar to the commands given here.
 
-1. Make a fork of the [knowledgebase repo](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io). There is a button in the top right
+1. Make a fork of the [knowledgebase repo](https://github.com/ukan-computational-acoustics/ca-knowledgebase). There is a button in the top right
    corner that allows you to do this.
 
 2. Clone (ie) download your fork of the repo. You can do this by copying the link you see when you click the green 'Code' button on GitHub, then running:

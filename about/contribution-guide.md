@@ -2,8 +2,8 @@
 We are always seeking contributions and testers for all sections of the site.
 
 To get an idea about what kind of things need doing, take a look at our
-[list of open issues on GitHub](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues).
-If you think something not on that list needs doing, go ahead and [open an issue](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/issues/new).
+[list of open issues on GitHub](https://github.com/ukan-computational-acoustics/ca-knowledgebase/issues).
+If you think something not on that list needs doing, go ahead and [open an issue](https://github.com/ukan-computational-acoustics/ca-knowledgebase/issues/new).
 
 We expect all contributors to the knowledgebase to follow the [code of conduct](../CODE_OF_CONDUCT).
 
