@@ -16,8 +16,8 @@ Andrea Cicero is a PhD Student at the University of Salford. His research focuse
 
 [<i class="fa fa-internet-explorer"></i> jsdokken.com](https://jsdokken.com) &nbsp; [<i class="fa fa-github"></i> @jorgensd](https://github.com/jorgensd) &nbsp; [<i class="fab fa-discourse"></i> @dokken](https://fenicsproject.discourse.group/u/dokken/)
 
-Jørgen S. Dokken is a postdoctoral research associate at the Department of Engineering at the
-University of Cambridge. He is one of the developers of the [the FEniCS finite element library](https://fenicsproject.org/),
+Jørgen S. Dokken is a research engineer at Simula Research Laboratory, Oslo.
+He is one of the developers of the [the FEniCS finite element library](https://fenicsproject.org/),
 [Dolfin-adjoint](http://www.dolfin-adjoint.org/en/latest/) and the author of the [FEniCSx tutorial](https://jorgensd.github.io/dolfinx-tutorial/).
 
 ## Andrew Gibbs
@@ -65,7 +65,7 @@ applications and physiological modelling. He co-leads the
 
 [<i class="fa fa-internet-explorer"></i> mscroggs.co.uk](https://mscroggs.co.uk) &nbsp; [<i class="fa fa-github"></i> @mscroggs](https://github.com/mscroggs) &nbsp; [<i class="fa fa-twitterd  "></i> @mscroggs](https://twitter.com/mscroggs)
 
-Matthew Scroggs is a postdoctoral research associate in the Department of Engineering at the
-University of Cambridge. He is one of the developers of [the FEniCS finite element
+Matthew Scroggs is a postdoctoral research fellow in the Department of Mathematics at
+University College London. He is one of the developers of [the FEniCS finite element
 library](https://fenicsproject.org/) and [the Bempp boundary element
 library](https://bempp.com/). He is the maintainer of [DefElement, an encyclopedia of finite element definitions](https://defelement.com).
