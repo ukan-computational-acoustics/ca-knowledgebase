@@ -109,12 +109,12 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v3
       if: github.ref == 'refs/heads/main'
-    - name: Upload artifact for docs
+    - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
         path: '_build/html'
       if: github.ref == 'refs/heads/main'
-    - name: Deploy docs to GitHub Pages
+    - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v1
       if: github.ref == 'refs/heads/main'
