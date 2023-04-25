@@ -63,7 +63,7 @@ applications and physiological modelling. He co-leads the
 
 ## Matthew Scroggs
 
-[<i class="fa fa-internet-explorer"></i> mscroggs.co.uk](https://mscroggs.co.uk) &nbsp; [<i class="fa fa-github"></i> @mscroggs](https://github.com/mscroggs) &nbsp; [<i class="fa fa-twitterd  "></i> @mscroggs](https://twitter.com/mscroggs)
+[<i class="fa fa-internet-explorer"></i> mscroggs.co.uk](https://mscroggs.co.uk) &nbsp; [<i class="fa fa-github"></i> @mscroggs](https://github.com/mscroggs) &nbsp; [<i class="fa fa-twitter"></i> @mscroggs](https://twitter.com/mscroggs)
 
 Matthew Scroggs is a postdoctoral research fellow in the Department of Mathematics at
 University College London. He is one of the developers of [the FEniCS finite element
