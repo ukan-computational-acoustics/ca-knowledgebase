@@ -21,7 +21,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Get main branch
-      run: git clone https://github.com/ca-knowledgebase/ca-knowledgebase.github.io.git ca-main
+      run: git clone https://github.com/ukan-computational-acoustics/ca-knowledgebase.git ca-main
     - name: Go back a commit
       run: |
         cd ca-main
