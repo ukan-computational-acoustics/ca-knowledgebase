@@ -2,7 +2,6 @@
 
 name: publish-book
 
-# Only run this when the master branch changes
 on:
   push:
     branches:
@@ -90,7 +89,7 @@ jobs:
         export PYVISTA_OFF_SCREEN=true
         pytest _test
 
-  deploy-book:
+  build-book:
     # This job installs dependencies and builds the book
     # If the branch is main, it then pushes to GitHub Pages
     runs-on: ubuntu-latest
@@ -106,15 +105,35 @@ jobs:
       run: |
         PYVISTA_JUPYTER_BACKEND=static PYVISTA_OFF_SCREEN=false jupyter-book build .
 
+  deploy-book:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    container: caknowledgebase/caknowledgebase:${{ needs.build-docker.outputs.dockertag }}
+    needs:
+    - build-docker
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+    - uses: actions/checkout@v2
+
+    # Build the book
+    - name: Build the book
+      run: |
+        PYVISTA_JUPYTER_BACKEND=static PYVISTA_OFF_SCREEN=false jupyter-book build .
+
+    # Push to GitHub Pages
     - name: Setup Pages
       uses: actions/configure-pages@v3
-      if: github.ref == 'refs/heads/main'
-    - name: Upload artifact for docs
+    - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
         path: '_build/html'
       if: github.ref == 'refs/heads/main'
-    - name: Deploy docs to GitHub Pages
+    - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v1
       if: github.ref == 'refs/heads/main'
+
