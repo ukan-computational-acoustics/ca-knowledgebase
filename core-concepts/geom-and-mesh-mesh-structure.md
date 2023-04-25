@@ -1,5 +1,5 @@
 # Mesh Structure
-Author: [Jonathan Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves)
+Author: [Jonathan Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jonathan-hargreaves), [Amelia Gully](https://knowledgebase.acoustics.ac.uk/community/bios.html#amelia-gully)
 
 ```{admonition} Alpha mode!
 :class: tip
