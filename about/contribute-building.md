@@ -17,7 +17,7 @@ jupyter-book clean .
 jupyter-book build .
 ```
 
-You can inspect the created book by opening the local HTML files in `ca-knowledgebase.github.io/_build`.
+You can inspect the created book by opening the local HTML files in `ca-knowledgebase/_build`.
 
 ## Building this side inside the Docker image
 

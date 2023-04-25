@@ -26,6 +26,7 @@ jobs:
       run: |
         cd ca-main
         git reset HEAD~1
+        git stash
         cd ..
       if: github.ref == 'refs/heads/main'
     - name: Get old Dockerfile
@@ -40,12 +41,10 @@ jobs:
           else
               echo ::set-output name=changed::yes
           fi
-    - run: cat docker/Dockerfile
-    - run: cat docker/Dockerfile.old
     - name: set Docker tag
       run: |
         if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            echo ::set-output name=tag::main            
+            echo ::set-output name=tag::main
         elif [ "${{ steps.diff.outputs.changed }}" = "yes" ]; then
             the_tag=($(echo "${{ github.ref }}" | sha1sum))
             echo ::set-output name=tag::$the_tag
@@ -77,7 +76,7 @@ jobs:
     container: caknowledgebase/caknowledgebase:${{ needs.build-docker.outputs.dockertag }}
     needs:
     - build-docker
-    
+
     steps:
     - uses: actions/checkout@v2
     - name: Install flake8 and pytest
@@ -98,7 +97,7 @@ jobs:
     container: caknowledgebase/caknowledgebase:${{ needs.build-docker.outputs.dockertag }}
     needs:
     - build-docker
-    
+
     steps:
     - uses: actions/checkout@v2
 

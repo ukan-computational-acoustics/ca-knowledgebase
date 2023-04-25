@@ -1,6 +1,6 @@
 # Contributing material to the site
 
-The source code of this knowledgebase can be found on [Github](https://github.com/ca-knowledgebase/ca-knowledgebase.github.io). The site is hosted
+The source code of this knowledgebase can be found on [Github](https://github.com/ukan-computational-acoustics/ca-knowledgebase). The site is hosted
 using GitHub pages, and will automatically rebuild after every change to the main branch.
 
 If you are new to using GitHub, you may find our [getting started with GitHub guide](contribute-github) useful.
@@ -16,7 +16,7 @@ contain executable content, whereas the notebook files do. See the Jupyter Books
 The structure and configuration of the book are determined by the YAML files `_toc.yml` and `_config.yml`. Don't edit these unless you know what you're doing!
 
 If you are contributing a tutorial, please use the tutorial template provided. This can be found at
-https://github.com/ca-knowledgebase/ca-knowledgebase.github.io/blob/main/about/code-template.ipynb.
+https://github.com/ukan-computational-acoustics/ca-knowledgebase/blob/main/about/code-template.ipynb.
 You can see what this template looks like when turned into a section of the knowledgebase by viewing [this tutorial template page](code-template).
 
 Once you have contributed to the knowledgebase, please add yourself to the [author biographies](commubity/bios.md) page.
