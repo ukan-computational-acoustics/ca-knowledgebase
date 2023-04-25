@@ -92,7 +92,7 @@ jobs:
 
   deploy-book:
     # This job installs dependencies and builds the book
-    # If the branch is main, it then pushes the book to `gh-pages`
+    # If the branch is main, it then pushes to GitHub Pages
     runs-on: ubuntu-latest
     container: caknowledgebase/caknowledgebase:${{ needs.build-docker.outputs.dockertag }}
     needs:
@@ -106,11 +106,15 @@ jobs:
       run: |
         PYVISTA_JUPYTER_BACKEND=static PYVISTA_OFF_SCREEN=false jupyter-book build .
 
-    # Push the book's HTML to github-pages
-    - name: GitHub Pages action
-      uses: peaceiris/actions-gh-pages@v3.5.9
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+      if: github.ref == 'refs/heads/main'
+    - name: Upload artifact for docs
+      uses: actions/upload-pages-artifact@v1
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_build/html
-        cname: knowledgebase.acoustics.ac.uk
-      #if: github.ref == 'refs/heads/main'
+        path: '_build/html'
+      if: github.ref == 'refs/heads/main'
+    - name: Deploy docs to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
+      if: github.ref == 'refs/heads/main'
