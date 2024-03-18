@@ -12,13 +12,13 @@ parts:
     sections:
     - file: about/contribute-suggest
     - file: about/contribute-contribute
-      sections:
-      - file: about/contribute-github
-      - file: about/code-template
+    - file: about/contribute-edit-online
+    - file: about/contribute-github
+    - file: about/contribute-building
+    - file: about/code-template
     - file: about/contribute-user-code
     - file: about/contribute-maintain
       sections:
-      - file: about/contribute-building
       - file: about/contribute-docker
     - file: CODE_OF_CONDUCT
   - file: about/who-we-are

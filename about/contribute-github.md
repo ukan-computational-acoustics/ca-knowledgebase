@@ -1,4 +1,4 @@
-# Getting started with GitHub
+# Editing locally
 
 This knowledgebase is edited and hosted using GitHub. If you have not used GitHub or git before, you may want to look at
 [How to Contribute to an Open Source Project on GitHub](https://app.egghead.io/playlists/how-to-contribute-to-an-open-source-project-on-github)
@@ -39,7 +39,7 @@ are using a GUI client, you should have buttons with test similar to the command
    git push
    ```
 
-7. Open a pull requst from your branch to the main repository. You can do this by clicking the 'Contribute' button on the GitHub page for your branch.
+7. Open a pull request from your branch to the main repository. You can do this by clicking the 'Contribute' button on the GitHub page for your branch.
 
 8. We will then review your pull request. If we suggest changes, you can make these then push again to update the pull request. Once we're happy with your changes,
    we'll merge them and the knowledgebase website will update automatically.

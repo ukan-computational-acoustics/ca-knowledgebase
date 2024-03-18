@@ -1,6 +1,8 @@
-# Building this site
+# Build the knowledgebase locally
 
-This site runs using [Jupyter Books](https://jupyterbook.org/intro.html). If you have not used Jupyter Books before, please complete their
+You may want to build a local copy of the knowledgebase before creating a pull request. For example, you might want to check that your cross-referencing has worked as intended. This page explains how to do this. 
+
+The knowledgebase runs using [Jupyter Books](https://jupyterbook.org/intro.html). If you have not used Jupyter Books before, please complete their
 [tutorial on creating your first book](https://jupyterbook.org/start/your-first-book.html) before contributing. Note that Windows users will need to use Python 3.7.
 
 First ensure you have Jupyter Books installed:
