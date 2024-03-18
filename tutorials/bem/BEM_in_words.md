@@ -1,4 +1,4 @@
-# BEM in words
+# The ideas behind the Boundary Element Method (BEM)
 Author: [Andrew Gibbs](https://knowledgebase.acoustics.ac.uk/community/bios.html#andrew-gibbs)
 ## Introduction
 ### Physical intuition
