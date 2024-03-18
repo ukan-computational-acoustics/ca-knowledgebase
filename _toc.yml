@@ -55,6 +55,7 @@ parts:
     - file: tutorials/bem/quick_BEM3
   - file: tutorials/fem/fem-tutorials-main
     sections:
+    - file: tutorials/fem/fem_1d_impedance_tube
     - file: tutorials/fem/fenicsx-helmholtz-tutorial
   
   - file: tutorials/fdtd/fdtd-tutorials-main
