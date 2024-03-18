@@ -19,7 +19,7 @@ jupyter-book build .
 
 You can inspect the created book by opening the local HTML files in `ca-knowledgebase/_build`.
 
-## Building this side inside the Docker image
+## Building this site inside the Docker image
 
 If you do not have all the software used in the knowledgebase installed locally, you can build the book inside the [knowledgebase Docker image](contribute-docker).
 You can launch this docker image by running the following commands in the root directory of the repo:
