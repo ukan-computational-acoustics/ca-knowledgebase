@@ -11,12 +11,14 @@ To solve the BEM problem, i.e. to fine tune the volume on each microphone, we mu
 
 ### Representation in terms of point sources
 
+This section relates to another KnowledgeBase tutorial: [Monopoles and Freespace Green's function's](../../core-concepts/how-to-solve-greens-functions).
+
 We will write $\Phi(x,y)$ to mean the point-source / Green's function / metaphorical speaker at point $y$ on $\partial \Omega$, observed at point $x$ on $\Omega$. Naturally we would expect $\Phi(x,y)$ to be a wave, and to get larger as $y$ moves towards $x$. 
 
 It follow's from [Green's third identity](https://en.wikipedia.org/wiki/Green's_identities#Green's_third_identity) that
 
 $$
-u^s(x) = -\int_{\partial\Omega}\Phi(x,y)\frac{\partial u}{\partial n}(y)\ \mathrm{d}s(y) + \int_{\partial\Omega}\frac{\partial \Phi(x,y)}{\partial n(y)}u(y)\ \mathrm{d}s(y),
+u^s(x) = -\int_{\partial\Omega}\Phi(x,y)\frac{\partial u}{\partial n}(y)\ \mathrm{d}s(y) + \int_{\partial\Omega}\frac{\partial \Phi(x,y)}{\partial n(y)}u(y)\ \mathrm{d}s(y),\tag{1}
 $$
 
 $\Phi$ denotes the fundamental solution / point source / Green's function / figurative speaker:
@@ -98,7 +100,7 @@ After taking a trace, we obtain an integral equation of the form
 
 $$
 \begin{equation}
-(\chi\mathcal{I}+\mathcal{K})v(x) = f(x),\quad x\text{ on }\partial \Omega.
+(\chi\mathcal{I}+\mathcal{K})v(x) = f(x),\quad x\text{ on }\partial \Omega.\tag{2}
 \end{equation}
 $$
 
@@ -114,9 +116,9 @@ $$
 
 In the third case, our unknown quantity $v$ is a vector of two unknown functions. For problems of scattering by thin screens/plates, the quantities above are replaced by their jump in value from either side of the screen. For example, $u$ would be replaced by $u^+-u^-$, where $u+$ and $u^-$ are respectively the limiting values of $u$ above and below the screen.
 
-In (1) $\mathcal{I}$ denotes the identity operator, which maps a function to its self. Some BIEs will contain the identity operator in which case $\chi=\pm\frac{1}{2}$, more details follow below. If there are no identity terms, clearly $\chi=0$.
+In (2) $\mathcal{I}$ denotes the identity operator, which maps a function to its self. Some BIEs will contain the identity operator in which case $\chi=\pm\frac{1}{2}$, more details follow below. If there are no identity terms, clearly $\chi=0$.
 
-In (1) $\mathcal{K}$ is a _boundary integral operator_ (BIO), meaning it maps functions on the boundary $\partial \Omega$ to functions on $\partial \Omega$
+In (2) $\mathcal{K}$ is a _boundary integral operator_ (BIO), meaning it maps functions on the boundary $\partial \Omega$ to functions on $\partial \Omega$
 
 $$
 \mathcal{K}\psi(x) := \int_{\partial \Omega}K(x,y)\psi(y)\mathrm{d} s(y),
@@ -293,7 +295,7 @@ The following table summarises the <span style="color:green">pros</span>  and <s
 ### Choice of quadrature
 In the coded example in the next tutorial, we will use a one-point quadrature rule for our integrals, which is the most basic approximation conceivable. For smooth integrands $(m\neq n)$, [Gauss-Legendre quadrature](https://en.wikipedia.org/wiki/Gaussian_quadrature#Gauss–Legendre_quadrature) is very popular in practice, as this converges much faster. In higher dimensional integrals, a popular approach is to use Gauss quadrature in each direction. This is sub-optimal, cubature rules are the most efficient way to do this, but are rarely used in practice. 
 
-For singular integrals $(m=n)$, grading can be used as a one-size-fits all approach. However, we often know the precise singular behaviour, so grading can be overkill. A more informed approach is that of singularity subtraction, where the singular part of the integrand is evaluated analytically, and the remaining part is evaluated using standard quadrature. A second informed approach is to use generalised Gaussian quadrature, which is designed to be accurate for integrals containing a certain type of singularity.
+For singular integrals $(m=n)$, grading can be used as a one-size-fits all approach. However, we often know the precise singular behaviour, so grading can be overkill. A more informed approach is that of singularity subtraction, where the singular part of the integrand is evaluated analytically, and the remaining part is evaluated using standard quadrature. A second informed approach is to use generalised Gaussian quadrature {cite:p}`HuCo:09`, which is designed to be accurate for integrals containing a certain type of singularity.
 
 For singular double integrals, when the singularity is along the diagonal of the integration domain, the Duffy transform can be used to convert to two integrals over a square/cube/hypercube with singularities at the edges, making it more amenable to techniques for 1D singular integrals.
 
