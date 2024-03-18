@@ -11,12 +11,13 @@ status: [![publish-book](https://github.com/ukan-computational-acoustics/ca-know
 # Contributing
 You can find a detailed guide about how to contribute to the knowledgebase at https://knowledgebase.acoustics.ac.uk/about/contribution-guide.html.
 
-## Contributing directly
-Details about how to contribute material to the knowledgebase can be found at https://knowledgebase.acoustics.ac.uk/about/contribute-contribute.html.
-
 The [GitHub issues](https://github.com/ukan-computational-acoustics/ca-knowledgebase/issues) are a good place to start, as they
-contain details of suggested changes an improvements. If you are new to contributing to the knowledgebase, you might like to
+contain details of suggested changes and improvements. You can make a suggestion here, or implement a suggestion that someone else has made.
+
+If you are new to contributing to the knowledgebase, you might like to
 look at any issues tagged [good first issue](https://github.com/ukan-computational-acoustics/ca-knowledgebase/labels/good%20first%20issue).
+
+For more complex changes, you may want to build the Jupyter book locally before pushing your changes. You may follow [our guide](about/contribute-building.md), or you can follow the [official Jupyter guidance](https://jupyterbook.org/en/stable/start/overview.html).
 
 ## Reporting errors & making suggestions
 If you spot a mistake on the knowledgebase website or want to make a suggestion about the content, you can
