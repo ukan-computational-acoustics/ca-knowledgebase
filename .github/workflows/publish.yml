@@ -2,7 +2,6 @@
 
 name: publish-book
 
-# Only run this when the master branch changes
 on:
   push:
     branches:
@@ -21,11 +20,12 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Get main branch
-      run: git clone https://github.com/ca-knowledgebase/ca-knowledgebase.github.io.git ca-main
+      run: git clone https://github.com/ukan-computational-acoustics/ca-knowledgebase.git ca-main
     - name: Go back a commit
       run: |
         cd ca-main
         git reset HEAD~1
+        git stash
         cd ..
       if: github.ref == 'refs/heads/main'
     - name: Get old Dockerfile
@@ -40,12 +40,10 @@ jobs:
           else
               echo ::set-output name=changed::yes
           fi
-    - run: cat docker/Dockerfile
-    - run: cat docker/Dockerfile.old
     - name: set Docker tag
       run: |
         if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            echo ::set-output name=tag::main            
+            echo ::set-output name=tag::main
         elif [ "${{ steps.diff.outputs.changed }}" = "yes" ]; then
             the_tag=($(echo "${{ github.ref }}" | sha1sum))
             echo ::set-output name=tag::$the_tag
@@ -77,58 +75,65 @@ jobs:
     container: caknowledgebase/caknowledgebase:${{ needs.build-docker.outputs.dockertag }}
     needs:
     - build-docker
-    
+
     steps:
     - uses: actions/checkout@v2
     - name: Install flake8 and pytest
-      run: pip3 install flake8 pytest
+      run: pip3 install flake8 pytest flake8-nb nbconvert
     - name: Run flake8 checks
       run: flake8 .
+    - name: Run flake8-nb checks
+      run: flake8-nb .
     - name: Run Python tests
       run: |
         export PYVISTA_OFF_SCREEN=true
         pytest _test
 
-  deploy-book:
+  build-book:
     # This job installs dependencies and builds the book
-    # If the branch is main, it then pushes the book to `gh-pages`
+    # If the branch is main, it then pushes to GitHub Pages
     runs-on: ubuntu-latest
     container: caknowledgebase/caknowledgebase:${{ needs.build-docker.outputs.dockertag }}
     needs:
     - build-docker
-    
+
     steps:
     - uses: actions/checkout@v2
-
-    - name: Generate ipynb files
-      run: python3 .github/scripts/generate_notebooks.py
-
-    - name: Push to gh-pages-source
-      run: |
-        repodir=$(pwd)
-        mkdir ../gh-pages-source
-        cd ../gh-pages-source
-        git config --global user.email "${{ SECRETS.GH_EMAIL }}"
-        git config --global user.name "${{ SECRETS.GH_NAME }}"
-        git init
-        git checkout -b gh-pages-source
-        cp -r $repodir/* .
-        git add .
-        git commit -a -m "Generate ipynb files"
-        git remote add origin https://${{ SECRETS.GH_USER}}:${{ SECRETS.GH_TOKEN }}@github.com/ca-knowledgebase/ca-knowledgebase.github.io.git
-        git push -u origin gh-pages-source --force
-      if: github.ref == 'refs/heads/main'
 
     # Build the book
     - name: Build the book
       run: |
         PYVISTA_JUPYTER_BACKEND=static PYVISTA_OFF_SCREEN=false jupyter-book build .
 
-    # Push the book's HTML to github-pages
-    - name: GitHub Pages action
-      uses: peaceiris/actions-gh-pages@v3.5.9
+  deploy-book:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    container: caknowledgebase/caknowledgebase:${{ needs.build-docker.outputs.dockertag }}
+    needs:
+    - build-docker
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+    - uses: actions/checkout@v2
+
+    # Build the book
+    - name: Build the book
+      run: |
+        PYVISTA_JUPYTER_BACKEND=static PYVISTA_OFF_SCREEN=false jupyter-book build .
+
+    # Push to GitHub Pages
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_build/html
-        cname: knowledgebase.acoustics.ac.uk
+        path: '_build/html'
       if: github.ref == 'refs/heads/main'
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
+      if: github.ref == 'refs/heads/main'
+

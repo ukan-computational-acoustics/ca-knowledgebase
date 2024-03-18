@@ -1,16 +1,12 @@
 # User code contributions
 
-```{warning}
-This part of the site is currently under development. Its content is incomplete.
-```
-
 This page contains a directory of all the computational acoustics code our users have agreed to share with the community. They are each hosted as individual GitHub projects.
 
 If you would like to contribute your code, please see the [instructions for submission](../about/contribute-user-code).
 
 :::{note}
 - These are existing computational acoustics projects developed by our users. We have some documentation requirements, but these are generally much lower than for our tutorial material.
-- Please note that unlike the rest of the knowledgebase, user-submitted code is **not necessarily open-source**, so please check the individual licenses. 
+- Please note that user-submitted code **may be provided under a different license** to the rest of the knowledgebase, so please check the individual licenses. 
 - User-submitted code is hosted on GitHub, so feedback and improvements can be suggested to the authors directly using normal GitHub interactions. 
 - Please note that user-submitted code will vary considerably in up-to-dateness, size, functionality, and quality of documentation.
 :::

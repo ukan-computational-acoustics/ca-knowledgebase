@@ -3,8 +3,18 @@
 Welcome to the UKAN Computational Acoustics Knowledgebase: a home for the computational acoustics research, development and user community in the UK and beyond.
 
 :::{note}
-By using this site you agree to be bound by our [code of conduct](about/code-of-conduct).
+By using this site you agree to be bound by our [code of conduct](CODE_OF_CONDUCT).
 :::
+
+We gratefully acknowledge support from the <a href="https://acoustics.ac.uk/" alt="UKAN website">UK Acoustics Network (UKAN)</a>.
+
+```{image} ukan_logo.png
+:alt: UKAN logo
+:class: bg-primary mb-1
+:width: 300px
+:align: center
+```
+
 
 How to use this site:
 
@@ -26,16 +36,4 @@ This site is currently under development. Once complete, it will also include:
 
 ```
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfRASVBDDqw7gumQ_Ct4Yy8uGzN4k5za6SiVlisJYrxpqFPgA/viewform?embedded=true" width="800" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-
 [Contact us](mailto:ukan.ca.knowledgebase@gmail.com) with any questions, suggestions, comments and feedback.
-
-We gratefully acknowledge the support of the UK Acoustics Network (UKAN). Make sure you [visit their site](https://acoustics.ac.uk/) and join the computational acoustics special interest group.
-
-Help us show our current and future funders that this resource is useful by clicking the applause button below:
-
-<div>
-<link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css" />
-<script src="https://unpkg.com/applause-button/dist/applause-button.js"></script>
-<applause-button style="width: 30px; height: 30px;"/>
-</div>

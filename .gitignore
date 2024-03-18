@@ -1,6 +1,10 @@
 .*.swp
 *.pyc
-*.ipynb
+*.py
+!_test/.py
+!.github/scripts/*.py
 
-.pynb_checkpoints
+.ipynb_checkpoints
 _build
+
+output.bp

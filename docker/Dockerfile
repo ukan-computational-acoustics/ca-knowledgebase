@@ -185,7 +185,7 @@ RUN git clone -b gmsh_${GMSH_VERSION} --single-branch --depth 1 https://gitlab.o
 
 ENV PYTHONPATH=/usr/local/lib:$PYTHONPATH
 
-# Install PETSc and petsc4py with real and complex types
+# Install PETSc and petsc4py with complex types
 ENV PETSC_DIR=/usr/local/petsc SLEPC_DIR=/usr/local/slepc
 RUN apt-get -qq update && \
     apt-get -y install bison flex && \
@@ -251,8 +251,7 @@ ARG DOLFINX_CMAKE_BUILD_TYPE="RelWithDebInfo"
 # Extra CMake C++ compiler flags for DOLFINx C++ build.
 ARG DOLFINX_CMAKE_CXX_FLAGS
 
-# The dolfinx-onbuild container expects to have folders basix/ ufl/
-# ffcx/ and dolfinx/ mounted/shared at /src.
+# Install the components of FEniCSx
 RUN git clone -b ${UFL_VERSION} --single-branch --depth 1 https://github.com/fenics/ufl.git && \
     git clone -b ${BASIX_VERSION} --single-branch --depth 1 https://github.com/fenics/basix.git && \
     git clone -b ${FFCX_VERSION} --single-branch --depth 1 https://github.com/fenics/ffcx.git && \
@@ -276,7 +275,7 @@ RUN git clone -b ${DOLFINX_VERSION} --single-branch --depth 1 https://github.com
 
 
 ENV PKG_CONFIG_PATH=/usr/local/dolfinx-complex/lib/pkgconfig:$PKG_CONFIG_PATH \
-    PETSC_ARCH=linux-gnu-real-32 \
+    PETSC_ARCH=linux-gnu-complex-32 \
     PYTHONPATH=/usr/local/dolfinx-complex/lib/python${PYTHON_VERSION}/dist-packages:$PYTHONPATH \
     LD_LIBRARY_PATH=/usr/local/dolfinx-complex/lib:$LD_LIBRARY_PATH
 
@@ -303,6 +302,7 @@ RUN dpkgArch="$(dpkg --print-architecture)"; \
 
 RUN jupyter nbextension enable --py --sys-prefix ipygany
 
+WORKDIR /root
 
 EXPOSE 8888/tcp
 ENV SHELL /bin/bash
