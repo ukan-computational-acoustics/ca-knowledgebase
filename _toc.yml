@@ -83,3 +83,4 @@ parts:
   - file: reference/glossary
   - file: reference/coding
   - file: reference/resources
+  - file: reference/bibliography
