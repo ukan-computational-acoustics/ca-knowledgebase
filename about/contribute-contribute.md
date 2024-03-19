@@ -1,12 +1,19 @@
 # Contributing material to the site
 
+There are two main ways to contribute material to the knowledgebase:
+1. [Edit directly on GitHub](contribute-edit-online)
+2. [Edit locally and push to GitHub](contribute-github)
+
+```{warning}
+The information on this page applies to both, and should be read first.
+```
+
 The source code of this knowledgebase can be found on [Github](https://github.com/ukan-computational-acoustics/ca-knowledgebase). The site is hosted
 using GitHub pages, and will automatically rebuild after every change to the main branch.
 
 If you are new to using GitHub, you may find our [getting started with GitHub guide](contribute-github) useful.
 
-The site has maintainers who review issues and pull requests or encourage others to do so. The maintainers are community volunteers, and have final
-say over what gets merged into the knowledgebase. Pull requests must receive at least one 'approval' before they can be merged.
+The site has maintainers who review issues and pull requests or encourage others to do so. The maintainers are community volunteers and have the final say over what gets merged into the knowledgebase. Pull requests must receive at least one 'approval' before they can be merged.
 
 The majority of this guide is written in markdown (`.md`) and Jupyter notebook (`.ipynb`) files. Jupyter Books use MyST which is an extension of basic
 markdown syntax. See their [MyST cheatsheet](https://jupyterbook.org/reference/cheatsheet.html) for information about formatting. Markdown pages do not

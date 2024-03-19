@@ -1,5 +1,7 @@
 # Making suggestions
 
+The easiest way to contribute to the knowledgebase is to try it out, and then give us feedback.
+
 If you have a suggestion or issue to raise, please [open an issue on GitHub](https://github.com/ukan-computational-acoustics/ca-knowledgebase/issues/new).
 To create a new issue about a specific page, you can click the GitHub icon (<i class="fab fa-github"></i>) at the top of any page and select 'Open Issue'.
 
