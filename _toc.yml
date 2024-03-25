@@ -20,7 +20,6 @@ parts:
     - file: about/contribute-maintain
       sections:
       - file: about/contribute-docker
-    - file: about/contribute-style
     - file: CODE_OF_CONDUCT
   - file: about/who-we-are
 
