@@ -33,7 +33,9 @@ Any acoustic wave $U$ will satisfy {eq}`eq-wave-eq`. To turn this into a problem
 
 In many applications, the source of the sound can be assumed to be consistent. For example, when modelling acoustic noise from a source like a building site or motorway, we may only be interested in times when the noise is emanating consistently from the source. This leads to a simplification of {eq}`eq-wave-eq` where the unknown does not depend on time.
 
-Mathematically, this can be achieved by assuming a time-harmonic solution to the Wave Equation {eq}`eq-wave-eq`, specifically: $U(x,t) = u(x) \mathrm{e}^{-\mathrm{i}\omega t}$ where $\mathrm{i}:=\sqrt{-1}$ and $\omega>0$.
+Mathematically, this can be achieved by assuming a time-harmonic solution to the Wave Equation {eq}`eq-wave-eq`, specifically: $U(x,t) = u(x) \mathrm{e}^{-\mathrm{i}\omega t}$ where $\mathrm{i}:=\sqrt{-1}$ and $\omega>0$. [This video](https://youtu.be/tBk-sDXRCQ8) by [Jon Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jon-hargreaves) provides a background on time-harmonic signals.
+
+
  From this we obtain the Helmholtz equation
 ```{math}
 :label: eq-helmholtz
