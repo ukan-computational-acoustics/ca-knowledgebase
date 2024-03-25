@@ -197,7 +197,7 @@ RUN apt-get -qq update && \
     make PETSC_DIR=/usr/local/petsc PETSC_ARCH=linux-gnu-complex64-32 ${MAKEFLAGS} all && \
     # Install petsc4py
     cd src/binding/petsc4py && \
-    PETSC_ARCH=linux-gnu-complex-32 pip3 install --no-cache-dir . && \
+    PETSC_ARCH=linux-gnu-complex64-32 pip3 install --no-cache-dir . && \
     # Cleanup
     apt-get -y purge bison flex && \
     apt-get -y autoremove && \
@@ -219,12 +219,12 @@ RUN apt-get -qq update && \
 RUN wget -nc --quiet https://gitlab.com/slepc/slepc/-/archive/v${SLEPC_VERSION}/slepc-v${SLEPC_VERSION}.tar.gz && \
     mkdir -p ${SLEPC_DIR} && tar -xf slepc-v${SLEPC_VERSION}.tar.gz -C ${SLEPC_DIR} --strip-components 1 && \
     cd ${SLEPC_DIR} && \
-    export PETSC_ARCH=linux-gnu-complex-32 && \
+    export PETSC_ARCH=linux-gnu-complex64-32 && \
     python3 ./configure && \
     make && \
     # Install slepc4py
     cd src/binding/slepc4py && \
-    PETSC_ARCH=linux-gnu-complex-32 pip3 install --no-cache-dir . && \
+    PETSC_ARCH=linux-gnu-complex64-32 pip3 install --no-cache-dir . && \
     rm -rf ${SLEPC_DIR}/CTAGS ${SLEPC_DIR}/TAGS ${SLEPC_DIR}/docs ${SLEPC_DIR}/src/ ${SLEPC_DIR}/**/obj/ ${SLEPC_DIR}/**/test/ && \
     rm -rf /tmp/*
 
@@ -249,15 +249,15 @@ RUN git clone -b ${DOLFINX_VERSION} --single-branch --depth 1 https://github.com
     cd dolfinx && \
     mkdir -p build-complex && \
     cd build-complex && \
-    PETSC_ARCH=linux-gnu-complex-32 cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/dolfinx-complex -DCMAKE_BUILD_TYPE=${DOLFINX_CMAKE_BUILD_TYPE} -DCMAKE_CXX_FLAGS=${DOLFIN_CMAKE_CXX_FLAGS} ../cpp && \
+    PETSC_ARCH=linux-gnu-complex64-32 cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/dolfinx-complex -DCMAKE_BUILD_TYPE=${DOLFINX_CMAKE_BUILD_TYPE} -DCMAKE_CXX_FLAGS=${DOLFIN_CMAKE_CXX_FLAGS} ../cpp && \
     ninja install && \
     . /usr/local/dolfinx-complex/lib/dolfinx/dolfinx.conf && \
     cd ../python && \
-    CXXFLAGS=${DOLFINX_CMAKE_CXX_FLAGS} PETSC_ARCH=linux-gnu-complex-32 pip3 install -v --target /usr/local/dolfinx-complex/lib/python${PYTHON_VERSION}/dist-packages --no-dependencies --no-cache-dir .
+    CXXFLAGS=${DOLFINX_CMAKE_CXX_FLAGS} PETSC_ARCH=linux-gnu-complex64-32 pip3 install -v --target /usr/local/dolfinx-complex/lib/python${PYTHON_VERSION}/dist-packages --no-dependencies --no-cache-dir .
 
 
 ENV PKG_CONFIG_PATH=/usr/local/dolfinx-complex/lib/pkgconfig:$PKG_CONFIG_PATH \
-    PETSC_ARCH=linux-gnu-complex-32 \
+    PETSC_ARCH=linux-gnu-complex64-32 \
     PYTHONPATH=/usr/local/dolfinx-complex/lib/python${PYTHON_VERSION}/dist-packages:$PYTHONPATH \
     LD_LIBRARY_PATH=/usr/local/dolfinx-complex/lib:$LD_LIBRARY_PATH
 
