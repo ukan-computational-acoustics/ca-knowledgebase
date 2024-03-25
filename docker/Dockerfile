@@ -13,8 +13,8 @@ ARG HDF5_SERIES=1.12
 ARG HDF5_PATCH=2
 ARG KAHIP_VERSION=3.14
 ARG NUMPY_VERSION=1.22.4
-ARG PETSC_VERSION=3.17.2
-ARG SLEPC_VERSION=3.17.1
+ARG PETSC_VERSION=3.20.5
+ARG SLEPC_VERSION=3.20.1
 ARG XTL_VERSION=0.7.4
 ARG MPICH_VERSION=4.0.2
 ARG OPENMPI_SERIES=4.1
@@ -179,26 +179,22 @@ RUN apt-get -qq update && \
     mkdir -p ${PETSC_DIR} && tar -xf petsc-${PETSC_VERSION}.tar.gz -C ${PETSC_DIR} --strip-components 1 && \
     cd ${PETSC_DIR} && \
     # Complex, 32-bit int
-    python3 ./configure \
-    PETSC_ARCH=linux-gnu-complex-32 \
+    ./configure \
+    PETSC_ARCH=linux-gnu-complex64-32 \
     --COPTFLAGS="${PETSC_SLEPC_OPTFLAGS}" \
     --CXXOPTFLAGS="${PETSC_SLEPC_OPTFLAGS}" \
     --FOPTFLAGS="${PETSC_SLEPC_OPTFLAGS}" \
-    --with-make-np=${PETSC_SLEPC_MAKE_NP} \
     --with-64-bit-indices=no \
     --with-debugging=${PETSC_SLEPC_DEBUGGING} \
     --with-fortran-bindings=no \
     --with-shared-libraries \
-    --download-hypre \
     --download-metis \
     --download-mumps \
     --download-ptscotch \
     --download-scalapack \
-    --download-suitesparse \
-    --download-superlu \
-    --download-superlu_dist \
-    --with-scalar-type=complex && \
-    make PETSC_DIR=/usr/local/petsc PETSC_ARCH=linux-gnu-complex-32 ${MAKEFLAGS} all && \
+    --with-scalar-type=complex \
+    --with-precision=single && \
+    make PETSC_DIR=/usr/local/petsc PETSC_ARCH=linux-gnu-complex64-32 ${MAKEFLAGS} all && \
     # Install petsc4py
     cd src/binding/petsc4py && \
     PETSC_ARCH=linux-gnu-complex-32 pip3 install --no-cache-dir . && \
