@@ -15,7 +15,10 @@ in an external unbounded domain with *no incoming* waves from infinity and where
   Setting $\mathcal{S}= -\frac{1}{4\pi}$ leads to the so-called *free-field* Green's 
   function 
   
-  $$ G_f(\mathbf{x},\mathbf{x_s})= -\frac{1}{4 \pi} \frac{e^{i\omega |\mathbf{x} - \mathbf{x_s}|/c}}{|\mathbf{x} - \mathbf{x_s}|},$$ 
+  ```{math}
+  :label: eq-green
+  G_f(\mathbf{x},\mathbf{x_s})= -\frac{1}{4 \pi} \frac{e^{i\omega |\mathbf{x} - \mathbf{x_s}|/c}}{|\mathbf{x} - \mathbf{x_s}|},
+  ```
   
   that solves 
   
