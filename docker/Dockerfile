@@ -214,15 +214,14 @@ RUN apt-get -qq update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install SLEPc
-RUN wget -nc --quiet https://gitlab.com/slepc/slepc/-/archive/v${SLEPC_VERSION}/slepc-v${SLEPC_VERSION}.tar.gz && \
-    mkdir -p ${SLEPC_DIR} && tar -xf slepc-v${SLEPC_VERSION}.tar.gz -C ${SLEPC_DIR} --strip-components 1 && \
+RUN git clone -b v${SLEPC_VERSION} https://gitlab.com/slepc/slepc.git ${SLEPC_DIR} && \
     cd ${SLEPC_DIR} && \
     export PETSC_ARCH=linux-gnu-complex64-32 && \
-    python3 ./configure && \
+    ./configure && \
     make && \
     # Install slepc4py
     cd src/binding/slepc4py && \
-    PETSC_ARCH=linux-gnu-complex64-32 pip3 install --no-cache-dir . && \
+    PETSC_ARCH=linux-gnu-real32-32:linux-gnu-complex64-32:linux-gnu-real64-32:linux-gnu-complex128-32:linux-gnu-real64-64:linux-gnu-complex128-64 pip3 install --no-cache-dir . && \
     rm -rf ${SLEPC_DIR}/CTAGS ${SLEPC_DIR}/TAGS ${SLEPC_DIR}/docs ${SLEPC_DIR}/src/ ${SLEPC_DIR}/**/obj/ ${SLEPC_DIR}/**/test/ && \
     rm -rf /tmp/*
 
@@ -266,7 +265,7 @@ RUN pip3 install --upgrade --no-cache-dir jupyter jupyterlab jupytext jupyter-bo
 
 # pyvista dependencies from apt
 RUN apt-get -qq update && \
-    apt-get -y install libgl1-mesa-dev xvfb && \
+    apt-get -y install libgl1-mesa-dri libgl1-mesa-dev xvfb && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -275,12 +274,10 @@ RUN apt-get -qq update && \
 # ipygany and pythreejs makes plotting in notebooks interactive
 RUN dpkgArch="$(dpkg --print-architecture)"; \
     case "$dpkgArch" in amd64) \
-    # pip3 install --no-cache-dir pyvista==${PYVISTA_VERSION} ;; \
     pip3 install --find-links https://wheels.pyvista.org/ pyvista ;; \
     esac; \
-    pip3 install --no-cache-dir matplotlib ipygany pythreejs
+    pip3 install --no-cache-dir matplotlib trame trame-vtk trame-vuetify
 
-RUN jupyter nbextension enable --py --sys-prefix ipygany
 
 WORKDIR /root
 
