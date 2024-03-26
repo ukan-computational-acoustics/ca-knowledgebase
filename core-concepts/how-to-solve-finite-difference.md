@@ -9,3 +9,18 @@ The finite difference (FD) approach is a way of approximating a solution to a pa
 
 In acoustics, we are often dealing with the _wave equation_, so we will use this as an example here. The wave equation describes how acoustic pressure varies as a function of time (t) and space (x,y,z). For simplicity, let us consider only 1D wave propagation here, so spatial position is described by a single variable, x.
 
+## Equation to approximate
+The 1D wave equation is constructed as follows:
+
+XX
+
+We will solve this by using a _finite difference_ approach to the differential terms. Therefore we replace XX by XX, and XX by XX. In doing this, we no longer require differentiation, and we can easily calculate an approximate solution given initial and boundary conditions.
+
+## Types of finite difference
+We can use different kinds of "steps" to approximate our gradient, depending on the requirements of the problem. The simplest approach - and one that it is safe to use if you have no requirements otherwise - is the _central_ difference. 
+
+(TODO: include wikimedia image here)
+
+## Further reading
+
+(TODO add)
