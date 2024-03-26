@@ -17,7 +17,9 @@ For example, consider a first-order term like $\frac{\partial u}{\partial t}$. T
 Therefore, to obtain a finite difference approximation, of a partial derivative term like $\frac{\partial u}{\partial t}$, we replace it with $\frac{u(t) - u(t - \Delta t)}{\Delta t}$. 
 
 ## Types of difference
-You might notice here that we're looking _backwards_ in time; that is, if we are currently at time $t$, we are approximating the gradient based on the difference between now and $\Delta t$ seconds ago. This type of difference is therefore known as a _backward difference_. We could also use a _forward difference_ by looking forward in time $\frac{u(t+\Delta t) - u(t)}{\Delta t}$, or we could take an interval centred on time $t$ by using a _central difference_ $\frac{u(t+\frac{1}{2}\Delta t) - u(t-\frac{1}{2}\Delta t)}{\Delta t}$, depending on the requirements of our problem. If you're not sure which to use, or it doesn't matter for your application, the central difference is usually a reasonable place to start.
+You might notice here that we're looking _backwards_ in time; that is, if we are currently at time $t$, we are approximating the gradient based on the difference between now and $\Delta t$ seconds ago. This type of difference is therefore known as a _backward difference_. 
+
+We could also use a _forward difference_ by looking forward in time $\frac{u(t+\Delta t) - u(t)}{\Delta t}$, or we could take an interval centred on time $t$ by using a _central difference_ $\frac{u(t+\frac{1}{2}\Delta t) - u(t-\frac{1}{2}\Delta t)}{\Delta t}$, depending on the requirements of our problem. If you're not sure which to use, or it doesn't matter for your application, the central difference is usually a reasonable place to start.
 
 (TODO: include wikimedia image here)
 
@@ -45,6 +47,9 @@ where $\lambda = \frac{c\Delta t}{\Delta x}$ (see the information on the [CFL co
 
 We can therefore calculate the pressure at point $x$ for the _next_ timepoint, based only on the values of $x$ and its neighbours at the current and previous time points. This is the basis of a finite-difference simulation.
 
-## Further reading
+## Try it yourself
 
-(TODO add)
+To implement the finite difference scheme, try out our simple tutorials in [one](https://knowledgebase.acoustics.ac.uk/tutorials/fdtd/fdtd-tutorials-1.html), two (coming soon!), and three (coming soon!) dimensions. These tutorials also explore how initial and boundary conditions are implemented and affect the simulation.
+
+## Bibliography
+
