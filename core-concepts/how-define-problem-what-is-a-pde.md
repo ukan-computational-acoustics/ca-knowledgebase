@@ -9,7 +9,7 @@ This part of the site is currently under development. Its content is incomplete.
 Mass on a spring is the classic one to discuss but there are others.
 Riding a bike or driving a car? Just got input force, inertia and drag then - not stiffness. Would lead to point that PDEs have to 2nd order to be oscillatory, if that's something we want to get into. -->
 
-```{warning}
+```{note}
 We assume a basic familiarity with the concept of a partial differential equation (PDE). We will not spend time explaining this, as there are plenty of free resources available online. For example, [Wikipedia](https://en.wikipedia.org/wiki/Partial_differential_equation), [MathWorld](https://mathworld.wolfram.com/PartialDifferentialEquation.html), or this video series by [3blue1brown](https://www.youtube.com/watch?v=p_di4Zn4wz4&list=PLZHQObOWTQDNPOjrT6KVlfJuKtYTftqH6).
 ```
 
@@ -33,8 +33,7 @@ Any acoustic wave $U$ will satisfy {eq}`eq-wave-eq`. To turn this into a problem
 
 In many applications, the source of the sound can be assumed to be consistent. For example, when modelling acoustic noise from a source like a building site or motorway, we may only be interested in times when the noise is emanating consistently from the source. This leads to a simplification of {eq}`eq-wave-eq` where the unknown does not depend on time.
 
-Mathematically, this can be achieved by assuming a time-harmonic solution to the Wave Equation {eq}`eq-wave-eq`, specifically: $U(x,t) = u(x) \mathrm{e}^{-\mathrm{i}\omega t}$ where $\mathrm{i}:=\sqrt{-1}$ and $\omega>0$. [This video](https://youtu.be/tBk-sDXRCQ8) by [Jon Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jon-hargreaves) provides a background on time-harmonic signals.
-
+Mathematically, this can be achieved by assuming a time-harmonic solution to the Wave Equation {eq}`eq-wave-eq`, specifically: $U(x,t) = u(x) \mathrm{e}^{-\mathrm{i}\omega t}$ with $\mathrm{i}:=\sqrt{-1}$ and frequency $\omega>0$. [This video](https://youtu.be/tBk-sDXRCQ8) by [Jon Hargreaves](https://knowledgebase.acoustics.ac.uk/community/bios.html#jon-hargreaves) provides a background on time-harmonic signals.
 
  From this we obtain the Helmholtz equation
 ```{math}
