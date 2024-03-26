@@ -30,6 +30,7 @@ parts:
     sections:
     - file: core-concepts/how-define-problem-what-is-a-pde
     - file: core-concepts/how-define-problem-acoustics-pdes
+    - file: core-concepts/how-define-problem-acoustics-BCs
     - file: core-concepts/how-define-problem-other-pdes
     - file: core-concepts/how-define-problem-problem-classes
   - file: core-concepts/how-to-solve
