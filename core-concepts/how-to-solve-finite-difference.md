@@ -28,15 +28,22 @@ In acoustics, we are often dealing with the _wave equation_, so we will use this
 
 The 1D wave equation is constructed as follows (equivalent to the equation [here](https://knowledgebase.acoustics.ac.uk/core-concepts/how-define-problem-what-is-a-pde.html?highlight=wave%20equation#equation-eq-wave-eq), with only one spatial dimension):
 
-$\frac{\partial^2 u(x,t)}{\partial t^2} - \frac{1}{c^2} \frac{\partial^2 u(x,t)}{\partial x^2} = 0$,
+$\frac{\partial^2 u(x,t)}{\partial t^2} - \frac{1}{c^2} \frac{\partial^2 u(x,t)}{\partial x^2} = 0$
 
 We have two second-order partial derivatives, one in $t$ and one in $x$. We now know how to approximate these using finite differences. The finite difference approximation to the wave equation, using a central difference, therefore becomes:
 
-$\frac{u(x,t+\Delta t) - 2u(x,t) + u(x,t-\Delta t)}{\Delta t^2} - \frac{1}{c^2} \frac{u(x+\Delta x,t) - 2u(x,t) + u(x-\Delta x,t)}{\Delta x^2} = 0$.
+$\frac{u(x,t+\Delta t) - 2u(x,t) + u(x,t-\Delta t)}{\Delta t^2} - \frac{1}{c^2} \frac{u(x+\Delta x,t) - 2u(x,t) + u(x-\Delta x,t)}{\Delta x^2} = 0$
 
-Now we no longer require differentiation, and we can easily calculate an approximate solution given appropriate initial and boundary conditions.
+Now we no longer require differentiation, so we can calculate an approximate solution given appropriate initial and boundary conditions.
 
-To run a finite-difference simulation for the wave equation, we therefore define a set of points for x and a set of time samples, t. We rearrange the equation for $u(x,t + \Delta t)$, so that we can calculate the pressure at point $x$ for the _next_ timepoint, based only on the values of $x$ and its neighbours at the current and previous time points. This is the basis of a finite-difference simulation.
+## Using the finite difference scheme
+To run a finite-difference simulation for the wave equation, we therefore define a set of spatial locations for x, and a set of time samples for t. We rearrange the equation for $u(x,t + \Delta t)$, so that we eventually obtain:
+
+$u(x,t+\Delta t) = (2-2\lambda^2)u(x,t) + \lambda^2(u(x+\Delta x,t)+u(x-\Delta x,t)) - u(x,t-\Delta t) $,
+
+where $\lambda = \frac{c\Delta t}{\Delta x}$ (see the information on the [CFL condition](TODO:AddLink) for more information).
+
+We can therefore calculate the pressure at point $x$ for the _next_ timepoint, based only on the values of $x$ and its neighbours at the current and previous time points. This is the basis of a finite-difference simulation.
 
 ## Further reading
 
