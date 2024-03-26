@@ -72,9 +72,10 @@ The correct application of acoustic boundary conditions is vital for a range of 
 
 
 ### Room Acoustics 
-Sound absorption along surfaces of various objects inside a room has a major influence on the acoustics of the room. Therefore, in room acoustics simulations, boundary conditions are crucial for accurately predicting the room acoustic parameters (*e.g.*, reverberation time) in enclosed spaces. In various room acoustic modeling techniques, the boundary conditions that represent the sound absorption properties of materials can be characterized in terms of either the acoustic surface impedance, the sound absorption coefficient or the plane-wave reflection coefficient. These quantities in general vary with the frequency and the angle of incidence. The absorption coefficient is usually used in geometrical acoustics models, while the acoustic surface impedance comes into play in wave-based methods (\textit{e.g.}, FEM, BEM, FDTD, DG, \textit{etc.}) through the imposition of boundary conditions.
+Sound absorption along surfaces of various objects inside a room has a major influence on the acoustics of the room. Therefore, in room acoustics simulations, boundary conditions are crucial for accurately predicting the room acoustic parameters (*e.g.*, reverberation time) in enclosed spaces. In various room acoustic modeling techniques, the boundary conditions that represent the sound absorption properties of materials can be characterized in terms of either the acoustic surface impedance, the sound absorption coefficient or the plane-wave reflection coefficient. These quantities in general vary with the frequency and the angle of incidence. The absorption coefficient is usually used in geometrical acoustics models, while the acoustic surface impedance comes into play in wave-based methods (*e.g.*, FEM, BEM, FDTD, DG, *etc.*) through the imposition of boundary conditions.
 
 Suppose the outward normal vector to the boundary surface is denoted as $\boldsymbol n$. At a given angular frequency $\omega$, the normalized surface impedance $Z_s$, is defined as the ratio of the complex sound pressure $P(\omega)$ and the particle velocity component normal to the surface $V_n(\omega)=\boldsymbol V(\omega)\cdot \boldsymbol n$,  divided by the characteristic impedance of air, *i.e.,* 
+
 $$
 \begin{equation}
 	Z_s(\omega)=\frac{1}{\rho_0 c_0}\frac{P(\omega)}{V_n(\omega)}.
@@ -82,11 +83,13 @@ $$
 $$
 
 In the time domain,  above relation can be expressed as:
+
 $$
 \begin{equation}
 	p(t)={\rho_0 c_0}\int_{-\infty}^{\infty} z_s(t-\tau)v_n(\tau)\mathrm{d}\tau,
 \end{equation}
 $$
+
 where $z_s(t)$ is the inverse Fourier transform  of $Z_s(\omega)$, and the same holds for $p(t)$ and $v_n(t)$.
 
 The impedance model has to satisfy three necessary conditions in the frequency domain in order to be physically admissible, as proposed by Rienstra {cite}`rienstra2006impedance`:
