@@ -5,9 +5,11 @@ Author: [Andrew Gibbs](https://knowledgebase.acoustics.ac.uk/community/bios.html
 
 Suppose we have an incoming acoustic wave $u^i$ and a scattering obstacle $\Omega$, and we want to determine the amplitude of the scattered acoustic field $u^s(x)$, i.e. how much sound has bounced back, at any point $x$ in the region surrounding the obstacle?
 
-Physically, the idea of BEM may be interpreted as covering the obstacle in lots of tiny speakers. (Each microphone is analogy for the more officially-named _point source_ or the _Green's function_.) The aim of BEM is to solve a different problem; to adjust the volume on each speaker individually so that the combined amplitude of all of the microphones, if we were listening away from the obstacle, is the same as the scattered acoustic field $u^s$ in our original problem.
+Physically, the idea of BEM may be interpreted as covering the obstacle in lots of tiny speakers. (Each speaker is an analogy for the more officially-named _point source_ or the _Green's function_ {eq}`eq-green`) BEM aims to solve a different problem; to adjust the volume on each speaker individually so that the combined amplitude of all of the speakers, if we were listening away from the obstacle, is the same as the scattered acoustic field $u^s$ in our original problem.
 
-To solve the BEM problem, i.e. to fine tune the volume on each microphone, we must solve a problem on the surface of $\Omega$, rather than in the area surrounding $\Omega$. We will write $\partial\Omega$ to represent the surface. Practically this can be appealing, because this problem is usually simpler: in a lower spatial dimensions and on a bounded domain. For example, modelling scattering by a cube, most of the computational work will be done on the circumference on the square faces of the cube.
+If the speakers were replaced by microphones, the amplitude recorded at these would correctly tell us what the volume of the speakers should be. These microphones only know about information at the surface of the obstacle. Therefore we must assume that the surrounding region is homogenous, i.e. the material is consistent. 
+
+To solve the BEM problem, i.e. to fine-tune the volume on each speaker, we must solve a problem on the surface of $\Omega$, rather than in the area surrounding $\Omega$. We will write $\partial\Omega$ to represent the surface. Practically this can be appealing because this problem is usually simpler: in a lower spatial dimension and on a bounded domain. For example, modelling scattering by a cube, most of the computational work will be done on the circumference on the square faces of the cube.
 
 ### Representation in terms of point sources
 
@@ -17,9 +19,10 @@ We will write $\Phi(x,y)$ to mean the point-source / Green's function / metaphor
 
 It follow's from [Green's third identity](https://en.wikipedia.org/wiki/Green's_identities#Green's_third_identity) that
 
-$$
-u^s(x) = -\int_{\partial\Omega}\Phi(x,y)\frac{\partial u}{\partial n}(y)\ \mathrm{d}s(y) + \int_{\partial\Omega}\frac{\partial \Phi(x,y)}{\partial n(y)}u(y)\ \mathrm{d}s(y),\tag{1}
-$$
+```{math}
+:label: eq-rep-formula
+u^s(x) = -\int_{\partial\Omega}\Phi(x,y)\frac{\partial u}{\partial n}(y)\ \mathrm{d}s(y) + \int_{\partial\Omega}\frac{\partial \Phi(x,y)}{\partial n(y)}u(y)\ \mathrm{d}s(y),
+```
 
 $\Phi$ denotes the fundamental solution / point source / Green's function / figurative speaker:
 
@@ -41,17 +44,17 @@ Depending on boundary conditions, it may be possible to remove one of the two in
 
 ### The steps to the Boundary Element Method
 
-1. Modify (1) to obtain an integral equation on the boundary $\partial \Omega$, where $u$ and/or $\frac{\partial u}{\partial n}$ on $\partial \Omega$ are the unknown quantities. This is called a _Boundary Integral Equation_ (BIE). At this point, no approximation has taken place.
+1. Modify {eq}`eq-rep-formula` to obtain an integral equation on the boundary $\partial \Omega$, where $u$ and/or $\frac{\partial u}{\partial n}$ on $\partial \Omega$ are the unknown quantities. This is called a _Boundary Integral Equation_ (BIE). At this point, no approximation has taken place.
 
 2. Approximately solve the BIE, using a finite element method on the boundary. Hence the name _Boundary Element Method_.
 
-3. Plug our approximation to $u$ and/or $\frac{\partial u}{\partial n}$ into the representation formula (1), to obtain an approximation to $u^s$ away from the boundary.
+3. Plug our approximation to $u$ and/or $\frac{\partial u}{\partial n}$ into the representation formula {eq}`eq-rep-formula`, to obtain an approximation to $u^s$ away from the boundary.
 
 For the remainder of this document, we will describe each of these steps in more detail.
 
 ## Constructing a Boundary Integral Equation
 
-We want to solve (1) for the unknown densities.
+We want to solve {eq}`eq-rep-formula` for the unknown densities.
 
 The next step is to move the problem onto the boundary $\partial \Omega$, so that $x$ and $y$ live on $\partial \Omega$, and then our original problem is reduced to an (arguably simpler) problem on $\partial \Omega$.
 
@@ -98,11 +101,10 @@ The simplest of the trace operators is the _Dirichlet_ trace $\gamma_D$, which c
 
 After taking a trace, we obtain an integral equation of the form
 
-$$
-\begin{equation}
-(\chi\mathcal{I}+\mathcal{K})v(x) = f(x),\quad x\text{ on }\partial \Omega.\tag{2}
-\end{equation}
-$$
+```{math}
+:label: eq-bie
+(\chi\mathcal{I}+\mathcal{K})v(x) = f(x),\quad x\text{ on }\partial \Omega.
+```
 
 where our unknown $v$ depends on the boundary conditions, i.e. the material of $\Omega$ as follows:
 
@@ -116,9 +118,9 @@ $$
 
 In the third case, our unknown quantity $v$ is a vector of two unknown functions. For problems of scattering by thin screens/plates, the quantities above are replaced by their jump in value from either side of the screen. For example, $u$ would be replaced by $u^+-u^-$, where $u+$ and $u^-$ are respectively the limiting values of $u$ above and below the screen.
 
-In (2) $\mathcal{I}$ denotes the identity operator, which maps a function to its self. Some BIEs will contain the identity operator in which case $\chi=\pm\frac{1}{2}$, more details follow below. If there are no identity terms, clearly $\chi=0$.
+In {eq}`eq-bie`, $\mathcal{I}$ denotes the identity operator, which maps a function to its self. Some BIEs will contain the identity operator in which case $\chi=\pm\frac{1}{2}$, more details follow below. If there are no identity terms, clearly $\chi=0$.
 
-In (2) $\mathcal{K}$ is a _boundary integral operator_ (BIO), meaning it maps functions on the boundary $\partial \Omega$ to functions on $\partial \Omega$
+In {eq}`eq-bie` $\mathcal{K}$ is a _boundary integral operator_ (BIO), meaning it maps functions on the boundary $\partial \Omega$ to functions on $\partial \Omega$
 
 $$
 \mathcal{K}\psi(x) := \int_{\partial \Omega}K(x,y)\psi(y)\mathrm{d} s(y),
@@ -148,7 +150,7 @@ $$
 
 For each type of problem solvable by BEM, the starting point is a relevant _boundary integral equation_, which makes use of some combination of the above operators. These can be derived using the trace identities in the above (optional) section.
 
- Depending on the shape of $\Omega$ and the boundary conditions, there may be one or many possible BIE formulations of the form (2). The appropriate formulations are given below, sometimes there are multiple formulations which could be used. The formulation can often be simplified when considering problems on thin screens/plates, by _volume_ we refer to more typical scattering obstacles such as polygons in two dimensions and tetrahedra in three dimensions. By plates/screens, we refer to obstacles which are _thin_ in one direction, for example a square plate in three dimensions. And as is explained in the table, certain formulations are not well-posed at certain wavenumbers $k$, meaning that they may have multiple solutions. If our BIE is not well posed, then the approximate problem we solve later has no chance!
+ Depending on the shape of $\Omega$ and the boundary conditions, there may be one or many possible BIE formulations of the form {eq}`eq-bie`. The appropriate formulations are given below, sometimes there are multiple formulations which could be used. The formulation can often be simplified when considering problems on thin screens/plates, by _volume_ we refer to more typical scattering obstacles such as polygons in two dimensions and tetrahedra in three dimensions. By plates/screens, we refer to obstacles which are _thin_ in one direction, for example a square plate in three dimensions. And as is explained in the table, certain formulations are not well-posed at certain wavenumbers $k$, meaning that they may have multiple solutions. If our BIE is not well posed, then the approximate problem we solve later has no chance!
 
 | Material / BCs | Screen / volume | BIO $\mathcal{K}$ | RHS $f$ | Solvable? |
 |----------------|-----------------|---------------|-----|-------------|
@@ -195,7 +197,7 @@ This is uniquely solvable for $\lambda^++\lambda^-\neq0$.
 
 ## Constructing a Boundary Element Method (BEM)
 
-The main aim of the BEM is to approximate $v_N$ by approximately solving (2), then plug this approximation into (1), to obtain an approximation for $u^s$. This is done by writing
+The main aim of the BEM is to approximate $v_N$ by approximately solving {eq}`eq-bie`, then plug this approximation into {eq}`eq-rep-formula`, to obtain an approximation for $u^s$. This is done by writing
 
 $$
 v(x)\approx v_N(x)=\sum_{n=1}^Nc_n\phi_n(x),
@@ -207,7 +209,7 @@ where the $\phi_n$ are basis functions, for example piecewise linear, piecewise 
 
 ### Collocation BEM
 
-The idea behind collocation is to force (2) to hold at $N$ _collocation points_ $x_1,\ldots,x_N$, on the surface $\partial \Omega$. This can be expressed as
+The idea behind collocation is to force {eq}`eq-bie` to hold at $N$ _collocation points_ $x_1,\ldots,x_N$, on the surface $\partial \Omega$. This can be expressed as
 
 $$
 \sum_{n=1}^Nc_n(\chi\mathcal{I}+\mathcal{K})\phi_n(x_m) = f(x_m),\quad\text{for }m=1,\ldots,N,
@@ -226,12 +228,12 @@ $$
 Collocation has the practical advantage over Galerkin (which will be summarised next) because there are only single integrals. However, there are few theoretical guarantees about the above linear system being well-conditioned, or even solvable, and little is known about the _best_ way to choose $x_m$. Here's a summary of what is known:
 
 * Taking more collocation points than basis functions is known as _oversampling_. By doing this, and reformulating as a least-squares problem, one can often overcome the instabilities associated with collocation.
-* Another technique is to supplement the linear system with some collocation points _inside_ of $\Omega$ satisfying a different equation, which follows from (1), noting that $u=0$ in $\Omega$. There are known as CHIEF points.
+* Another technique is to supplement the linear system with some collocation points _inside_ of $\Omega$ satisfying a different equation, which follows from {eq}`eq-rep-formula`, noting that $u=0$ in $\Omega$. There are known as CHIEF points.
 * When $\phi_n$ are piecewise linear functions, e.g. hat functions, choosing collocation points as the midpoints of $\mathrm{supp}\phi_n$ is actually a bad idea, and can lead to the linear system being unsolvable.
 
 ### Galerkin BEM
 
-The idea behind Galerkin BEM is similar to Galerkin FEM, we force (2) to hold when integrate against each of our basis functions
+The idea behind Galerkin BEM is similar to Galerkin FEM, we force {eq}`eq-bie` to hold when integrate against each of our basis functions
 
 $$
 \sum_{n=1}^Nc_n\left<(\chi\mathcal{I}+\mathcal{K})\phi_n,\phi_m\right> = \left<f,\phi_m\right>,\quad\text{for }m=1,\ldots,N,
@@ -257,7 +259,7 @@ Sometimes this can be worth it, because the system to solve is often much better
 
 ## Obtaining an approximate representation
 
-Finally, we can plug our approximation $v_N$ in place of $u$ or $\frac{\partial u}{\partial n}$ in (1) to obtain our approximation to $u^s(x)$.
+Finally, we can plug our approximation $v_N$ in place of $u$ or $\frac{\partial u}{\partial n}$ in {eq}`eq-rep-formula` to obtain our approximation to $u^s(x)$.
 
 ### Sound-soft/Dirichlet representation
 
