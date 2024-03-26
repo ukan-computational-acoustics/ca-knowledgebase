@@ -12,7 +12,12 @@ In a differential equation, we have one or more differential terms. Recall that 
 
 For example, consider a first-order term like $\frac{\partial u}{\partial t}$. This term represents the gradent of $u$ with respect to $t$. As such, we can approximate it by calculating the gradient between two points separated by a time step $\Delta t$. Let us call those points $u(t)$ and $u(t-\Delta t)$. We calculate the gradient using $\frac{u(t) - u(t - \Delta t)}{\Delta t}$ as shown below. By approximating the gradient this way, we do lose some detail, but we get a reasonable approximation if $\Delta t$ is small enough.
 
-(TODO Image here)
+```{figure} fd_gradient.png
+---
+name: Approximating the derivative with a simple gradient
+---
+Approximating the derivative with a simple gradient. Image credit: [Amelia Gully](https://knowledgebase.acoustics.ac.uk/community/bios.html#amelia-gully) 2024.
+```
 
 Therefore, to obtain a finite difference approximation, of a partial derivative term like $\frac{\partial u}{\partial t}$, we replace it with $\frac{u(t) - u(t - \Delta t)}{\Delta t}$. 
 
@@ -21,7 +26,12 @@ You might notice here that we're looking _backwards_ in time; that is, if we are
 
 We could also use a _forward difference_ by looking forward in time $\frac{u(t+\Delta t) - u(t)}{\Delta t}$, or we could take an interval centred on time $t$ by using a _central difference_ $\frac{u(t+\frac{1}{2}\Delta t) - u(t-\frac{1}{2}\Delta t)}{\Delta t}$, depending on the requirements of our problem. If you're not sure which to use, or it doesn't matter for your application, the central difference is usually a reasonable place to start.
 
-(TODO: include wikimedia image here)
+```{figure} fd_difference_type.png
+---
+name: Backward, central and forward differences
+---
+Backward, central and forward differences. Image credit: [Amelia Gully](https://knowledgebase.acoustics.ac.uk/community/bios.html#amelia-gully) 2024.
+```
 
 For second order differential terms, like $\frac{\partial^2 u}{\partial t^2}$, we require a second-order finite difference term. Using a central difference we would replace $\frac{\partial^2 u}{\Delta t^2}$ with $\frac{u(t+\Delta t) - 2u(t) + u(t-\Delta t)}{\Delta t^2}$ (multiply out $(\frac{u(t+\frac{1}{2}\Delta t) - u(t-\frac{1}{2}\Delta t)}{\Delta t})^2$ to satisfy yourself that this is indeed a central difference term!)
 
