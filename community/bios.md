@@ -30,7 +30,7 @@ Andrew is a postdoctoral researcher at University College London, developing and
 
 [<i class="fa fa-internet-explorer"></i> ameliagully.com](https://ameliagully.com) &nbsp; [<i class="fa fa-github"></i> @agully1](https://github.com/agully1)
 
-Amelia Gully is a British Academy Postdoctoral Fellow in the Department of Language and
+Amelia Gully is a Lecturer in Speech Science in the Department of Language and
 Linguistic Science at the University of York. Her work focuses on the acoustics of speech, and
 particularly how someone's vocal anatomy contributes to the uniqueness of their voice. She is
 a member of the [UKAN Computational Acoustics Special Interest
@@ -69,3 +69,10 @@ Matthew Scroggs is a postdoctoral research fellow in the Department of Mathemati
 University College London. He is one of the developers of [the FEniCS finite element
 library](https://fenicsproject.org/) and [the Bempp boundary element
 library](https://bempp.com/). He is the maintainer of [DefElement, an encyclopedia of finite element definitions](https://defelement.com).
+
+
+## Huiqing Wang
+
+<i class="fa fa-linkedin" aria-hidden="true"></i> [linkedin](https://www.linkedin.com/in/huiqing-wang-2596544a/) &nbsp; <i class="fa fa-github" aria-hidden="true"></i> [hqwang815](https://github.com/hqwang815) 
+
+Huiqing Wang is a postdoctoral research fellow in the group of building acoustics at the Eindhoven University of technology. His work focuses on developing numerical methods (time-domain discontinuous Galerkin method) for wave propagation problems, with applications in room acoustics and the development of open-source room acoustics simulation software. He is a core developer of the open-source room acoustics software [edg-acoustics](https://github.com/Building-acoustics-TU-Eindhoven/edg-acoustics).
