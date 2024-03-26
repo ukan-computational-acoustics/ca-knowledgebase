@@ -39,13 +39,13 @@ $\frac{u(x,t+\Delta t) - 2u(x,t) + u(x,t-\Delta t)}{\Delta t^2} - \frac{1}{c^2} 
 Now we no longer require differentiation, so we can calculate an approximate solution given appropriate initial and boundary conditions.
 
 ## Using the finite difference scheme
-To run a finite-difference simulation for the wave equation, we therefore define a set of spatial locations for x, and a set of time samples for t. We rearrange the equation for $u(x,t + \Delta t)$, so that we eventually obtain:
+To run a finite-difference simulation for the wave equation, we therefore define a set of spatial locations for x, and a set of time samples for t. We rearrange the above equation for $u(x,t + \Delta t)$, so that we eventually obtain:
 
 $u(x,t+\Delta t) = (2-2\lambda^2)u(x,t) + \lambda^2(u(x+\Delta x,t)+u(x-\Delta x,t)) - u(x,t-\Delta t) $,
 
 where $\lambda = \frac{c\Delta t}{\Delta x}$ (see the information on the [CFL condition](TODO:AddLink) for more information).
 
-We can therefore calculate the pressure at point $x$ for the _next_ timepoint, based only on the values of $x$ and its neighbours at the current and previous time points. This is the basis of a finite-difference simulation.
+We can therefore calculate the pressure at point $x$ for the _next_ timepoint, $u(x,t+\Delta t)$ based only on the pressures of point $x$ and its neighbours $x+1$ and $x-1$ at the current and previous time points, $t$ and $t-\Delta t$. This is the basis of a finite-difference simulation.
 
 ## Try it yourself
 
