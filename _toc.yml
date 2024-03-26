@@ -35,8 +35,8 @@ parts:
     - file: core-concepts/how-define-problem-problem-classes
   - file: core-concepts/how-to-solve
     sections:
-    - file: core-concepts/how-to-solve-weak-form
     - file: core-concepts/how-to-solve-finite-difference
+    - file: core-concepts/how-to-solve-weak-form
     - file: core-concepts/how-to-solve-sums-of-solutions
     - file: core-concepts/how-to-solve-greens-functions
     - file: core-concepts/how-to-solve-eikonal
