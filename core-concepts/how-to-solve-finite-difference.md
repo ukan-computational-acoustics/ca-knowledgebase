@@ -21,9 +21,9 @@ You might notice here that we're looking _backwards_ in time; that is, if we are
 
 (TODO: include wikimedia image here)
 
-For second order differential terms, like $\frac{\partial^2 u}{\partial t^2}$, we require a second-order finite difference term. Using a central difference we would replace $\frac{\partial^2 u}{\Delta t^2}$ with $\frac{u(t+\Delta t) - 2u(t) + u(t-\Delta t)}{\Delta t^2}$ (multiply out $(u(t+\frac{1}{2}\Delta t) - u(t-\frac{1}{2}\Delta t))^2$ to satisfy yourself that this is indeed a central difference term!)
+For second order differential terms, like $\frac{\partial^2 u}{\partial t^2}$, we require a second-order finite difference term. Using a central difference we would replace $\frac{\partial^2 u}{\Delta t^2}$ with $\frac{u(t+\Delta t) - 2u(t) + u(t-\Delta t)}{\Delta t^2}$ (multiply out $(\frac{u(t+\frac{1}{2}\Delta t) - u(t-\frac{1}{2}\Delta t)}{\Delta t})^2$ to satisfy yourself that this is indeed a central difference term!)
 
-## Equation to approximate
+## Approximating the acoustic wave equation
 In acoustics, we are often dealing with the _wave equation_, so we will use this as an example here. The wave equation describes how acoustic pressure varies as a function of time (t) and space (x,y,z). For simplicity, let us consider only 1D wave propagation here, so spatial position is described by a single variable, x. We therefore denote acoustic pressure as $u(x,t)$.
 
 The 1D wave equation is constructed as follows (equivalent to the equation [here](https://knowledgebase.acoustics.ac.uk/core-concepts/how-define-problem-what-is-a-pde.html?highlight=wave%20equation#equation-eq-wave-eq), with only one spatial dimension):
