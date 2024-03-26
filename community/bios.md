@@ -30,7 +30,7 @@ Andrew is a postdoctoral researcher at University College London, developing and
 
 [<i class="fa fa-internet-explorer"></i> ameliagully.com](https://ameliagully.com) &nbsp; [<i class="fa fa-github"></i> @agully1](https://github.com/agully1)
 
-Amelia Gully is a British Academy Postdoctoral Fellow in the Department of Language and
+Amelia Gully is a Lecturer in Speech Science in the Department of Language and
 Linguistic Science at the University of York. Her work focuses on the acoustics of speech, and
 particularly how someone's vocal anatomy contributes to the uniqueness of their voice. She is
 a member of the [UKAN Computational Acoustics Special Interest
