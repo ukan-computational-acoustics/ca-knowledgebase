@@ -101,6 +101,7 @@ jobs:
       PYVISTA_TRAME_SERVER_PROXY_ENABLED: "True"
       PYVISTA_OFF_SCREEN: false
       PYVISTA_JUPYTER_BACKEND: "html"
+      DISPLAY: ":99.0"
 
     steps:
     - uses: actions/checkout@v2
@@ -117,6 +118,13 @@ jobs:
     container: caknowledgebase/caknowledgebase:${{ needs.build-docker.outputs.dockertag }}
     needs:
     - build-docker
+
+    env:
+      PYVISTA_TRAME_SERVER_PROXY_PREFIX: "/proxy/"
+      PYVISTA_TRAME_SERVER_PROXY_ENABLED: "True"
+      PYVISTA_OFF_SCREEN: false
+      PYVISTA_JUPYTER_BACKEND: "html"
+      DISPLAY: ":99.0"
 
     permissions:
       contents: read
