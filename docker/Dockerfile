@@ -13,18 +13,17 @@ ARG HDF5_SERIES=1.12
 ARG HDF5_PATCH=2
 ARG KAHIP_VERSION=3.14
 ARG NUMPY_VERSION=1.22.4
-ARG PYBIND11_VERSION=2.9.2
-ARG PETSC_VERSION=3.17.2
-ARG SLEPC_VERSION=3.17.1
-ARG XTENSOR_VERSION=0.24.2
+ARG PETSC_VERSION=3.20.5
+ARG SLEPC_VERSION=3.20.1
 ARG XTL_VERSION=0.7.4
 ARG MPICH_VERSION=4.0.2
 ARG OPENMPI_SERIES=4.1
 ARG OPENMPI_PATCH=4
-ARG DOLFINX_VERSION=v0.4.1
-ARG FFCX_VERSION=v0.4.2
-ARG BASIX_VERSION=v0.4.2
-ARG UFL_VERSION=2022.1.0
+ARG DOLFINX_VERSION=v0.7.3
+ARG FFCX_VERSION=v0.7.0
+ARG BASIX_VERSION=v0.7.0
+ARG UFL_VERSION=2023.2.0
+ARG NANOBIND_VERSION=1.9.2
 ARG PYTHON_VERSION=3.10
 
 ########################################
@@ -36,13 +35,11 @@ LABEL description="Environment with all dependencies for the CA knowledgebase"
 ARG GMSH_VERSION
 ARG HDF5_SERIES
 ARG HDF5_PATCH
-ARG PYBIND11_VERSION
 ARG PETSC_VERSION
 ARG SLEPC_VERSION
 ARG ADIOS2_VERSION
 ARG KAHIP_VERSION
 ARG NUMPY_VERSION
-ARG XTENSOR_VERSION
 ARG XTL_VERSION
 ARG MPICH_VERSION
 ARG OPENMPI_SERIES
@@ -51,6 +48,7 @@ ARG DOLFINX_VERSION
 ARG FFCX_VERSION
 ARG BASIX_VERSION
 ARG UFL_VERSION
+ARG NANOBIND_VERSION
 
 # Compiler optimisation flags for SLEPc and PETSc, all languages.
 ARG PETSC_SLEPC_OPTFLAGS="-O2"
@@ -136,19 +134,7 @@ RUN wget http://www.mpich.org/static/downloads/${MPICH_VERSION}/mpich-${MPICH_VE
 # - Second set of packages are recommended and/or required to build
 #   documentation or run tests.
 RUN pip3 install --no-binary="numpy" --no-cache-dir cffi mpi4py numba numpy==${NUMPY_VERSION} scipy && \
-    pip3 install --no-cache-dir cppimport flake8 isort jupytext matplotlib mypy myst-parser pybind11==${PYBIND11_VERSION} pytest pytest-xdist sphinx sphinx_rtd_theme
-
-# Install xtl, xtensor
-RUN git clone -b ${XTL_VERSION} --single-branch --depth 1 https://github.com/xtensor-stack/xtl.git && \
-    cd xtl && \
-    cmake -G Ninja . && \
-    ninja install && \
-    cd ../ && \
-    git clone -b ${XTENSOR_VERSION} --single-branch --depth 1 https://github.com/xtensor-stack/xtensor.git && \
-    cd xtensor && \
-    cmake -G Ninja . && \
-    ninja install && \
-    rm -rf /tmp/*
+    pip3 install --no-cache-dir cppimport flake8 isort jupytext matplotlib mypy myst-parser nanobind==${NANOBIND_VERSION} pytest pytest-xdist sphinx sphinx_rtd_theme
 
 # Install KaHIP
 RUN wget -nc --quiet https://github.com/kahip/kahip/archive/v${KAHIP_VERSION}.tar.gz && \
@@ -165,7 +151,6 @@ RUN wget -nc --quiet https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${HDF5_
     ./configure --prefix=/usr/local --enable-parallel --enable-shared --enable-static=no && \
     make -j${BUILD_NP} install && \
     rm -rf /tmp/*
-
 
 # Install ADIOS2
 RUN wget -nc --quiet https://github.com/ornladios/ADIOS2/archive/v${ADIOS2_VERSION}.tar.gz -O adios2-v${ADIOS2_VERSION}.tar.gz && \
@@ -189,33 +174,28 @@ ENV PYTHONPATH=/usr/local/lib:$PYTHONPATH
 ENV PETSC_DIR=/usr/local/petsc SLEPC_DIR=/usr/local/slepc
 RUN apt-get -qq update && \
     apt-get -y install bison flex && \
-    wget -nc --quiet http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-${PETSC_VERSION}.tar.gz -O petsc-${PETSC_VERSION}.tar.gz && \
-    mkdir -p ${PETSC_DIR} && tar -xf petsc-${PETSC_VERSION}.tar.gz -C ${PETSC_DIR} --strip-components 1 && \
+    git clone -b v${PETSC_VERSION}  https://gitlab.com/petsc/petsc.git ${PETSC_DIR} && \
     cd ${PETSC_DIR} && \
     # Complex, 32-bit int
-    python3 ./configure \
-    PETSC_ARCH=linux-gnu-complex-32 \
+    ./configure \
+    PETSC_ARCH=linux-gnu-complex64-32 \
     --COPTFLAGS="${PETSC_SLEPC_OPTFLAGS}" \
     --CXXOPTFLAGS="${PETSC_SLEPC_OPTFLAGS}" \
     --FOPTFLAGS="${PETSC_SLEPC_OPTFLAGS}" \
-    --with-make-np=${PETSC_SLEPC_MAKE_NP} \
     --with-64-bit-indices=no \
     --with-debugging=${PETSC_SLEPC_DEBUGGING} \
     --with-fortran-bindings=no \
     --with-shared-libraries \
-    --download-hypre \
     --download-metis \
     --download-mumps \
     --download-ptscotch \
     --download-scalapack \
-    --download-suitesparse \
-    --download-superlu \
-    --download-superlu_dist \
-    --with-scalar-type=complex && \
-    make PETSC_DIR=/usr/local/petsc PETSC_ARCH=linux-gnu-complex-32 ${MAKEFLAGS} all && \
+    --with-scalar-type=complex \
+    --with-precision=single && \
+    make PETSC_DIR=/usr/local/petsc PETSC_ARCH=linux-gnu-complex64-32 ${MAKEFLAGS} all && \
     # Install petsc4py
     cd src/binding/petsc4py && \
-    PETSC_ARCH=linux-gnu-complex-32 pip3 install --no-cache-dir . && \
+    PETSC_ARCH=linux-gnu-complex64-32 pip3 install --no-cache-dir . && \
     # Cleanup
     apt-get -y purge bison flex && \
     apt-get -y autoremove && \
@@ -234,15 +214,14 @@ RUN apt-get -qq update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install SLEPc
-RUN wget -nc --quiet https://gitlab.com/slepc/slepc/-/archive/v${SLEPC_VERSION}/slepc-v${SLEPC_VERSION}.tar.gz && \
-    mkdir -p ${SLEPC_DIR} && tar -xf slepc-v${SLEPC_VERSION}.tar.gz -C ${SLEPC_DIR} --strip-components 1 && \
+RUN git clone -b v${SLEPC_VERSION} https://gitlab.com/slepc/slepc.git ${SLEPC_DIR} && \
     cd ${SLEPC_DIR} && \
-    export PETSC_ARCH=linux-gnu-complex-32 && \
-    python3 ./configure && \
+    export PETSC_ARCH=linux-gnu-complex64-32 && \
+    ./configure && \
     make && \
     # Install slepc4py
     cd src/binding/slepc4py && \
-    PETSC_ARCH=linux-gnu-complex-32 pip3 install --no-cache-dir . && \
+    PETSC_ARCH=linux-gnu-real32-32:linux-gnu-complex64-32:linux-gnu-real64-32:linux-gnu-complex128-32:linux-gnu-real64-64:linux-gnu-complex128-64 pip3 install --no-cache-dir . && \
     rm -rf ${SLEPC_DIR}/CTAGS ${SLEPC_DIR}/TAGS ${SLEPC_DIR}/docs ${SLEPC_DIR}/src/ ${SLEPC_DIR}/**/obj/ ${SLEPC_DIR}/**/test/ && \
     rm -rf /tmp/*
 
@@ -267,15 +246,15 @@ RUN git clone -b ${DOLFINX_VERSION} --single-branch --depth 1 https://github.com
     cd dolfinx && \
     mkdir -p build-complex && \
     cd build-complex && \
-    PETSC_ARCH=linux-gnu-complex-32 cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/dolfinx-complex -DCMAKE_BUILD_TYPE=${DOLFINX_CMAKE_BUILD_TYPE} -DCMAKE_CXX_FLAGS=${DOLFIN_CMAKE_CXX_FLAGS} ../cpp && \
+    PETSC_ARCH=linux-gnu-complex64-32 cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr/local/dolfinx-complex -DCMAKE_BUILD_TYPE=${DOLFINX_CMAKE_BUILD_TYPE} -DCMAKE_CXX_FLAGS=${DOLFIN_CMAKE_CXX_FLAGS} ../cpp && \
     ninja install && \
     . /usr/local/dolfinx-complex/lib/dolfinx/dolfinx.conf && \
     cd ../python && \
-    CXXFLAGS=${DOLFINX_CMAKE_CXX_FLAGS} PETSC_ARCH=linux-gnu-complex-32 pip3 install -v --target /usr/local/dolfinx-complex/lib/python${PYTHON_VERSION}/dist-packages --no-dependencies --no-cache-dir .
+    CXXFLAGS=${DOLFINX_CMAKE_CXX_FLAGS} PETSC_ARCH=linux-gnu-complex64-32 pip3 install -v --target /usr/local/dolfinx-complex/lib/python${PYTHON_VERSION}/dist-packages --no-dependencies --no-cache-dir .
 
 
 ENV PKG_CONFIG_PATH=/usr/local/dolfinx-complex/lib/pkgconfig:$PKG_CONFIG_PATH \
-    PETSC_ARCH=linux-gnu-complex-32 \
+    PETSC_ARCH=linux-gnu-complex64-32 \
     PYTHONPATH=/usr/local/dolfinx-complex/lib/python${PYTHON_VERSION}/dist-packages:$PYTHONPATH \
     LD_LIBRARY_PATH=/usr/local/dolfinx-complex/lib:$LD_LIBRARY_PATH
 
@@ -286,7 +265,7 @@ RUN pip3 install --upgrade --no-cache-dir jupyter jupyterlab jupytext jupyter-bo
 
 # pyvista dependencies from apt
 RUN apt-get -qq update && \
-    apt-get -y install libgl1-mesa-dev xvfb && \
+    apt-get -y install libgl1-mesa-dri libgl1-mesa-dev xvfb && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -295,12 +274,10 @@ RUN apt-get -qq update && \
 # ipygany and pythreejs makes plotting in notebooks interactive
 RUN dpkgArch="$(dpkg --print-architecture)"; \
     case "$dpkgArch" in amd64) \
-    # pip3 install --no-cache-dir pyvista==${PYVISTA_VERSION} ;; \
     pip3 install --find-links https://wheels.pyvista.org/ pyvista ;; \
     esac; \
-    pip3 install --no-cache-dir matplotlib ipygany pythreejs
+    pip3 install --no-cache-dir matplotlib trame trame-vtk trame-vuetify
 
-RUN jupyter nbextension enable --py --sys-prefix ipygany
 
 WORKDIR /root
 

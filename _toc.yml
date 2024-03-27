@@ -4,7 +4,7 @@
 format: jb-book
 root: intro
 parts:
-- caption: 
+- caption:
   chapters:
   - file: about/get-started
   - file: about/who-you-are
@@ -22,7 +22,7 @@ parts:
       - file: about/contribute-docker
     - file: CODE_OF_CONDUCT
   - file: about/who-we-are
-  
+
 - caption: Core Concepts
   chapters:
   - file: core-concepts/why-use-ca
@@ -42,12 +42,12 @@ parts:
     - file: core-concepts/how-to-solve-eikonal
     - file: core-concepts/how-to-solve-magic-of-matrices
   - file: core-concepts/geom-and-mesh
-    sections: 
+    sections:
     - file: core-concepts/geom-and-mesh-dimensionality
     - file: core-concepts/geom-and-mesh-mesh-structure
     - file: core-concepts/geom-and-mesh-elements-and-interpolation
     - file: core-concepts/geom-and-mesh-mesh-refinement
-  
+
 - caption: Tutorials
   chapters:
   - file: tutorials/bem/bem-tutorials-main
@@ -58,28 +58,28 @@ parts:
     sections:
     - file: tutorials/fem/fem_1d_impedance_tube
     - file: tutorials/fem/fenicsx-helmholtz-tutorial
-  
+
   - file: tutorials/fdtd/fdtd-tutorials-main
     sections:
     - file: tutorials/fdtd/fdtd-tutorials-1
-    
+
 - caption: Software Guides
-  chapters: 
+  chapters:
   - file: software/software-main
-  
+
 - caption: User Code
   chapters:
   - file: user/user
-  
+
 - caption: Data
   chapters:
   - file: data/data
-  
+
 - caption: Community
   chapters:
-  - file: community/bios 
+  - file: community/bios
   - file: community/discussion
-  
+
 - caption: Reference
   chapters:
   - file: reference/glossary
